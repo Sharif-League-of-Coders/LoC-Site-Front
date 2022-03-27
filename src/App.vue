@@ -1,29 +1,28 @@
 <template>
-  <the-nav-bar />
-  <the-home />
-  <the-about-event />
-  <the-staffs />
-  <the-sponsors />
-  <the-contact-us />
+  <the-landing-page v-if="page === 'landing'" />
+  <the-registeration-page v-else-if="page === 'registeration'" />
+  <the-staffs-page v-else-if="page === 'staffs'" />
+  <the-dashboard-page v-else />
 </template>
 
 <script>
-import TheAboutEvent from "./components/TheAboutEvent.vue";
-import TheContactUs from "./components/TheContactUs.vue";
-import TheHome from "./components/TheHome.vue";
-import TheNavBar from "./components/TheNavBar.vue";
-import TheSponsors from "./components/TheSponsors.vue";
-import TheStaffs from "./components/TheStaffs.vue";
+import TheStaffsPage from "./components/TheStaffsPage.vue";
+import TheDashboardPage from "./components/TheDashboardPage.vue";
+import TheLandingPage from "./components/TheLandingPage.vue";
+import TheRegisterationPage from "./components/TheRegisterationPage.vue";
 
 export default {
   name: "App",
   components: {
-    TheHome,
-    TheAboutEvent,
-    TheContactUs,
-    TheSponsors,
-    TheStaffs,
-    TheNavBar,
+    TheLandingPage,
+    TheRegisterationPage,
+    TheDashboardPage,
+    TheStaffsPage,
+  },
+  data: function () {
+    return {
+      page: "staffs",
+    };
   },
 };
 </script>

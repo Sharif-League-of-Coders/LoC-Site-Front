@@ -1,7 +1,7 @@
 <template>
-  <div id="home">
+  <div id="intro">
     <div class="container">
-      <div class="intro">
+      <div>
         <h1 class="title">
           لیگ
           <strong>برنامه‌نویسان</strong>
@@ -29,7 +29,7 @@ export default {
       rgba(6, 12, 34, 0.8),
       rgba(6, 12, 34, 0.8)
     ),
-    url(../assets/intro-bg.jpg) no-repeat;
+    url(/src/assets/intro-bg.jpg) no-repeat;
   width: 100%;
   height: 100vh;
   color: white;
@@ -43,7 +43,7 @@ export default {
 
 .title {
   color: #fff;
-  font-size: 56px;
+  font-size: 150px;
   font-weight: 600;
   text-transform: uppercase;
 }

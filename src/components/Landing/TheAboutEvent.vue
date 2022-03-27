@@ -37,10 +37,10 @@ export default {
   color: white;
   background: linear-gradient(
       to top,
-      rgba(13, 20, 41, 0.8),
-      rgba(13, 20, 41, 0.8)
+      rgba(13, 20, 41, 0.7),
+      rgba(13, 20, 41, 0.7)
     ),
-    url(../assets/about-bg.jpg) no-repeat;
+    url(/src/assets/about-bg.jpg) no-repeat;
   background-size: cover;
   padding: 40px;
 }
