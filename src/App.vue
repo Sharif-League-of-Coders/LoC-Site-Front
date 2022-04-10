@@ -21,13 +21,17 @@ export default {
   },
   data: function () {
     return {
-      page: "staffs",
+      page: "landing",
     };
   },
 };
 </script>
 
 <style>
+@font-face {
+  font-family: "Avenir Next";
+  src: url("/src/assets/AvenirNextLTPro-Regular.otf"); /* File to be stored at your site */
+}
 html {
   scroll-behavior: smooth;
 }
@@ -46,8 +50,6 @@ body {
   margin: 0;
 }
 button {
-  font-family: Vazirmatn, sans-serif;
-
   color: #fff;
   padding: 7px 22px;
   border-radius: 50px;

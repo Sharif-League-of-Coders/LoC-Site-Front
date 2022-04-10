@@ -1,13 +1,10 @@
 <template>
   <div id="intro">
     <div class="container">
-      <div>
-        <h1 class="title">
-          لیگ
-          <strong>برنامه‌نویسان</strong>
-        </h1>
-        <h2>دانشکده مهندسی کامپیوتر، دانشگاه صنعتی شریف</h2>
-        <button>درباره رویداد</button>
+      <div class="title-container">
+        <h1 class="title">League</h1>
+        <h6 class="sub-title">of</h6>
+        <h1 class="title">Coders</h1>
       </div>
     </div>
   </div>
@@ -24,28 +21,41 @@ export default {
 
 <style scoped>
 .container {
-  background: linear-gradient(
-      to top,
-      rgba(6, 12, 34, 0.8),
-      rgba(6, 12, 34, 0.8)
-    ),
-    url(/src/assets/intro-bg.jpg) no-repeat;
-  width: 100%;
+  background: url(/public/intro-bg.svg);
+  background-size: cover;
+  color: black;
+  width: 100vw;
   height: 100vh;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: cover;
   overflow: hidden;
   position: relative;
 }
 
-.title {
-  color: #fff;
-  font-size: 150px;
-  font-weight: 600;
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  letter-spacing: 0.23em;
   text-transform: uppercase;
+  font-style: normal;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 180px;
+  text-align: center;
+  margin: 0;
+  color: #000000;
+}
+.sub-title {
+  font-weight: 300;
+  font-size: 64px;
+  text-align: center;
+  margin: 0;
+
+  color: #000000;
 }
 strong {
   color: #f07008 !important;
