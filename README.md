@@ -1,4 +1,4 @@
-# loc-site-front
+# sample
 
 ## Project setup
 ```
