@@ -23,7 +23,7 @@ export default {};
   direction: rtl;
   align-items: center;
   justify-content: center;
-  background-color: rgb(6, 12, 34);
+  background-color: white;
   height: 70px;
   padding: 15px 0;
 }
@@ -31,7 +31,7 @@ export default {};
   padding: 8px;
   text-decoration: none;
   display: inline-block;
-  color: rgba(202, 206, 221, 0.8);
+  color: black;
   font-weight: 600;
   font-size: 14px;
   outline: none;
@@ -44,7 +44,7 @@ export default {};
 }
 .register {
   color: #fff;
-  background: #f07008;
+  background: linear-gradient(180deg, #0a0a0a 0%, #2f2f2f 100%);
   padding: 7px 22px;
   border-radius: 50px;
   border: 2px solid #f07008;

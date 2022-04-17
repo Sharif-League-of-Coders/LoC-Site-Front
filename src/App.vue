@@ -50,10 +50,11 @@ body {
   margin: 0;
 }
 button {
+  font-family: Vazirmatn, sans-serif;
+
   color: #fff;
   padding: 7px 22px;
-  border-radius: 50px;
-  border: 2px solid #f07008;
+  border-radius: 10px;
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   margin-left: 8px;
