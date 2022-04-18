@@ -1,60 +1,52 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+  <the-landing-page v-if="page === 'landing'" />
+  <the-registeration-page v-else-if="page === 'registeration'" />
+  <the-staffs-page v-else-if="page === 'staffs'" />
+  <the-dashboard-page v-else />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import TheStaffsPage from "./components/TheStaffsPage.vue";
+import TheDashboardPage from "./components/TheDashboardPage.vue";
+import TheLandingPage from "./components/TheLandingPage.vue";
+import TheRegisterationPage from "./components/TheRegisterationPage.vue";
 
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    HelloWorld,
+    TheLandingPage,
+    TheRegisterationPage,
+    TheDashboardPage,
+    TheStaffsPage,
   },
-
-  data: () => ({
-    //
-  }),
+  data: function () {
+    return {
+      page: "landing",
+    };
+  },
 };
 </script>
+
+<style>
+@font-face {
+  font-family: "IRANSans";
+  src: url("./assets/Sans.ttf"); /* File to be stored at your site */
+}
+html {
+  overflow: hidden;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: IRANSans, sans-serif;
+  width: 100%;
+  overflow: hidden;
+}
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+</style>
