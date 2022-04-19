@@ -2,7 +2,15 @@
   <div id="staffs">
     <div class="container">
       <h1>تیم برگزاری رویداد</h1>
-      <p>به زودی معرفی خواهد شد...</p>
+      <v-carousel hide-delimiters>
+        <div>
+          <div>
+            <div></div>
+            <div>پارسا نشائی</div>
+            <div>نائب دبیر</div>
+          </div>
+        </div>
+      </v-carousel>
     </div>
   </div>
 </template>

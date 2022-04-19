@@ -1,7 +1,7 @@
 <template>
   <div id="contact-us">
+    <h1>ارتباط با ما</h1>
     <div class="container">
-      <h1>ارتباط با ما</h1>
       <div class="social-media-mail-phone">
         <div class="social-media">
           <div class="text">LOCSHARIF</div>
@@ -66,7 +66,7 @@
         </div>
       </div>
       <div class="address">
-        <div class="title">
+        <div class="icon">
           <v-img
             :src="require('../../assets/location.svg')"
             max-width="10vw"
@@ -75,18 +75,84 @@
             height="36px"
             contain
           />
-          <span>آدرس</span>
         </div>
-        <div class="body">
-          <span
-            >اتاق انجمن علمی (SSC) - طبقه‌ی همکف دانشکده‌ی مهندسـی کامــپیوتر -
-            دانشگاه صنعتـــی شریـــــف</span
-          >
+        <div class="text">
+          <div class="title">آدرس</div>
+          <div class="body">
+            اتاق انجمن علمی (SSC) - طبقه‌ی همکف دانشکده‌ی مهندسـی کامــپیوتر -
+            دانشگاه صنعتـــی شریـــــف
+          </div>
         </div>
       </div>
-      <div class="did-you-know"></div>
-      <div class="logo-container"></div>
-      <div class="developers"></div>
+      <div class="did-you-know">
+        <div class="icon">
+          <v-img
+            :src="require('../../assets/question-mark.svg')"
+            max-width="10vw"
+            max-height="5vw"
+            width="36px"
+            height="36px"
+            contain
+          />
+        </div>
+        <div class="text">
+          <div class="title">آیا می‌دانید؟</div>
+          <div class="body">
+            شکل‌های استفاده شده در این طراحی، شکل‌های ناممکن (Impossible shapes)
+            نام دارند که این مورد با شعار رویــداد (Make it Possible) هـم
+            راستــا است.
+          </div>
+        </div>
+      </div>
+      <div class="logo-developers">
+        <div class="logo-container">
+          <div>
+            <v-img
+              :src="require('../../assets/sharif-logo.svg')"
+              width="158px"
+              height="158px"
+              contain
+            />
+          </div>
+          <div>
+            <v-img
+              :src="require('../../assets/logo.svg')"
+              width="220px"
+              height="131px"
+              contain
+            />
+          </div>
+          <div>
+            <v-img
+              :src="require('../../assets/ssc-logo.svg')"
+              width="223px"
+              height="108px"
+              contain
+            />
+          </div>
+        </div>
+        <div class="developers">
+          <div class="icon">
+            <v-img
+              :src="require('../../assets/pencil.svg')"
+              max-width="10vw"
+              max-height="5vw"
+              width="36px"
+              height="36px"
+              contain
+            />
+          </div>
+          <div class="text">
+            <div class="title">توسعه‌دهندگان</div>
+            <div class="body">
+              <span> بک‌اند:</span>
+              <span>فرانت‌اند:</span>
+              <span> طراحی: </span>
+              <span> تمامی حقوق محفوظ است. </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -100,7 +166,8 @@ export default {};
   direction: rtl;
   padding: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   background: url("../../assets/Contact Us.svg");
   background-size: contain;
@@ -113,9 +180,11 @@ export default {};
 
 .container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 h1 {
@@ -144,6 +213,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   width: 863px;
+  margin-right: 36px;
 }
 
 .social-media {
@@ -212,13 +282,131 @@ h1 {
   color: #000000;
 }
 
-.address .title {
+.address {
   display: flex;
 }
 
-.address .title > span {
+.address .text {
+  display: flex;
+  flex-direction: column;
+  border-right: 5px solid black;
+  width: 770px;
+}
+
+.address .text .title {
   border: 1px solid black;
-  padding: 4px 11px;
-  box-sizing: border-box;
+  width: 104px;
+  display: flex;
+  justify-content: center;
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.address .text .body {
+  padding: 0 20px 0 0;
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.did-you-know {
+  display: flex;
+}
+
+.did-you-know .text {
+  display: flex;
+  flex-direction: column;
+  border-right: 5px solid black;
+  width: 959px;
+}
+
+.did-you-know .text .title {
+  border: 1px solid black;
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 47px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+.did-you-know .text .body {
+  padding: 0 20px 0 0;
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 47px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+
+.developers {
+  display: flex;
+  width: 453px;
+  margin-left: 308px;
+}
+
+.developers .text {
+  display: flex;
+  flex-direction: column;
+  border-right: 5px solid black;
+  width: 453px;
+}
+
+.developers .text .title {
+  border: 1px solid black;
+  width: 172px;
+  display: flex;
+  justify-content: center;
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+.developers .text .body {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20px 0 0;
+  font-family: "IRANSans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 38px;
+  display: flex;
+  text-align: right;
+}
+
+.logo-developers {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 690px;
+  margin-right: 243px;
 }
 </style>

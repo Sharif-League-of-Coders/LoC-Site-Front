@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1>زمان‌بندی</h1>
+    <v-timeline></v-timeline>
   </div>
 </template>
 
