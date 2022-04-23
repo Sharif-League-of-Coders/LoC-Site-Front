@@ -1,5 +1,12 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <div>
+      <div>همین حالا</div>
+      <div>ثبت نام</div>
+      <div>کنید</div>
+    </div>
+    <v-btn> ثبت نام </v-btn>
+  </div>
 </template>
 
 <script>
@@ -16,5 +23,10 @@ export default {
   background-repeat: no-repeat;
   height: 60vw;
   width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>
