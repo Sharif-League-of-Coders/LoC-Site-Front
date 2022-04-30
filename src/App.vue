@@ -1,27 +1,13 @@
 <template>
-  <the-landing-page v-if="page === 'landing'" />
-  <the-registration-page v-else-if="page === 'registration'" />
-  <the-staffs-page v-else-if="page === 'staffs'" />
-  <the-dashboard-page v-else />
+  <v-app>
+    <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-import TheStaffsPage from "./components/TheStaffsPage.vue";
-import TheDashboardPage from "./components/TheDashboardPage.vue";
-import TheLandingPage from "./components/TheLandingPage.vue";
-import TheRegistrationPage from "./components/TheRegistrationPage.vue";
-
-// 120px => 5vw
-
 export default {
   name: "App",
-  components: {
-    TheLandingPage,
-    TheRegistrationPage,
-    TheDashboardPage,
-    TheStaffsPage,
-  },
-  data: function () {
+  data() {
     return {
       page: "landing",
     };
@@ -38,14 +24,24 @@ export default {
   font-family: "IRANSansLight";
   src: url("./assets/IRANSans_Light.ttf"); /* File to be stored at your site */
 }
+
 html {
   overflow: hidden;
 }
+
 body {
   padding: 0;
   margin: 0;
   font-family: IRANSansBold, sans-serif;
   width: 100%;
   overflow: hidden;
+}
+
+v-app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 </style>
