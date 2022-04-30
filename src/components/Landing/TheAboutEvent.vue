@@ -42,23 +42,23 @@ export default {
   background-size: 100vw auto;
   background-position: top center;
   background-repeat: no-repeat;
-  padding: 40px 190px 25vw;
+  padding: 1.6vw 7.5vw 25vw;
   height: 60vw;
   width: 100vw;
 }
 
 .container {
-  border-right: 1px solid black;
+  border-right: .05vw solid black;
   width: 100%;
 }
 
 .about {
-  width: 673px;
+  width: 25vw;
 }
 h1 {
   font-style: normal;
   font-weight: 900;
-  font-size: 90px;
+  font-size: 3.75vw;
   line-height: 170%;
 
   letter-spacing: 0.015em;
@@ -73,25 +73,23 @@ section {
   flex-direction: column;
   align-items: flex-start;
   text-align: right;
-  margin: 20px;
-  width: 673px;
+  margin: 0.8vw;
+  width: 25vw;
 }
 h3 {
-  font-family: "IRANSans";
+  font-family: "IRANSans",serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 60px;
+  font-size: 1.5vw;
+  line-height: 2.5vw;
 }
 
 p {
-  font-family: "IRANSans";
+  font-family: "IRANSans",serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 40px;
-  line-height: 60px;
-  /* or 47px */
-
+  font-size: 1.5vw;
+  line-height: 2.5vw;
   text-align: justify;
 }
 </style>

@@ -7,8 +7,8 @@
           <div class="text">LOCSHARIF</div>
           <div class="logos">
             <v-img
-              width="57px"
-              height="57px"
+              width="2.5vw"
+              height="2.5vw"
               :src="require('../../assets/instagram.svg')"
               max-width="10vw"
               max-height="5vw"
@@ -18,24 +18,24 @@
               :src="require('../../assets/twitter.svg')"
               max-width="10vw"
               max-height="5vw"
-              width="57px"
-              height="57px"
+              width="2.5vw"
+              height="2.5vw"
               contain
             />
             <v-img
               :src="require('../../assets/linkedin.svg')"
               max-width="10vw"
               max-height="5vw"
-              width="57px"
-              height="57px"
+              width="2.5vw"
+              height="2.5vw"
               contain
             />
             <v-img
               :src="require('../../assets/telegram.svg')"
               max-width="10vw"
               max-height="5vw"
-              width="57px"
-              height="57px"
+              width="2.5vw"
+              height="2.5vw"
               contain
             />
           </div>
@@ -46,8 +46,8 @@
               :src="require('../../assets/gmail.svg')"
               max-width="10vw"
               max-height="5vw"
-              width="50px"
-              height="39px"
+              width="2vw"
+              height="17vw"
               contain
             />
             <span>LOCSHARIF@Gmail.com</span>
@@ -57,8 +57,8 @@
               :src="require('../../assets/phone.svg')"
               max-width="10vw"
               max-height="5vw"
-              width="44px"
-              height="44px"
+              width="1.8vw"
+              height="1.8vw"
               contain
             />
             <span dir="ltr">{{ "+98 9330880908" }}</span>
@@ -71,8 +71,8 @@
             :src="require('../../assets/location.svg')"
             max-width="10vw"
             max-height="5vw"
-            width="36px"
-            height="36px"
+            width="1.5vw"
+            height="1.5vw"
             contain
           />
         </div>
@@ -90,8 +90,8 @@
             :src="require('../../assets/question-mark.svg')"
             max-width="10vw"
             max-height="5vw"
-            width="36px"
-            height="36px"
+            width="1.5vw"
+            height="1.5vw"
             contain
           />
         </div>
@@ -109,24 +109,24 @@
           <div>
             <v-img
               :src="require('../../assets/sharif-logo.svg')"
-              width="158px"
-              height="158px"
+              width="6.5vw"
+              height="6.5vw"
               contain
             />
           </div>
           <div>
             <v-img
               :src="require('../../assets/logo.svg')"
-              width="220px"
-              height="131px"
+              width="9.5vw"
+              height="5.5vw"
               contain
             />
           </div>
           <div>
             <v-img
               :src="require('../../assets/ssc-logo.svg')"
-              width="223px"
-              height="108px"
+              width="9vw"
+              height="4.5vw"
               contain
             />
           </div>
@@ -137,8 +137,8 @@
               :src="require('../../assets/pencil.svg')"
               max-width="10vw"
               max-height="5vw"
-              width="36px"
-              height="36px"
+              width="1.5vw"
+              height="1.5vw"
               contain
             />
           </div>
@@ -164,7 +164,7 @@ export default {};
 <style scoped>
 #contact-us {
   direction: rtl;
-  padding: 40px;
+  padding: 1.7vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -190,7 +190,7 @@ export default {};
 h1 {
   font-style: normal;
   font-weight: 900;
-  font-size: 90px;
+  font-size: 3.75vw;
   line-height: 118.19%;
 
   letter-spacing: 0.015em;
@@ -206,14 +206,14 @@ h1 {
   justify-content: center;
 }
 .contacts > div {
-  margin: 20px;
+  margin: 0.8vw;
 }
 
 .social-media-mail-phone {
   display: flex;
   justify-content: space-between;
-  width: 863px;
-  margin-right: 36px;
+  width: 35vw;
+  margin-right: 1.5vw;
 }
 
 .social-media {
@@ -221,17 +221,17 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 330px;
-  border-right: 5px solid black;
-  padding: 20px 20px 14px 0;
+  width: 13vw;
+  border-right: .25vw solid black;
+  padding: 0.9vw  0.9vw  0.5vw 0;
 }
 
 .social-media .text {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 1.5vw;
+  line-height: 1.75vw;
   display: flex;
   align-items: center;
   letter-spacing: 0.385em;
@@ -242,6 +242,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   width: 100%;
+
 }
 
 .phone-mail {
@@ -249,8 +250,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border-right: 5px solid black;
-  padding: 20px 20px 14px 0;
+  border-right: 0.2vw solid black;
+  padding: 0.9vw 0.9vw  0.5vw 0;
 }
 
 .phone-mail > div {
@@ -261,8 +262,8 @@ h1 {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 1.5vw;
+  line-height: 1.75vw;
   display: flex;
   align-items: center;
   letter-spacing: 0.265em;
@@ -274,8 +275,8 @@ h1 {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 1.5vw;
+  line-height: 1.75vw;
   display: flex;
   align-items: center;
 
@@ -289,31 +290,31 @@ h1 {
 .address .text {
   display: flex;
   flex-direction: column;
-  border-right: 5px solid black;
-  width: 770px;
+  border-right: .25vw solid black;
+  width: 32.5vw;
 }
 
 .address .text .title {
-  border: 1px solid black;
-  width: 104px;
+  border: .05vw solid black;
+  width: 4vw;
   display: flex;
   justify-content: center;
   font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
-  font-size: 36px;
-  line-height: 56px;
+  font-size: 1.5vw;
+  line-height: 2.5vw;
   display: flex;
   align-items: center;
   text-align: center;
 }
 .address .text .body {
-  padding: 0 20px 0 0;
+  padding: 0 0.9vw  0 0;
   font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
-  font-size: 36px;
-  line-height: 56px;
+  font-size: 1.5vw;
+  line-height: 2.5vw;
   display: flex;
   align-items: center;
 }
@@ -325,31 +326,30 @@ h1 {
 .did-you-know .text {
   display: flex;
   flex-direction: column;
-  border-right: 5px solid black;
-  width: 959px;
+  border-right: .25vw solid black;
+  width: 40vw;
 }
 
 .did-you-know .text .title {
-  border: 1px solid black;
-  width: 170px;
+  border: .05vw solid black;
+  width: 7.5vw;
   display: flex;
   justify-content: center;
-  font-family: "IRANSans";
+  font-family: "IRANSans",sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 30px;
-  line-height: 47px;
-  display: flex;
+  font-size: 1.25vw;
+  line-height: 2vw;
   align-items: center;
   text-align: right;
 }
 .did-you-know .text .body {
-  padding: 0 20px 0 0;
-  font-family: "IRANSans";
+  padding: 0 0.9vw  0 0;
+  font-family: "IRANSans",sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 30px;
-  line-height: 47px;
+  font-size: 1.25vw;
+  line-height: 2vw;
   display: flex;
   align-items: center;
   text-align: right;
@@ -357,27 +357,27 @@ h1 {
 
 .developers {
   display: flex;
-  width: 453px;
-  margin-left: 308px;
+  width: 19vw;
+  margin-left: 13vw;
 }
 
 .developers .text {
   display: flex;
   flex-direction: column;
-  border-right: 5px solid black;
-  width: 453px;
+  border-right: .25vw solid black;
+  width: 19vw;
 }
 
 .developers .text .title {
-  border: 1px solid black;
-  width: 172px;
+  border: .05vw solid black;
+  width: 7vw;
   display: flex;
   justify-content: center;
   font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 38px;
+  font-size: 1vw;
+  line-height: 1.5vw;
   display: flex;
   align-items: center;
   text-align: right;
@@ -386,12 +386,12 @@ h1 {
   display: flex;
   flex-direction: column;
 
-  padding: 0 20px 0 0;
+  padding: 0 1vw 0 0;
   font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 38px;
+  font-size: 1vw;
+  line-height: 1.5vw;
   display: flex;
   text-align: right;
 }
@@ -406,7 +406,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 690px;
-  margin-right: 243px;
+  width: 28.75vw;
+  margin-right: 10vw;
 }
 </style>

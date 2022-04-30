@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>زمان‌بندی</h1>
-    <v-timeline></v-timeline>
   </div>
 </template>
 
@@ -13,10 +12,10 @@ export default {
 
 <style scoped>
 .container {
-  background: url("../../assets/Timeline.svg");
   background-size: 100vw auto;
   background-position: top center;
   background-repeat: no-repeat;
+  background: url("../../assets/Timeline.svg");
   height: 60vw;
   width: 100vw;
 
@@ -26,8 +25,8 @@ export default {
 .container > h1 {
   font-style: normal;
   font-weight: 900;
-  font-size: 90px;
-  line-height: 118.19%;
+  font-size: 3.75vw;
+  line-height: 170%;
 
   letter-spacing: 0.015em;
 

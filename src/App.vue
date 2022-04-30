@@ -1,6 +1,6 @@
 <template>
   <the-landing-page v-if="page === 'landing'" />
-  <the-registeration-page v-else-if="page === 'registeration'" />
+  <the-registration-page v-else-if="page === 'registration'" />
   <the-staffs-page v-else-if="page === 'staffs'" />
   <the-dashboard-page v-else />
 </template>
@@ -9,13 +9,15 @@
 import TheStaffsPage from "./components/TheStaffsPage.vue";
 import TheDashboardPage from "./components/TheDashboardPage.vue";
 import TheLandingPage from "./components/TheLandingPage.vue";
-import TheRegisterationPage from "./components/TheRegisterationPage.vue";
+import TheRegistrationPage from "./components/TheRegistrationPage.vue";
+
+// 120px => 5vw
 
 export default {
   name: "App",
   components: {
     TheLandingPage,
-    TheRegisterationPage,
+    TheRegistrationPage,
     TheDashboardPage,
     TheStaffsPage,
   },
@@ -29,8 +31,12 @@ export default {
 
 <style>
 @font-face {
-  font-family: "IRANSans";
-  src: url("./assets/Sans.ttf"); /* File to be stored at your site */
+  font-family: "IRANSansBold";
+  src: url("./assets/IRANSans_Black.ttf"); /* File to be stored at your site */
+}
+@font-face {
+  font-family: "IRANSansLight";
+  src: url("./assets/IRANSans_Light.ttf"); /* File to be stored at your site */
 }
 html {
   overflow: hidden;
@@ -38,15 +44,8 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: IRANSans, sans-serif;
+  font-family: IRANSansBold, sans-serif;
   width: 100%;
   overflow: hidden;
-}
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  padding: 0;
-  margin: 0;
 }
 </style>

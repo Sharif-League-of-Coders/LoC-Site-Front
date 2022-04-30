@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="main-container">
     <the-intro />
     <the-about-event />
     <the-prizes />
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.main-container {
   scroll-behavior: smooth;
   overflow-y: scroll;
   overflow-x: hidden;

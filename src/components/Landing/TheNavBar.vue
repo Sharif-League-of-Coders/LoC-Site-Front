@@ -3,13 +3,13 @@
     <div class="navigation-area">
       <div class="logo">
         <v-img
-          :src="require('../../assets/logo.svg')"
-          width="105px"
-          height="62.56px"
+            :src="require('../../assets/logo.svg')"
+            height="2.5vw"
+            width="4.5vw"
         />
       </div>
       <div
-        v-for="item in [
+          v-for="item in [
           'معرفی',
           'جوایز',
           'زمان‌بندی',
@@ -18,30 +18,33 @@
           'سوالات متداول',
           'ارتباط با ما',
         ]"
-        :key="item"
-        class="navigation-area-button-container"
+          :key="item"
+          class="navigation-area-button-container"
       >
         <v-btn
-          width="min-content"
-          depressed
-          color="#fff"
-          class="navigation-area-button"
-          >{{ item }}</v-btn
+            class="navigation-area-button"
+            color="#fff"
+            depressed
+            width="min-content"
+        >{{ item }}
+        </v-btn
         >
-        <v-divider vertical class="divider" />
+        <v-divider class="divider" vertical/>
       </div>
     </div>
     <div class="sign-up-area">
       <v-btn
-        width="7.5vw"
-        height="54px"
-        color="#ffffff"
-        outlined
-        class="register"
-        >ثبت نام</v-btn
+          class="register"
+          color="#ffffff"
+          height="2.25vw"
+          outlined
+          width="7.5vw"
+      >ثبت نام
+      </v-btn
       >
-      <v-btn outlined width="7.5vw" height="54px" color="#000" class="login"
-        >ورود</v-btn
+      <v-btn class="login" color="#000" height="2.25vw" outlined width="7.5vw"
+      >ورود
+      </v-btn
       >
     </div>
   </div>
@@ -67,23 +70,23 @@ export default {};
 }
 
 .navigation-area > .logo > img {
-  width: 105px;
-  height: 63px;
+  width: 4.5vw;
+  height: 2.5vw;
 }
 
 .navigation-area-button-container {
-  height: 54px;
+  height: 2.25vw;
   display: flex;
   align-items: center;
 }
 
 .v-btn:not(.v-btn--round).v-size--default {
   width: min-content;
-  padding: 0 10px;
+  padding: 0 .5vw;
   font-size: 1.5vw;
   font-style: normal;
   font-weight: 300;
-  line-height: 50px;
+  line-height: 2vw;
 }
 
 .sign-up-area {
@@ -91,11 +94,11 @@ export default {};
 }
 
 .sign-up-area > * {
-  width: 192px;
-  height: 54px;
+  width: 8vw;
+  height: 2.25vw;
   color: white;
 
-  border-radius: 10px;
+  border-radius: .5vw;
 
   display: flex;
   justify-content: center;
@@ -103,10 +106,10 @@ export default {};
 
   font-style: normal;
   font-weight: 300;
-  font-size: 32px;
-  line-height: 50px;
+  font-size: 1.4vw;
+  line-height: 2vw;
 
-  margin-left: 23px;
+  margin-left: 1vw;
 }
 
 .register {
@@ -115,9 +118,9 @@ export default {};
 
 .divider {
   z-index: 1000;
-  margin-top: 12px;
+  margin-top: .5vw;
   min-height: 0;
-  max-height: calc(100% - 24px);
+  max-height: calc(100% - 1vw);
 }
 
 .login {
