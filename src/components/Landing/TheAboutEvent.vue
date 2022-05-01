@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: IRANSansBold, sans-serif !important;
+
+}
 #about-event {
   display: flex;
   direction: rtl;
@@ -77,7 +81,8 @@ section {
   width: 25vw;
 }
 h3 {
-  font-family: "IRANSans",serif;
+  font-family: IRANSansBold, sans-serif !important;
+
   font-style: normal;
   font-weight: 700;
   font-size: 1.5vw;
@@ -85,7 +90,8 @@ h3 {
 }
 
 p {
-  font-family: "IRANSans",serif;
+  font-family: IRANSansLight, sans-serif !important;
+
   font-style: normal;
   font-weight: 300;
   font-size: 1.5vw;

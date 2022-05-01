@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="faq">
     <div class="header">
       <h1>سوالات متداول</h1>
     </div>
@@ -27,13 +27,13 @@
         <details>
           <summary>خب ایول، حالا چطوری باید شرکت کنم؟</summary>
           <p>
-            اول توی کانال LoC Sharif عضو شو که از اخبار مطلع باشی، یه مدت دیگه
+            اول توی کانال LoCSharif عضو شو که از اخبار مطلع باشی، یه مدت دیگه
             فرم ثبت نام و تشکیل گروه رو داخلش قرار می‌دیم و می‌تونی از طریق اون
             برای شرکت توی مسابقه اقدام کنی.
           </p>
         </details>
         <details>
-          <summary>صب کن ببینم، اگه سوال داشتم از کی بپرسم؟</summary>
+          <summary>صبر کن ببینم، اگه سوال داشتم از کی بپرسم؟</summary>
           <p>
             می‌تونی از طریق ایمیل و یا هر کدوم از شبکه‌های اجتماعی ما سوالت رو
             بپرسی و ما در اسرع وقت بهش پاسخ می‌دیم
@@ -51,7 +51,11 @@ export default {
 </script>
 
 <style scoped>
-.container {
+* {
+  font-family: IRANSansLight, sans-serif !important;
+
+}
+#faq {
   background: url("../../assets/FAQ.svg");
   background-size: contain;
   background-position: top center;
@@ -101,7 +105,6 @@ details {
 }
 
 p {
-  font-family: "IRANSans", sans-serif;
   font-style: normal;
   font-weight: 200;
   font-size: 1.25vw;
@@ -133,15 +136,17 @@ summary::-webkit-details-marker {
 
 details summary::after {
   content: url("/src/assets/arrow-down.svg");
-  color: red;
   margin-right: 1vw;
+  width: 2vw;
+  height: 1vw;
   /* you can style it however you want, use background-image for example */
 }
 
 /* By using [open] we can define different styles when the disclosure widget is open */
 details[open] summary::after {
   content: url("/src/assets/arrow-up.svg");
-  color: red;
   margin-right: 1vw;
+  width: 2vw;
+  height: 1vw;
 }
 </style>

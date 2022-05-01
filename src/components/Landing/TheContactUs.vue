@@ -48,6 +48,7 @@
               max-height="5vw"
               width="2vw"
               height="17vw"
+
               contain
             />
             <span>LOCSHARIF@Gmail.com</span>
@@ -131,27 +132,28 @@
             />
           </div>
         </div>
-        <div class="developers">
-          <div class="icon">
-            <v-img
-              :src="require('../../assets/pencil.svg')"
-              max-width="10vw"
-              max-height="5vw"
-              width="1.5vw"
-              height="1.5vw"
-              contain
-            />
-          </div>
-          <div class="text">
-            <div class="title">توسعه‌دهندگان</div>
-            <div class="body">
-              <span> بک‌اند:</span>
-              <span>فرانت‌اند:</span>
-              <span> طراحی: </span>
-              <span> تمامی حقوق محفوظ است. </span>
-            </div>
-          </div>
-        </div>
+        <div class="text">تمامی حقوق برای توسعه‌دهندگان محفوظ است</div>
+        <!--        <div class="developers">-->
+        <!--          <div class="icon">-->
+        <!--            <v-img-->
+        <!--              :src="require('../../assets/pencil.svg')"-->
+        <!--              max-width="10vw"-->
+        <!--              max-height="5vw"-->
+        <!--              width="1.5vw"-->
+        <!--              height="1.5vw"-->
+        <!--              contain-->
+        <!--            />-->
+        <!--          </div>-->
+        <!--          <div class="text">-->
+        <!--            <div class="title">توسعه‌دهندگان</div>-->
+        <!--            <div class="body">-->
+        <!--              <span> بک‌اند:</span>-->
+        <!--              <span>فرانت‌اند:</span>-->
+        <!--              <span> طراحی: </span>-->
+        <!--              <span> تمامی حقوق محفوظ است. </span>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </div>
     </div>
   </div>
@@ -162,6 +164,10 @@ export default {};
 </script>
 
 <style scoped>
+* {
+  font-family: IRANSansLight, sans-serif !important;
+}
+
 #contact-us {
   direction: rtl;
   padding: 1.7vw;
@@ -205,6 +211,7 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
 .contacts > div {
   margin: 0.8vw;
 }
@@ -220,14 +227,14 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 13vw;
-  border-right: .25vw solid black;
-  padding: 0.9vw  0.9vw  0.5vw 0;
+  border-right: 0.25vw solid black;
+  padding: 0.9vw 0.9vw 0.5vw 0;
 }
 
 .social-media .text {
-  font-family: "Roboto";
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.5vw;
@@ -242,7 +249,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   width: 100%;
-
+  margin-top: 1vw;
 }
 
 .phone-mail {
@@ -251,7 +258,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   border-right: 0.2vw solid black;
-  padding: 0.9vw 0.9vw  0.5vw 0;
+  padding: 0 0.9vw 0.5vw 0;
 }
 
 .phone-mail > div {
@@ -259,7 +266,7 @@ h1 {
 }
 
 .phone > span {
-  font-family: "Roboto";
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.5vw;
@@ -272,11 +279,11 @@ h1 {
 }
 
 .mail > span {
-  font-family: "Roboto";
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.5vw;
-  line-height: 1.75vw;
+  line-height: 1.5vw;
   display: flex;
   align-items: center;
 
@@ -290,27 +297,26 @@ h1 {
 .address .text {
   display: flex;
   flex-direction: column;
-  border-right: .25vw solid black;
+  border-right: 0.25vw solid black;
   width: 32.5vw;
 }
 
 .address .text .title {
-  border: .05vw solid black;
+  border: 0.05vw solid black;
   width: 4vw;
   display: flex;
   justify-content: center;
-  font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
   font-size: 1.5vw;
   line-height: 2.5vw;
-  display: flex;
   align-items: center;
   text-align: center;
+  font-family: IRANSansLight, sans-serif !important;
 }
+
 .address .text .body {
-  padding: 0 0.9vw  0 0;
-  font-family: "IRANSans";
+  padding: 0 0.9vw 0 0;
   font-style: normal;
   font-weight: 300;
   font-size: 1.5vw;
@@ -326,26 +332,27 @@ h1 {
 .did-you-know .text {
   display: flex;
   flex-direction: column;
-  border-right: .25vw solid black;
+  border-right: 0.25vw solid black;
   width: 40vw;
 }
 
 .did-you-know .text .title {
-  border: .05vw solid black;
-  width: 7.5vw;
+  border: 0.05vw solid black;
+  width: 9vw;
   display: flex;
   justify-content: center;
-  font-family: "IRANSans",sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 1.25vw;
   line-height: 2vw;
   align-items: center;
   text-align: right;
+  font-family: IRANSansLight, sans-serif !important;
+
 }
+
 .did-you-know .text .body {
-  padding: 0 0.9vw  0 0;
-  font-family: "IRANSans",sans-serif;
+  padding: 0 0.9vw 0 0;
   font-style: normal;
   font-weight: 300;
   font-size: 1.25vw;
@@ -364,40 +371,41 @@ h1 {
 .developers .text {
   display: flex;
   flex-direction: column;
-  border-right: .25vw solid black;
-  width: 19vw;
+  border-right: 0.25vw solid black;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .developers .text .title {
-  border: .05vw solid black;
+  border: 0.05vw solid black;
   width: 7vw;
   display: flex;
   justify-content: center;
-  font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
   font-size: 1vw;
   line-height: 1.5vw;
-  display: flex;
   align-items: center;
   text-align: right;
 }
+
 .developers .text .body {
   display: flex;
   flex-direction: column;
 
   padding: 0 1vw 0 0;
-  font-family: "IRANSans";
   font-style: normal;
   font-weight: 300;
   font-size: 1vw;
   line-height: 1.5vw;
-  display: flex;
   text-align: right;
 }
 
 .logo-developers {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   justify-content: space-between;
 }
@@ -407,6 +415,5 @@ h1 {
   align-items: center;
   justify-content: space-between;
   width: 28.75vw;
-  margin-right: 10vw;
 }
 </style>

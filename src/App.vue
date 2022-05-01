@@ -32,7 +32,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: IRANSansBold, sans-serif;
+  font-family: IRANSansBold, sans-serif !important;
   width: 100%;
   overflow: hidden;
 }

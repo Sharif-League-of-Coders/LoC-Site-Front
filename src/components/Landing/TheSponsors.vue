@@ -1,5 +1,5 @@
 <template>
-  <div id="sponsors">
+  <div id="sponsor">
     <div class="container">
       <v-img :src="require('../../assets/sponsor-logo.svg')" width="27.5vw" />
     </div>
@@ -11,7 +11,7 @@ export default {};
 </script>
 
 <style scoped>
-#sponsors {
+#sponsor {
   direction: rtl;
   padding: 40px;
   display: flex;

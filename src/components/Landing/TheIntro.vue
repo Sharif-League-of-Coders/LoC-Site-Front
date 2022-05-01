@@ -27,6 +27,7 @@
 
 <script>
 import TheNavBar from "./TheNavBar.vue";
+
 export default {
   components: { TheNavBar },
   name: "the-home",
@@ -47,10 +48,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: .5vw 1.5vw 25vw;
+  padding: 0.5vw 1.5vw 25vw;
   box-sizing: border-box;
   position: relative;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -76,21 +78,21 @@ export default {
 }
 
 .title-container > h1 {
-  font-family: "Roboto",sans-serif;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 5vw;
-  line-height: 5vw;
+  font-size: 5vw !important;
+  line-height: 5vw !important;
+  letter-spacing: 0.415em !important;
 
   text-align: center;
-  letter-spacing: 0.415em;
   text-transform: uppercase;
 
   color: #323232;
 }
 
 .title-container > h6 {
-  font-family: "Roboto",sans-serif;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 100;
   font-size: 2.5vw;

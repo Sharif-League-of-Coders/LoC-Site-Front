@@ -3,49 +3,63 @@
     <div class="navigation-area">
       <div class="logo">
         <v-img
-            :src="require('../../assets/logo.svg')"
-            height="2.5vw"
-            width="4.5vw"
+          :src="require('../../assets/logo.svg')"
+          height="2.5vw"
+          width="4.5vw"
         />
       </div>
-      <div
-          v-for="item in [
-          'معرفی',
-          'جوایز',
-          'زمان‌بندی',
-          'تیم برگزاری',
-          'حامی',
-          'سوالات متداول',
-          'ارتباط با ما',
-        ]"
-          :key="item"
-          class="navigation-area-button-container"
-      >
+      <div class="navigation-area-button-container">
         <v-btn
-            class="navigation-area-button"
-            color="#fff"
-            depressed
-            width="min-content"
-        >{{ item }}
-        </v-btn
-        >
-        <v-divider class="divider" vertical/>
+          href="#about-event"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ 'معرفی' }}
+        </v-btn>
+        <v-divider class="divider" vertical />
+        <v-btn
+          href="#sponsor"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ 'حامی' }}
+        </v-btn>
+        <v-divider class="divider" vertical />
+        <v-btn
+          href="#faq"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ 'سوالات متداول' }}
+        </v-btn>
+        <v-divider class="divider" vertical />
+        <v-btn
+          href="#contact-us"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ 'ارتباط با ما' }}
+        </v-btn>
+        <v-divider class="divider" vertical />
       </div>
     </div>
     <div class="sign-up-area">
       <v-btn
-          class="register"
-          color="#ffffff"
-          height="2.25vw"
-          outlined
-          width="7.5vw"
-      >ثبت نام
-      </v-btn
-      >
-      <v-btn class="login" color="#000" height="2.25vw" outlined width="7.5vw"
-      >ورود
-      </v-btn
-      >
+        class="register"
+        color="#ffffff"
+        height="2.25vw"
+        outlined
+        width="17vw"
+        disabled
+        >ثبت نام (به زودی...)
+      </v-btn>
+      <!--      <v-btn class="login" color="#000" height="2.25vw" outlined width="7.5vw"-->
+      <!--        >ورود-->
+      <!--      </v-btn>-->
     </div>
   </div>
 </template>
@@ -55,6 +69,10 @@ export default {};
 </script>
 
 <style scoped>
+* {
+  font-family: IRANSansLight, sans-serif !important;
+}
+
 .nav-bar-container {
   width: 100%;
   display: flex;
@@ -82,7 +100,7 @@ export default {};
 
 .v-btn:not(.v-btn--round).v-size--default {
   width: min-content;
-  padding: 0 .5vw;
+  padding: 0 0.5vw;
   font-size: 1.5vw;
   font-style: normal;
   font-weight: 300;
@@ -98,7 +116,7 @@ export default {};
   height: 2.25vw;
   color: white;
 
-  border-radius: .5vw;
+  border-radius: 0.5vw;
 
   display: flex;
   justify-content: center;
@@ -113,12 +131,13 @@ export default {};
 }
 
 .register {
-  background: linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%);
+  /*background: linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%);*/
+  color: black !important;
 }
 
 .divider {
   z-index: 1000;
-  margin-top: .5vw;
+  margin-top: 0.5vw;
   min-height: 0;
   max-height: calc(100% - 1vw);
 }
