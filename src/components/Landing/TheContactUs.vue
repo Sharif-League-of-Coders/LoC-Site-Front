@@ -62,7 +62,7 @@
               height="1.8vw"
               contain
             />
-            <span dir="ltr">{{ "+98 9330880908" }}</span>
+            <span dir="ltr">{{ "(+98)9330880908" }}</span>
           </div>
         </div>
       </div>
@@ -228,9 +228,9 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 13vw;
+  width: max-content; /* 13vw; */
   border-right: 0.25vw solid black;
-  padding: 0.9vw 0.9vw 0.5vw 0;
+  padding: 0.9vw 0.9vw 0.5vw 0.5vw;
 }
 
 .social-media .text {
