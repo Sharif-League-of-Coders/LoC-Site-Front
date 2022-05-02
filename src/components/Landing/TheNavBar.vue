@@ -47,6 +47,7 @@
         <v-divider class="divider" vertical />
       </div>
     </div>
+    <!-- ثبت نام -->
     <div class="sign-up-area">
       <v-btn
         class="register"
@@ -55,7 +56,7 @@
         outlined
         width="17vw"
         disabled
-        >ثبت نام (به زودی...)
+        >به زودی...
       </v-btn>
       <!--      <v-btn class="login" color="#000" height="2.25vw" outlined width="7.5vw"-->
       <!--        >ورود-->
@@ -112,6 +113,10 @@ export default {};
 
 .sign-up-area {
   display: flex;
+}
+
+.sign-up-area > .v-btn {
+  border-width: 0;
 }
 
 .sign-up-area > * {
