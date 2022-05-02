@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .intro {
-  background-image: url("../../assets/First View.svg");
+  background-image: url("../../assets/img.png");
   background-size: 100vw auto;
   background-position: top center;
   background-repeat: no-repeat;

@@ -6,38 +6,17 @@
         <div class="social-media">
           <div class="text">LOCSHARIF</div>
           <div class="logos">
-            <v-img
-              width="2.5vw"
-              height="2.5vw"
-              :src="require('../../assets/instagram.svg')"
-              max-width="10vw"
-              max-height="5vw"
-              contain
-            />
-            <v-img
-              :src="require('../../assets/twitter.svg')"
-              max-width="10vw"
-              max-height="5vw"
-              width="2.5vw"
-              height="2.5vw"
-              contain
-            />
-            <v-img
-              :src="require('../../assets/linkedin.svg')"
-              max-width="10vw"
-              max-height="5vw"
-              width="2.5vw"
-              height="2.5vw"
-              contain
-            />
-            <v-img
-              :src="require('../../assets/telegram.svg')"
-              max-width="10vw"
-              max-height="5vw"
-              width="2.5vw"
-              height="2.5vw"
-              contain
-            />
+            <div
+              v-for="logo in ['instagram', 'twitter', 'linkedin', 'telegram']"
+              :key="logo"
+            >
+              <v-img
+                width="2.5vw"
+                height="2.5vw"
+                :src="require(`../../assets/${logo}.svg`)"
+                contain
+              />
+            </div>
           </div>
         </div>
         <div class="phone-mail">
@@ -48,7 +27,6 @@
               max-height="5vw"
               width="2vw"
               height="17vw"
-
               contain
             />
             <span>LOCSHARIF@Gmail.com</span>
@@ -66,101 +44,67 @@
           </div>
         </div>
       </div>
-      <div class="address">
-        <div class="icon">
-          <v-img
-            :src="require('../../assets/location.svg')"
-            max-width="10vw"
-            max-height="5vw"
-            width="1.5vw"
-            height="1.5vw"
-            contain
-          />
-        </div>
-        <div class="text">
-          <div class="title">آدرس</div>
-          <div class="body">
+
+      <details-box
+        image-src="location.svg"
+        title="آدرس"
+        description="
             اتاق انجمن علمی (SSC) - طبقه‌ی همکف دانشکده‌ی مهندسـی کامــپیوتر -
-            دانشگاه صنعتـــی شریـــــف
-          </div>
-        </div>
-      </div>
-      <div class="did-you-know">
-        <div class="icon">
-          <v-img
-            :src="require('../../assets/question-mark.svg')"
-            max-width="10vw"
-            max-height="5vw"
-            width="1.5vw"
-            height="1.5vw"
-            contain
-          />
-        </div>
-        <div class="text">
-          <div class="title">آیا می‌دانید؟</div>
-          <div class="body">
-            شکل‌های استفاده شده در این طراحی، شکل‌های ناممکن (Impossible shapes)
+            دانشگاه صنعتـــی شریـــــف"
+      ></details-box>
+      <details-box
+        image-src="question-mark.svg"
+        title="آیا می‌دانید؟"
+        description="
+                    شکل‌های استفاده شده در این طراحی، شکل‌های ناممکن (Impossible shapes)
             نام دارند که این مورد با شعار رویــداد (Make it Possible) هـم
-            راستــا است.
-          </div>
-        </div>
-      </div>
+            راستــا است."
+      ></details-box>
       <div class="logo-developers">
         <div class="logo-container">
-          <div>
+          <div v-for="{ src, width, height } in logosData" :key="src">
             <v-img
-              :src="require('../../assets/sharif-logo.svg')"
-              width="6.5vw"
-              height="6.5vw"
-              contain
-            />
-          </div>
-          <div>
-            <v-img
-              :src="require('../../assets/logo.svg')"
-              width="9.5vw"
-              height="5.5vw"
-              contain
-            />
-          </div>
-          <div>
-            <v-img
-              :src="require('../../assets/ssc-logo.svg')"
-              width="9vw"
-              height="4.5vw"
+              :src="require(`../../assets/${src}`)"
+              :width="width"
+              :height="height"
               contain
             />
           </div>
         </div>
         <div class="text">تمامی حقوق برای توسعه‌دهندگان محفوظ است</div>
-        <!--        <div class="developers">-->
-        <!--          <div class="icon">-->
-        <!--            <v-img-->
-        <!--              :src="require('../../assets/pencil.svg')"-->
-        <!--              max-width="10vw"-->
-        <!--              max-height="5vw"-->
-        <!--              width="1.5vw"-->
-        <!--              height="1.5vw"-->
-        <!--              contain-->
-        <!--            />-->
-        <!--          </div>-->
-        <!--          <div class="text">-->
-        <!--            <div class="title">توسعه‌دهندگان</div>-->
-        <!--            <div class="body">-->
-        <!--              <span> بک‌اند:</span>-->
-        <!--              <span>فرانت‌اند:</span>-->
-        <!--              <span> طراحی: </span>-->
-        <!--              <span> تمامی حقوق محفوظ است. </span>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </div>-->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import DetailsBox from "./ContactUs/DetailsBox";
+
+export default {
+  name: "the-contact-us",
+  components: { DetailsBox },
+  data: function () {
+    return {
+      logosData: [
+        {
+          src: "sharif-logo.svg",
+          width: "6.5vw",
+          height: "6.5vw",
+        },
+        {
+          src: "logo.svg",
+          width: "9.5vw",
+          height: "5.5vw",
+        },
+        {
+          src: "ssc-logo.svg",
+          width: "9vw",
+          height: "4.5vw",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -205,11 +149,6 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.contacts {
-  display: flex;
-  justify-content: center;
 }
 
 .contacts > div {
@@ -274,7 +213,6 @@ h1 {
   display: flex;
   align-items: center;
   letter-spacing: 0.265em;
-
   color: #000000;
 }
 
@@ -286,120 +224,7 @@ h1 {
   line-height: 1.5vw;
   display: flex;
   align-items: center;
-
   color: #000000;
-}
-
-.address {
-  display: flex;
-}
-
-.address .text {
-  display: flex;
-  flex-direction: column;
-  border-right: 0.25vw solid black;
-  width: 32.5vw;
-}
-
-.address .text .title {
-  border: 0.05vw solid black;
-  width: 4vw;
-  display: flex;
-  justify-content: center;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.5vw;
-  line-height: 2.5vw;
-  align-items: center;
-  text-align: center;
-  font-family: IRANSansLight, sans-serif !important;
-}
-
-.address .text .body {
-  padding: 0 0.9vw 0 0;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.5vw;
-  line-height: 2.5vw;
-  display: flex;
-  align-items: center;
-}
-
-.did-you-know {
-  display: flex;
-}
-
-.did-you-know .text {
-  display: flex;
-  flex-direction: column;
-  border-right: 0.25vw solid black;
-  width: 40vw;
-}
-
-.did-you-know .text .title {
-  border: 0.05vw solid black;
-  width: 9vw;
-  display: flex;
-  justify-content: center;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.25vw;
-  line-height: 2vw;
-  align-items: center;
-  text-align: right;
-  font-family: IRANSansLight, sans-serif !important;
-
-}
-
-.did-you-know .text .body {
-  padding: 0 0.9vw 0 0;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.25vw;
-  line-height: 2vw;
-  display: flex;
-  align-items: center;
-  text-align: right;
-}
-
-.developers {
-  display: flex;
-  width: 19vw;
-  margin-left: 13vw;
-}
-
-.developers .text {
-  display: flex;
-  flex-direction: column;
-  border-right: 0.25vw solid black;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.developers .text .title {
-  border: 0.05vw solid black;
-  width: 7vw;
-  display: flex;
-  justify-content: center;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1vw;
-  line-height: 1.5vw;
-  align-items: center;
-  text-align: right;
-}
-
-.developers .text .body {
-  display: flex;
-  flex-direction: column;
-
-  padding: 0 1vw 0 0;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1vw;
-  line-height: 1.5vw;
-  text-align: right;
 }
 
 .logo-developers {
@@ -408,6 +233,10 @@ h1 {
   align-items: center;
   width: 100%;
   justify-content: space-between;
+}
+
+.logo-developers .text {
+  font-size: 1.1vw;
 }
 
 .logo-container {

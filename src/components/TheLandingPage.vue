@@ -43,9 +43,15 @@ export default {
   font-family: IRANSansBold, sans-serif !important;
 
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
   width: 100vw;
+
+
+}
+
+.main-container::-webkit-scrollbar{
+  display: none !important;
 }
 </style>

@@ -71,6 +71,7 @@ export default {};
 <style scoped>
 * {
   font-family: IRANSansLight, sans-serif !important;
+  letter-spacing: 0 !important;
 }
 
 .nav-bar-container {
@@ -80,6 +81,8 @@ export default {};
   justify-content: space-between;
   box-sizing: border-box;
   flex-direction: row;
+  margin-top: 2.5vw;
+  padding-right: 2.5vw;
 }
 
 .navigation-area {

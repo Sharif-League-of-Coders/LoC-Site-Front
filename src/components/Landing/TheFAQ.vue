@@ -53,8 +53,8 @@ export default {
 <style scoped>
 * {
   font-family: IRANSansLight, sans-serif !important;
-
 }
+
 #faq {
   background: url("../../assets/FAQ.svg");
   background-size: contain;
@@ -73,6 +73,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .header > h1 {
   font-style: normal;
   font-weight: 900;
@@ -101,13 +102,13 @@ export default {
 }
 
 details {
-  margin-top: .75vw;
+  margin-top: 0.75vw;
 }
 
 p {
   font-style: normal;
   font-weight: 200;
-  font-size: 1.25vw;
+  font-size: 1.5vw;
   line-height: 118.19%;
   /* or 38px */
   padding: 1vw 1vw 1vw 0;
@@ -130,23 +131,27 @@ summary {
 summary {
   list-style: none;
 }
+
 summary::-webkit-details-marker {
   display: none;
 }
 
 details summary::after {
-  content: url("/src/assets/arrow-down.svg");
-  margin-right: 1vw;
-  width: 2vw;
+  background-image: url('../../assets/arrow-down.svg');
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 5vw;
   height: 1vw;
-  /* you can style it however you want, use background-image for example */
+  content:"";
 }
 
 /* By using [open] we can define different styles when the disclosure widget is open */
 details[open] summary::after {
-  content: url("/src/assets/arrow-up.svg");
-  margin-right: 1vw;
-  width: 2vw;
+  background-image: url('../../assets/arrow-up.svg');
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 5vw;
   height: 1vw;
+  content:"";
 }
 </style>
