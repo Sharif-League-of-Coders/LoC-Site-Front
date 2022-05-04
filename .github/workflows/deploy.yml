@@ -20,7 +20,11 @@ jobs:
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
-
+          
+  publish-front-build:
+    needs: build-front
+    runs-on: ubuntu-20.04
+    steps:
       - name: Prepare deploy folder
         run: |
           mkdir to_be_deployed
@@ -42,7 +46,7 @@ jobs:
           MESSAGE: "Build"
 
   deploy-front:
-    needs: build-front
+    needs: publish-front-build
     runs-on: ubuntu-20.04
     steps:
       - name: Deploy
