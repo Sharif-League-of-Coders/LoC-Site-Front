@@ -1,0 +1,63 @@
+name: Deploy to development server
+
+on: 
+  push:
+    branches:
+      - '**'
+      - '!main'
+jobs:
+  build-front:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Yarn install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+
+      - name: Yarn build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+
+      - name: Prepare deploy folder
+        run: |
+          mkdir to_be_deployed
+          cp -r dist/* to_be_deployed
+          cp -r deploy/* to_be_deployed
+
+      - name: Configure git
+        run: |
+          git config --global user.name "Sharif-League-of-Coders"
+          git config --global user.emal "Sharif-League-of-Coders@users.noreply.github.com"
+
+      - name: Extract branch name
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Push to build branch
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: build-${{ steps.extract_branch.outputs.branch }}
+          FOLDER: to_be_deployed
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Build"
+
+  deploy-front:
+    needs: build-front
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USERNAME }}
+          key: ${{ secrets.DEV_KEY }}
+          script: |
+            cd ${{ secrets.DEV_TARGET_PATH }}
+            git pull
+            docker-compose build
+            docker-compose up -d
