@@ -21,6 +21,12 @@ jobs:
         with:
           cmd: build
 
+      - name: Prepare deploy folder
+        run: |
+          mkdir to_be_deployed
+          mv dist to_be_deployed
+          cp -r deploy/* to_be_deployed
+
       - name: Configure git
         run: |
           git config --global user.name "Sharif-League-of-Coders"
@@ -31,7 +37,7 @@ jobs:
         env:
           REPO: self
           BRANCH: build
-          FOLDER: dist
+          FOLDER: to_be_deployed
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
 
