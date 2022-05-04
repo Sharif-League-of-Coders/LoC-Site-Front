@@ -36,6 +36,8 @@ jobs:
           MESSAGE: "Build"
 
   deploy-front:
+    runs-on: ubuntu-20.04
+    steps:
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.4
         with:
