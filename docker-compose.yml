@@ -2,11 +2,10 @@ version: '3.7'
 
 services:
 
-  front_nginx:
-    container_name: loc_front_nginx
+  front:
+    container_name: loc_front
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 80:80
-    restart: always
+      - '80:80'
