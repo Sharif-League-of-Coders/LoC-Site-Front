@@ -1,16 +1,16 @@
 # build environment
-FROM node:16.15.0-alpine as build
+FROM node:16.15.0 as build
 
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json /app/package.json
-RUN npm install --silent
-RUN npm install @vue/cli -g
+COPY yarn.lock /app/yarn.lock
+RUN yarn install
 COPY . /app
 
-RUN npm run build
+RUN yarn build
 
 # production environment
 FROM nginx:1.16-alpine
