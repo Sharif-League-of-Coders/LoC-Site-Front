@@ -48,5 +48,6 @@ jobs:
           script: |
             cd ${{ secrets.PRODUCTION_TARGET_PATH }}
             git pull
+            ls
             docker-compose build
             docker-compose up -d
