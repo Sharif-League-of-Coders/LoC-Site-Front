@@ -32,6 +32,10 @@ body {
   width: 100%;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 v-app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
