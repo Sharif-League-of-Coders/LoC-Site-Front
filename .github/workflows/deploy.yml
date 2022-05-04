@@ -24,7 +24,7 @@ jobs:
       - name: Prepare deploy folder
         run: |
           mkdir to_be_deployed
-          cp -r dist to_be_deployed
+          cp -r dist/* to_be_deployed
           cp -r deploy/* to_be_deployed
 
       - name: Configure git
@@ -54,6 +54,5 @@ jobs:
           script: |
             cd ${{ secrets.PRODUCTION_TARGET_PATH }}
             git pull
-            ls
             docker-compose build
             docker-compose up -d
