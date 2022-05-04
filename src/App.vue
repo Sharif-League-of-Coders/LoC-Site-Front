@@ -25,16 +25,15 @@ export default {
   src: url("./assets/IRANSans_Light.ttf"); /* File to be stored at your site */
 }
 
-html {
-  overflow: hidden;
-}
-
 body {
   padding: 0;
   margin: 0;
-  font-family: IRANSansBold, sans-serif;
+  font-family: IRANSansBold, sans-serif !important;
   width: 100%;
-  overflow: hidden;
+}
+
+a {
+  text-decoration: none !important;
 }
 
 v-app {

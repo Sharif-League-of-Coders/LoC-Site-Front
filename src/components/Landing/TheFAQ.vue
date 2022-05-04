@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="faq">
     <div class="header">
       <h1>سوالات متداول</h1>
     </div>
@@ -27,13 +27,13 @@
         <details>
           <summary>خب ایول، حالا چطوری باید شرکت کنم؟</summary>
           <p>
-            اول توی کانال LoC Sharif عضو شو که از اخبار مطلع باشی، یه مدت دیگه
+            اول توی کانال LoCSharif عضو شو که از اخبار مطلع باشی، یه مدت دیگه
             فرم ثبت نام و تشکیل گروه رو داخلش قرار می‌دیم و می‌تونی از طریق اون
             برای شرکت توی مسابقه اقدام کنی.
           </p>
         </details>
         <details>
-          <summary>صب کن ببینم، اگه سوال داشتم از کی بپرسم؟</summary>
+          <summary>صبر کن ببینم، اگه سوال داشتم از کی بپرسم؟</summary>
           <p>
             می‌تونی از طریق ایمیل و یا هر کدوم از شبکه‌های اجتماعی ما سوالت رو
             بپرسی و ما در اسرع وقت بهش پاسخ می‌دیم
@@ -51,7 +51,11 @@ export default {
 </script>
 
 <style scoped>
-.container {
+* {
+  font-family: IRANSansLight, sans-serif !important;
+}
+
+#faq {
   background: url("../../assets/FAQ.svg");
   background-size: contain;
   background-position: top center;
@@ -69,6 +73,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .header > h1 {
   font-style: normal;
   font-weight: 900;
@@ -97,17 +102,17 @@ export default {
 }
 
 details {
-  margin-top: .75vw;
+  margin-top: 0.75vw;
+  background-color: #f3f3f3;
 }
 
 p {
-  font-family: "IRANSans", sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 1.25vw;
+  font-size: 1.5vw;
   line-height: 118.19%;
   /* or 38px */
-  padding: 1vw 1vw 1vw 0;
+  padding: 0 1.5vw 1.5vw 1.5vw;
 
   text-align: justify;
 }
@@ -116,32 +121,98 @@ summary {
   font-family: "IRANSans", sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 1.75vw;
+  font-size: 1.5vw;
   line-height: 118.19%;
   text-align: justify;
   text-transform: uppercase;
   border-right: 0.2vw solid black;
-  padding-right: 1vw;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw;
 }
 
-summary {
-  list-style: none;
-}
 summary::-webkit-details-marker {
   display: none;
 }
 
 details summary::after {
-  content: url("/src/assets/arrow-down.svg");
-  color: red;
-  margin-right: 1vw;
-  /* you can style it however you want, use background-image for example */
+  background-image: url("../../assets/arrow-down.svg");
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 5vw;
+  height: 1vw;
+  content: "";
 }
 
 /* By using [open] we can define different styles when the disclosure widget is open */
 details[open] summary::after {
-  content: url("/src/assets/arrow-up.svg");
-  color: red;
-  margin-right: 1vw;
+  background-image: url("../../assets/arrow-up.svg");
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 5vw;
+  height: 1vw;
+  content: "";
+}
+
+@media screen and (max-width: 750px) {
+  #faq {
+    background-image: url("../../assets/phone/FAQ.svg");
+    height: 150vw;
+  }
+
+  .header > h1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11vw;
+    line-height: 118.19%;
+
+    letter-spacing: 0.015em;
+
+    background: linear-gradient(
+      90deg,
+      #002b99 0%,
+      #8000ff 60.42%,
+      #f300f8 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .question-container {
+    direction: rtl;
+    width: 100%;
+    padding: 0 9vw;
+    margin-right: 0;
+  }
+
+  details {
+    margin-top: 2.25vw;
+  }
+
+  summary {
+    font-family: "IRANSans", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 3.5vw;
+    line-height: 118.19%;
+    text-align: justify;
+    text-transform: uppercase;
+    border-right: 0.6vw solid black;
+    padding: 1vw;
+  }
+
+  p {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 3.5vw;
+    line-height: 118.19%;
+    /* or 38px */
+    padding: 2vw;
+
+    text-align: justify;
+  }
 }
 </style>
