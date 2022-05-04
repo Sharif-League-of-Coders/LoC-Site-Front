@@ -2,7 +2,9 @@
   <div class="nav-bar-container">
     <div class="navigation-area">
       <div class="logo">
-        <img :src="require('../../assets/logo.svg')" />
+        <a href="https://locsharif.com">
+          <img :src="require('../../assets/logo.svg')" />
+        </a>
       </div>
       <div class="navigation-area-button-container">
         <v-btn
@@ -87,7 +89,7 @@ export default {};
   justify-content: space-between;
 }
 
-.navigation-area > .logo > img {
+.navigation-area > .logo > a > img {
   width: 4.5vw;
   height: 2.5vw;
 }

@@ -9,17 +9,32 @@
           <div class="text">LOCSHARIF</div>
           <div class="logos">
             <div
-              v-for="logo in ['instagram', 'twitter', 'linkedin', 'telegram']"
-              :key="logo"
+              v-for="{ image, link } in [
+                {
+                  image: 'instagram',
+                  link: 'https://www.instagram.com/locsharif/',
+                },
+                { image: 'twitter', link: 'https://twitter.com/locsharif/' },
+                {
+                  image: 'linkedin',
+                  link: 'https://www.linkedin.com/company/locsharif',
+                },
+                { image: 'telegram', link: 'https://t.me/locsharif/' },
+              ]"
+              :key="image"
             >
-              <img :src="require(`../../assets/${logo}.svg`)" />
+              <a :href="link" target="_blank">
+                <img :src="require(`../../assets/${image}.svg`)" />
+              </a>
             </div>
           </div>
         </div>
         <div class="phone-mail">
           <div class="mail">
-            <img :src="require('../../assets/gmail.svg')" />
-            <span>LOCSHARIF@Gmail.com</span>
+            <a href="mailto:locsharif@gmail.com" target="_blank">
+              <img :src="require('../../assets/gmail.svg')" />
+              <span> LOCSHARIF@Gmail.com </span>
+            </a>
           </div>
           <div class="phone">
             <img :src="require('../../assets/phone.svg')" />
@@ -162,7 +177,7 @@ h1 {
   margin-top: 1vw;
 }
 
-.social-media .logos > div > img {
+.social-media .logos > div > a > img {
   width: 2.5vw;
   height: 2.5vw;
 }
@@ -177,6 +192,10 @@ h1 {
 }
 
 .mail {
+  width: 100%;
+}
+
+.mail > a {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -199,14 +218,14 @@ h1 {
 }
 
 .phone > img,
-.mail > img {
+.mail > a > img {
   max-width: 10vw;
   max-height: 5vw;
   width: 1.8vw;
   height: 1.8vw;
 }
 
-.mail > span {
+.mail > a > span {
   font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
@@ -215,6 +234,7 @@ h1 {
   display: flex;
   align-items: center;
   color: #000000;
+  text-decoration: none !important;
 }
 
 .logo-developers {
@@ -312,8 +332,11 @@ h1 {
     letter-spacing: 0.265em;
     color: #000000;
   }
+  .mail {
+    width: 100%;
+  }
 
-  .mail > span {
+  .mail > a > span {
     font-family: Roboto, serif;
     font-style: normal;
     font-weight: 400;
@@ -322,15 +345,20 @@ h1 {
     display: flex;
     align-items: center;
     color: #000000;
+    text-decoration: none !important;
   }
 
   .phone > img,
-  .mail > img {
+  .mail > a > img {
     width: 4vw;
     height: 4vw;
   }
 
-  .social-media .logos > div > img {
+  .mail > a {
+    text-decoration: none;
+  }
+
+  .social-media .logos > div > a > img {
     width: 6vw;
     height: 6vw;
   }

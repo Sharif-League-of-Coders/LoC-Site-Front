@@ -9,8 +9,12 @@
         <h1 class="title">Coders</h1>
       </div>
       <div class="logo-container">
-        <img :src="require('../../assets/ssc-logo.svg')" />
-        <img :src="require('../../assets/logo.svg')" />
+        <a href="https://ssc.ce.sharif.edu">
+          <img :src="require('../../assets/ssc-logo.svg')" />
+        </a>
+        <a href="https://locsharif.com">
+          <img :src="require('../../assets/logo.svg')" />
+        </a>
       </div>
     </div>
   </div>
@@ -60,7 +64,7 @@ export default {
   align-items: center;
 }
 
-.logo-container > img {
+.logo-container > a > img {
   max-width: 10vw;
   max-height: 5vw;
 }
@@ -150,7 +154,7 @@ export default {
     align-items: center;
   }
 
-  .logo-container > img {
+  .logo-container > a > img {
     max-width: 24vw;
     max-height: 12vw;
   }

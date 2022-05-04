@@ -1,7 +1,9 @@
 <template>
   <div id="sponsor">
     <div class="container">
-      <img :src="require('../../assets/sponsor-logo.svg')" />
+      <a href="https://mohaymen.ir/fa/" target="_blank">
+        <img :src="require('../../assets/sponsor-logo.svg')" />
+      </a>
     </div>
   </div>
 </template>
@@ -25,8 +27,8 @@ export default {};
   width: 100vw;
 }
 
-.container > img {
-  width: 27.5vw;
+.container > a > img {
+  width: 20vw;
 }
 
 @media screen and (max-width: 750px) {
@@ -46,10 +48,11 @@ export default {};
     justify-content: flex-start;
     height: 100%;
     width: 100%;
+    padding-top: 10vw;
   }
 
-  .container > img {
-    width: 57vw;
+  .container > a > img {
+    width: 35vw;
   }
 }
 </style>
