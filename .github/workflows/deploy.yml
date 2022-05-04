@@ -36,7 +36,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: build
+          BRANCH: build-main
           FOLDER: to_be_deployed
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
@@ -53,6 +53,8 @@ jobs:
           key: ${{ secrets.PRODUCTION_KEY }}
           script: |
             cd ${{ secrets.PRODUCTION_TARGET_PATH }}
+            git branch build-main
+            git checkout build-main
             git pull
             docker-compose build
             docker-compose up -d
