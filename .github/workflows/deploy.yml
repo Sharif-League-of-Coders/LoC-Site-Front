@@ -24,7 +24,7 @@ jobs:
       - name: Prepare deploy folder
         run: |
           mkdir to_be_deployed
-          mv dist to_be_deployed
+          cp -r dist to_be_deployed
           cp -r deploy/* to_be_deployed
 
       - name: Configure git
