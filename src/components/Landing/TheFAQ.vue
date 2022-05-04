@@ -112,7 +112,7 @@ p {
   font-size: 1.5vw;
   line-height: 118.19%;
   /* or 38px */
-  padding: 1vw 1vw 1vw 0;
+  padding: 0 1.5vw 1.5vw 1.5vw;
 
   text-align: justify;
 }
@@ -121,19 +121,16 @@ summary {
   font-family: "IRANSans", sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 1.75vw;
+  font-size: 1.5vw;
   line-height: 118.19%;
   text-align: justify;
   text-transform: uppercase;
   border-right: 0.2vw solid black;
-  padding-right: 1vw;
-}
-
-summary {
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1vw;
 }
 
 summary::-webkit-details-marker {
@@ -192,19 +189,19 @@ details[open] summary::after {
   }
 
   details {
-    margin-top: 0.75vw;
+    margin-top: 2.25vw;
   }
 
   summary {
     font-family: "IRANSans", sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: 4vw;
+    font-size: 3.5vw;
     line-height: 118.19%;
     text-align: justify;
     text-transform: uppercase;
     border-right: 0.6vw solid black;
-    padding-right: 1vw;
+    padding: 1vw;
   }
 
   p {
