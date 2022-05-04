@@ -13,10 +13,9 @@ jobs:
 
       - name: Build
         uses: actions/setup-node@master
-        with:
-          run: |
-            yarn install
-            yarn build
+        run: |
+          yarn install
+          yarn build
 
       - name: Configure git
         run: |
