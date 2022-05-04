@@ -28,6 +28,6 @@ jobs:
         env:
           REPO: self
           BRANCH: build
-          FOLDER: /dist
+          FOLDER: dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
