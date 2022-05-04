@@ -2,47 +2,61 @@
   <div class="nav-bar-container">
     <div class="navigation-area">
       <div class="logo">
-        <v-img
-          :src="require('../../assets/logo.svg')"
-          width="105px"
-          height="62.56px"
-        />
+        <img :src="require('../../assets/logo.svg')" />
       </div>
-      <div
-        v-for="item in [
-          'معرفی',
-          'جوایز',
-          'زمان‌بندی',
-          'تیم برگزاری',
-          'حامی',
-          'سوالات متداول',
-          'ارتباط با ما',
-        ]"
-        :key="item"
-        class="navigation-area-button-container"
-      >
+      <div class="navigation-area-button-container">
         <v-btn
-          width="min-content"
-          depressed
-          color="#fff"
+          href="#about-event"
           class="navigation-area-button"
-          >{{ item }}</v-btn
-        >
-        <v-divider vertical class="divider" />
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ "معرفی" }}
+        </v-btn>
+        <v-divider class="divider" vertical />
+        <v-btn
+          href="#sponsor"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ "حامی" }}
+        </v-btn>
+        <v-divider class="divider" vertical />
+        <v-btn
+          href="#faq"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ "سوالات متداول" }}
+        </v-btn>
+        <v-divider class="divider" vertical />
+        <v-btn
+          href="#contact-us"
+          class="navigation-area-button"
+          color="#fff"
+          depressed
+          width="min-content"
+          >{{ "ارتباط با ما" }}
+        </v-btn>
+        <v-divider class="divider" vertical />
       </div>
     </div>
+    <!-- ثبت نام -->
     <div class="sign-up-area">
       <v-btn
-        width="7.5vw"
-        height="54px"
-        color="#ffffff"
-        outlined
         class="register"
-        >ثبت نام</v-btn
-      >
-      <v-btn outlined width="7.5vw" height="54px" color="#000" class="login"
-        >ورود</v-btn
-      >
+        color="#ffffff"
+        height="2.25vw"
+        outlined
+        width="17vw"
+        disabled
+        >ثبت نام (به زودی...)
+      </v-btn>
+      <!--      <v-btn class="login" color="#000" height="2.25vw" outlined width="7.5vw"-->
+      <!--        >ورود-->
+      <!--      </v-btn>-->
     </div>
   </div>
 </template>
@@ -52,6 +66,11 @@ export default {};
 </script>
 
 <style scoped>
+* {
+  font-family: IRANSansLight, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
 .nav-bar-container {
   width: 100%;
   display: flex;
@@ -59,6 +78,8 @@ export default {};
   justify-content: space-between;
   box-sizing: border-box;
   flex-direction: row;
+  margin-top: 2.5vw;
+  padding-right: 2.5vw;
 }
 
 .navigation-area {
@@ -67,35 +88,39 @@ export default {};
 }
 
 .navigation-area > .logo > img {
-  width: 105px;
-  height: 63px;
+  width: 4.5vw;
+  height: 2.5vw;
 }
 
 .navigation-area-button-container {
-  height: 54px;
+  height: 2.25vw;
   display: flex;
   align-items: center;
 }
 
 .v-btn:not(.v-btn--round).v-size--default {
   width: min-content;
-  padding: 0 10px;
+  padding: 0 0.5vw;
   font-size: 1.5vw;
   font-style: normal;
   font-weight: 300;
-  line-height: 50px;
+  line-height: 2vw;
 }
 
 .sign-up-area {
   display: flex;
 }
 
+.sign-up-area > .v-btn {
+  border-width: 0;
+}
+
 .sign-up-area > * {
-  width: 192px;
-  height: 54px;
+  width: 8vw;
+  height: 2.25vw;
   color: white;
 
-  border-radius: 10px;
+  border-radius: 0.5vw;
 
   display: flex;
   justify-content: center;
@@ -103,26 +128,60 @@ export default {};
 
   font-style: normal;
   font-weight: 300;
-  font-size: 32px;
-  line-height: 50px;
+  font-size: 1.4vw;
+  line-height: 2vw;
 
-  margin-left: 23px;
+  margin-left: 1vw;
 }
 
 .register {
-  background: linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%);
+  /*background: linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%);*/
+  color: black !important;
 }
 
 .divider {
   z-index: 1000;
-  margin-top: 12px;
+  margin-top: 0.5vw;
   min-height: 0;
-  max-height: calc(100% - 24px);
+  max-height: calc(100% - 1vw);
 }
 
 .login {
   background: linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+.nav-bar-container .navigation-area .logo {
+  height: 2.5vw !important;
+  width: 4.5vw !important;
+}
+@media screen and (max-width: 750px) {
+  .navigation-area-button-container {
+    display: none;
+  }
+
+  .nav-bar-container {
+    direction: rtl;
+  }
+
+  .navigation-area > .logo > img {
+    height: 4.5vw !important;
+    width: 8vw !important;
+  }
+  .logo > img {
+    max-height: 4.5vw !important;
+    max-width: 8vw !important;
+  }
+
+  .v-btn:not(.v-btn--round).v-size--default {
+    width: min-content;
+    padding: 0 0.5vw;
+    font-size: 2.5vw;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 2vw;
+    margin-left: 3vw;
+  }
 }
 </style>

@@ -1,25 +1,13 @@
 <template>
-  <the-landing-page v-if="page === 'landing'" />
-  <the-registeration-page v-else-if="page === 'registeration'" />
-  <the-staffs-page v-else-if="page === 'staffs'" />
-  <the-dashboard-page v-else />
+  <v-app>
+    <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-import TheStaffsPage from "./components/TheStaffsPage.vue";
-import TheDashboardPage from "./components/TheDashboardPage.vue";
-import TheLandingPage from "./components/TheLandingPage.vue";
-import TheRegisterationPage from "./components/TheRegisterationPage.vue";
-
 export default {
   name: "App",
-  components: {
-    TheLandingPage,
-    TheRegisterationPage,
-    TheDashboardPage,
-    TheStaffsPage,
-  },
-  data: function () {
+  data() {
     return {
       page: "landing",
     };
@@ -29,20 +17,22 @@ export default {
 
 <style>
 @font-face {
-  font-family: "IRANSans";
-  src: url("./assets/Sans.ttf"); /* File to be stored at your site */
+  font-family: "IRANSansBold";
+  src: url("./assets/IRANSans_Black.ttf"); /* File to be stored at your site */
 }
-html {
-  overflow: hidden;
+@font-face {
+  font-family: "IRANSansLight";
+  src: url("./assets/IRANSans_Light.ttf"); /* File to be stored at your site */
 }
+
 body {
   padding: 0;
   margin: 0;
-  font-family: IRANSans, sans-serif;
+  font-family: IRANSansBold, sans-serif !important;
   width: 100%;
-  overflow: hidden;
 }
-#app {
+
+v-app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

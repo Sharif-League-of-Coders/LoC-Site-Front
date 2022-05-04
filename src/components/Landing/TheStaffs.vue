@@ -31,7 +31,7 @@
       </v-sheet>
       <v-sheet class="sheet" max-width="1300px">
         <v-slide-group multiple show-arrows class="slide-group">
-          <v-slide-item v-for="n in 25" :key="n" v-slot="{ active, toggle }">
+          <v-slide-item v-for="text in ['اسپانسرشیب', 'مستندسازی','کارگاه‌ها','مراحل','فنی','برگزاری']" :key="text" v-slot="{ active, toggle }">
             <v-btn
               class="mx-2"
               :input-value="active"
@@ -40,7 +40,7 @@
               rounded
               @click="toggle"
             >
-              Options {{ n }}
+               {{ text }}
             </v-btn>
           </v-slide-item>
         </v-slide-group>
@@ -56,7 +56,7 @@ export default {};
 <style scoped>
 #staffs {
   direction: rtl;
-  padding: 40px;
+  padding: 1.7vw;
   display: flex;
   justify-content: center;
   background: url("../../assets/Staff.svg");
@@ -69,7 +69,7 @@ export default {};
 
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
@@ -77,7 +77,7 @@ export default {};
 .container > h1 {
   font-style: normal;
   font-weight: 900;
-  font-size: 90px;
+  font-size: 3.75vw;
   line-height: 200%;
 
   letter-spacing: 0.015em;
@@ -105,8 +105,8 @@ export default {};
 }
 
 .staff-picture {
-  height: 355px;
-  width: 355px;
+  height: 15vw;
+  width: 15vw;
   border-radius: 50%;
 }
 

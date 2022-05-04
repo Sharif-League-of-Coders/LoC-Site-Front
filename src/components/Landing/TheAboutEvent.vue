@@ -14,7 +14,7 @@
         </p>
       </section>
       <section>
-        <h3>برگزار شده توسط</h3>
+        <h3>برگزار کننده</h3>
         <p>انجمن علمی دانشکده‌ی مهندسی کامپیوتر دانشگاه صنعتی شریف</p>
       </section>
       <section>
@@ -32,6 +32,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: IRANSansBold, sans-serif !important;
+}
 #about-event {
   display: flex;
   direction: rtl;
@@ -42,23 +45,23 @@ export default {
   background-size: 100vw auto;
   background-position: top center;
   background-repeat: no-repeat;
-  padding: 40px 190px 25vw;
+  padding: 1.6vw 7.5vw 25vw;
   height: 60vw;
   width: 100vw;
 }
 
 .container {
-  border-right: 1px solid black;
+  border-right: 0.05vw solid black;
   width: 100%;
 }
 
 .about {
-  width: 673px;
+  width: 25vw;
 }
 h1 {
   font-style: normal;
   font-weight: 900;
-  font-size: 90px;
+  font-size: 3.75vw;
   line-height: 170%;
 
   letter-spacing: 0.015em;
@@ -73,25 +76,77 @@ section {
   flex-direction: column;
   align-items: flex-start;
   text-align: right;
-  margin: 20px;
-  width: 673px;
+  margin: 0.8vw;
+  width: 25vw;
 }
 h3 {
-  font-family: "IRANSans";
+  font-family: IRANSansBold, sans-serif !important;
+
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 60px;
+  font-size: 1.5vw;
+  line-height: 2.5vw;
 }
 
 p {
-  font-family: "IRANSans";
+  font-family: IRANSansLight, sans-serif !important;
+
   font-style: normal;
   font-weight: 300;
-  font-size: 40px;
-  line-height: 60px;
-  /* or 47px */
-
+  font-size: 1.5vw;
+  line-height: 2.5vw;
   text-align: justify;
+}
+
+@media screen and (max-width: 750px) {
+  #about-event {
+    background: url(/src/assets/phone/intro.svg);
+
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    height: 140vw;
+  }
+  h1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11vw;
+    line-height: 118.19%;
+
+    letter-spacing: 0.015em;
+
+    background: linear-gradient(
+      90deg,
+      #002b99 0%,
+      #8000ff 60.42%,
+      #f300f8 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 5vw;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: right;
+    margin: 0.8vw;
+    width: 100% !important;
+  }
+
+  h3 {
+    font-family: IRANSansBold, sans-serif !important;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+  p {
+    font-size: 4vw;
+    line-height: 4.5vw;
+  }
 }
 </style>
