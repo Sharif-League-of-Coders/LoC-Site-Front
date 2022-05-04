@@ -5,7 +5,7 @@ on:
     branches:
       - deploy-preparation
 jobs:
-  server-deploy:
+  build-front:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -13,12 +13,15 @@ jobs:
 
       - name: Build
         uses: actions/setup-node@master
-        run: yarn install
-        run: yarn build
+        with:
+          run: |
+            yarn install
+            yarn build
 
       - name: Configure git
-        run: git config --global user.name "Sharif-League-of-Coders"
-        run: git config --global user.emal "Sharif-League-of-Coders@users.noreply.github.com"
+        run: |
+          git config --global user.name "Sharif-League-of-Coders"
+          git config --global user.emal "Sharif-League-of-Coders@users.noreply.github.com"
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop
