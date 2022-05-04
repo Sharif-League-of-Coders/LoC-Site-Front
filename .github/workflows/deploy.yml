@@ -11,12 +11,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Build
+      - name: Yarn install
         uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: |
-            install
-            build
+          cmd: install
+
+      - name: Yarn build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
 
       - name: Configure git
         run: |
