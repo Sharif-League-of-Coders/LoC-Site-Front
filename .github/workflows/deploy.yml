@@ -36,6 +36,7 @@ jobs:
           MESSAGE: "Build"
 
   deploy-front:
+    needs: build-front
     runs-on: ubuntu-20.04
     steps:
       - name: Deploy
