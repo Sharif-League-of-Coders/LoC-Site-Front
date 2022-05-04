@@ -3,9 +3,9 @@ version: '3.7'
 services:
 
   front:
-    container_name: foo
+    container_name: loc_front
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '8080:80'
+      - '80:80'
