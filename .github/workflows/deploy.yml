@@ -12,10 +12,11 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build
-        uses: actions/setup-node@master
-        run: |
-          yarn install
-          yarn build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: |
+            yarn install
+            yarn build
 
       - name: Configure git
         run: |
