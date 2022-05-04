@@ -50,6 +50,10 @@ jobs:
     needs: build-front
     runs-on: ubuntu-20.04
     steps:
+      - name: Extract branch name
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.4
         with:
@@ -58,6 +62,8 @@ jobs:
           key: ${{ secrets.DEV_KEY }}
           script: |
             cd ${{ secrets.DEV_TARGET_PATH }}
+            git branch build-${{ steps.extract_branch.outputs.branch }}
+            git checkout build-${{ steps.extract_branch.outputs.branch }}
             git pull
             docker-compose build
             docker-compose up -d
