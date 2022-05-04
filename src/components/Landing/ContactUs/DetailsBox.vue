@@ -1,14 +1,7 @@
 <template>
   <div class="db-container">
     <div class="icon">
-      <v-img
-          :src="require(`/src/assets/${imageSrc}`)"
-          max-width="10vw"
-          max-height="5vw"
-          width="1.5vw"
-          height="1.5vw"
-          contain
-      />
+      <img :src="require(`../../../assets/${imageSrc}`)" />
     </div>
     <div class="text">
       <div class="title">{{ title }}</div>
@@ -26,6 +19,11 @@ export default {
     imageSrc: String,
     title: String,
     description: String,
+  },
+  data: function () {
+    return {
+      src: `../../assets/${this.props.imageSrc}`,
+    };
   },
 };
 </script>
@@ -66,5 +64,42 @@ export default {
   line-height: 2.5vw;
   display: flex;
   align-items: center;
+}
+
+.icon > img {
+  max-width: 10vw;
+  max-height: 5vw;
+  width: 1.5vw;
+  height: 1.5vw;
+}
+
+@media screen and (max-width: 750px) {
+  .db-container {
+    margin-top: 5vw;
+  }
+  .db-container .text .title {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 4vw !important;
+    line-height: 6vw !important;
+  }
+
+  .db-container .text .body {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 4vw !important;
+    line-height: 6vw !important;
+  }
+
+  .db-container .text {
+    width: 100% !important;
+    border-right: 0.6vw solid black !important;
+    padding: 0 2vw;
+  }
+
+  .icon > img {
+    width: 4vw;
+    height: 4vw;
+  }
 }
 </style>

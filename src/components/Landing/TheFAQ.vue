@@ -103,6 +103,7 @@ export default {
 
 details {
   margin-top: 0.75vw;
+  background-color: #f3f3f3;
 }
 
 p {
@@ -130,6 +131,9 @@ summary {
 
 summary {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 summary::-webkit-details-marker {
@@ -137,21 +141,81 @@ summary::-webkit-details-marker {
 }
 
 details summary::after {
-  background-image: url('../../assets/arrow-down.svg');
+  background-image: url("../../assets/arrow-down.svg");
   background-size: 100% 100%;
   display: inline-block;
   width: 5vw;
   height: 1vw;
-  content:"";
+  content: "";
 }
 
 /* By using [open] we can define different styles when the disclosure widget is open */
 details[open] summary::after {
-  background-image: url('../../assets/arrow-up.svg');
+  background-image: url("../../assets/arrow-up.svg");
   background-size: 100% 100%;
   display: inline-block;
   width: 5vw;
   height: 1vw;
-  content:"";
+  content: "";
+}
+
+@media screen and (max-width: 750px) {
+  #faq {
+    background-image: url("../../assets/phone/FAQ.svg");
+    height: 150vw;
+  }
+
+  .header > h1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11vw;
+    line-height: 118.19%;
+
+    letter-spacing: 0.015em;
+
+    background: linear-gradient(
+      90deg,
+      #002b99 0%,
+      #8000ff 60.42%,
+      #f300f8 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .question-container {
+    direction: rtl;
+    width: 100%;
+    padding: 0 9vw;
+    margin-right: 0;
+  }
+
+  details {
+    margin-top: 0.75vw;
+  }
+
+  summary {
+    font-family: "IRANSans", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 4vw;
+    line-height: 118.19%;
+    text-align: justify;
+    text-transform: uppercase;
+    border-right: 0.6vw solid black;
+    padding-right: 1vw;
+  }
+
+  p {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 3.5vw;
+    line-height: 118.19%;
+    /* or 38px */
+    padding: 2vw;
+
+    text-align: justify;
+  }
 }
 </style>

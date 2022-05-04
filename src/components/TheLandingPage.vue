@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <the-intro />
+    <the-header />
     <the-about-event />
 <!--    <the-prizes />-->
 <!--    <the-timeline />-->
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import TheIntro from "./Landing/TheIntro.vue";
+import TheHeader from "./Landing/TheHeader.vue";
 import TheAboutEvent from "./Landing/TheAboutEvent.vue";
 import TheContactUs from "./Landing/TheContactUs.vue";
 import TheSponsors from "./Landing/TheSponsors.vue";
@@ -25,7 +25,7 @@ import TheFAQ from "./Landing/TheFAQ.vue";
 export default {
   name: "the-landing-page",
   components: {
-    TheIntro,
+    TheHeader,
     TheAboutEvent,
     // TheStaffs,
     TheSponsors,

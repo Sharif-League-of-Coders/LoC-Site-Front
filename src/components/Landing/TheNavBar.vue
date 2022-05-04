@@ -2,11 +2,7 @@
   <div class="nav-bar-container">
     <div class="navigation-area">
       <div class="logo">
-        <v-img
-          :src="require('../../assets/logo.svg')"
-          height="2.5vw"
-          width="4.5vw"
-        />
+        <img :src="require('../../assets/logo.svg')" />
       </div>
       <div class="navigation-area-button-container">
         <v-btn
@@ -15,7 +11,7 @@
           color="#fff"
           depressed
           width="min-content"
-          >{{ 'معرفی' }}
+          >{{ "معرفی" }}
         </v-btn>
         <v-divider class="divider" vertical />
         <v-btn
@@ -24,7 +20,7 @@
           color="#fff"
           depressed
           width="min-content"
-          >{{ 'حامی' }}
+          >{{ "حامی" }}
         </v-btn>
         <v-divider class="divider" vertical />
         <v-btn
@@ -33,7 +29,7 @@
           color="#fff"
           depressed
           width="min-content"
-          >{{ 'سوالات متداول' }}
+          >{{ "سوالات متداول" }}
         </v-btn>
         <v-divider class="divider" vertical />
         <v-btn
@@ -42,7 +38,7 @@
           color="#fff"
           depressed
           width="min-content"
-          >{{ 'ارتباط با ما' }}
+          >{{ "ارتباط با ما" }}
         </v-btn>
         <v-divider class="divider" vertical />
       </div>
@@ -56,7 +52,7 @@
         outlined
         width="17vw"
         disabled
-        >به زودی...
+        >ثبت نام (به زودی...)
       </v-btn>
       <!--      <v-btn class="login" color="#000" height="2.25vw" outlined width="7.5vw"-->
       <!--        >ورود-->
@@ -154,5 +150,38 @@ export default {};
   background: linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+.nav-bar-container .navigation-area .logo {
+  height: 2.5vw !important;
+  width: 4.5vw !important;
+}
+@media screen and (max-width: 750px) {
+  .navigation-area-button-container {
+    display: none;
+  }
+
+  .nav-bar-container {
+    direction: rtl;
+  }
+
+  .navigation-area > .logo > img {
+    height: 4.5vw !important;
+    width: 8vw !important;
+  }
+  .logo > img {
+    max-height: 4.5vw !important;
+    max-width: 8vw !important;
+  }
+
+  .v-btn:not(.v-btn--round).v-size--default {
+    width: min-content;
+    padding: 0 0.5vw;
+    font-size: 2.5vw;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 2vw;
+    margin-left: 3vw;
+  }
 }
 </style>

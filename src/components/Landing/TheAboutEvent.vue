@@ -34,7 +34,6 @@ export default {
 <style scoped>
 * {
   font-family: IRANSansBold, sans-serif !important;
-
 }
 #about-event {
   display: flex;
@@ -52,7 +51,7 @@ export default {
 }
 
 .container {
-  border-right: .05vw solid black;
+  border-right: 0.05vw solid black;
   width: 100%;
 }
 
@@ -97,5 +96,57 @@ p {
   font-size: 1.5vw;
   line-height: 2.5vw;
   text-align: justify;
+}
+
+@media screen and (max-width: 750px) {
+  #about-event {
+    background: url(/src/assets/phone/intro.svg);
+
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    height: 140vw;
+  }
+  h1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11vw;
+    line-height: 118.19%;
+
+    letter-spacing: 0.015em;
+
+    background: linear-gradient(
+      90deg,
+      #002b99 0%,
+      #8000ff 60.42%,
+      #f300f8 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 5vw;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: right;
+    margin: 0.8vw;
+    width: 100% !important;
+  }
+
+  h3 {
+    font-family: IRANSansBold, sans-serif !important;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 4vw;
+    line-height: 4vw;
+  }
+  p {
+    font-size: 4vw;
+    line-height: 4.5vw;
+  }
 }
 </style>
