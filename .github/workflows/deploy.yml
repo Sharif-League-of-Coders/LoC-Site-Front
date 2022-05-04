@@ -9,22 +9,22 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-      - uses: actions/checkout@master
+        uses: actions/checkout@master
 
       - name: Build
-      - uses: actions/setup-node@master
-      - run: yarn install
-      - run: yarn build
+        uses: actions/setup-node@master
+        run: yarn install
+        run: yarn build
 
       - name: Configure git
-      - run: git config --global user.name "Sharif-League-of-Coders"
-      - run: git config --global user.emal "Sharif-League-of-Coders@users.noreply.github.com"
+        run: git config --global user.name "Sharif-League-of-Coders"
+        run: git config --global user.emal "Sharif-League-of-Coders@users.noreply.github.com"
 
       - name: Push
-      - uses: s0/git-publish-subdir-action@develop
-      - env:
-        - REPO: self
-        - BRANCH: build
-        - FOLDER: /dist
-        - GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        - MESSAGE: "Build"
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: build
+          FOLDER: /dist
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Build"
