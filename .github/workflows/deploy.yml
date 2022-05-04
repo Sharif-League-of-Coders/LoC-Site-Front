@@ -1,5 +1,5 @@
 name: Deploy to production server
-runs-on: ubuntu-20.04
+
 on: 
   push:
     branches:
