@@ -3,7 +3,7 @@ name: Deploy to production server
 on: 
   push:
     branches:
-      - deploy-preparation
+      - developement
 jobs:
   build-front:
     runs-on: ubuntu-20.04
@@ -36,7 +36,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: build
+          BRANCH: build-dev
           FOLDER: to_be_deployed
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
