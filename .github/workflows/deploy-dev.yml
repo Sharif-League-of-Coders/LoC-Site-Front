@@ -25,8 +25,7 @@ jobs:
       - name: Prepare deploy folder
         run: |
           mkdir to_be_deployed
-          cp -r dist/* to_be_deployed
-          cp -r deploy/* to_be_deployed
+          cp -r dist/* deploy
 
       - name: Configure git
         run: |
@@ -41,8 +40,8 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: build-${{ steps.extract_branch.outputs.branch }}
-          FOLDER: to_be_deployed
+          BRANCH: ${{ steps.extract_branch.outputs.branch }}
+          FOLDER: .
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
 
@@ -62,8 +61,8 @@ jobs:
           key: ${{ secrets.DEV_KEY }}
           script: |
             cd ${{ secrets.DEV_TARGET_PATH }}
-            git branch build-${{ steps.extract_branch.outputs.branch }}
-            git checkout build-${{ steps.extract_branch.outputs.branch }}
+            git branch ${{ steps.extract_branch.outputs.branch }}
+            git checkout ${{ steps.extract_branch.outputs.branch }}
             git pull
             docker-compose build
             docker-compose up -d
