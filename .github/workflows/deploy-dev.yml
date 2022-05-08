@@ -60,7 +60,7 @@ jobs:
           username: ${{ secrets.DEV_USERNAME }}
           key: ${{ secrets.DEV_KEY }}
           script: |
-            cd ${{ secrets.DEV_TARGET_PATH }}
+            cd ${{ secrets.DEV_TARGET_PATH }}/deploy
             git branch ${{ steps.extract_branch.outputs.branch }}
             git checkout ${{ steps.extract_branch.outputs.branch }}
             git pull
