@@ -26,6 +26,7 @@ export default {
 }
 
 body {
+  direction: rtl;
   padding: 0;
   margin: 0;
   font-family: IRANSansBold, sans-serif !important;
