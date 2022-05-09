@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from 'vue-router'
 
 import TheLandingPage from "../components/TheLandingPage.vue";
-import TheRegistrationPage from "../components/TheRegistrationPage.vue";
+import TheRegistrationPage from "../pages/TheRegistrationPage.vue";
 import TheDashboardPage from "../components/TheDashboardPage.vue";
 import TheStaffsPage from "../components/TheStaffsPage.vue";
 
