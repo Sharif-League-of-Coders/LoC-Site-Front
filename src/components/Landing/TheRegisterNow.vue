@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
 .container {
-  background: url("../../assets/Register Now.svg");
+  background: url("../../assets/Register-now.svg");
   background-size: contain;
   background-position: top center;
   background-repeat: no-repeat;
