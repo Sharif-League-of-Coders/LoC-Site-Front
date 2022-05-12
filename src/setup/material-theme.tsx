@@ -8,7 +8,9 @@ import {
 
 const theme = createTheme({
   direction: 'rtl',
-  typography: {},
+  typography: {
+    fontFamily: 'IRANSansLight',
+  },
   palette: {},
   components: {},
 })
