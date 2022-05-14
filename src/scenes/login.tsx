@@ -5,13 +5,17 @@ export function Login() {
   return (
     <Stack
       alignItems="center"
-      justifyContent="center"
       sx={{
+        paddingTop: '5vw',
         background: 'url(login.svg)',
+        maxWidth: '100vw',
         width: '100vw',
         height: '60vw',
+        backgroundSize: '100vw auto',
+        backgroundRepeat: 'no-repeat',
         direction: 'rtl',
         fontFamily: 'IranSansLight !important',
+        overflowX: 'hidden',
       }}
     >
       <RegisterSection />

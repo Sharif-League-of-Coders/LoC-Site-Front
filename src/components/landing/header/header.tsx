@@ -1,5 +1,5 @@
 import { Box, Stack, styled, Typography } from '@mui/material'
-import { NavBar } from '../nav-var'
+import { NavBar } from '../../../common/nav-var'
 
 const StyledLargeTypography = styled(Typography)`
   font-family: Roboto, sans-serif;
@@ -36,7 +36,9 @@ export function Header() {
         background: 'url(img.png)',
         width: '100vw',
         height: '60vw',
+        backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: '100vw auto',
       }}
     >
       <NavBar />
@@ -45,7 +47,7 @@ export function Header() {
         sx={{
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '10vw',
+          marginTop: '7vw',
         }}
       >
         <StyledLargeTypography>League</StyledLargeTypography>

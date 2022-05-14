@@ -33,10 +33,14 @@ export function AboutEvent() {
       id="about-event"
       sx={{
         background: 'url(introduction.svg)',
-        width: '100vw',
-        height: '60vw',
+        backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: '100vw auto',
+        width: '100vw',
+        maxWith: '100vw',
+        height: '60vw',
         padding: '1.6vw 7.5vw 25vw',
+        boxSizing: 'border-box',
       }}
     >
       <Typography

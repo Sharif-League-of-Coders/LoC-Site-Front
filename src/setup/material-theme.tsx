@@ -11,7 +11,9 @@ const theme = createTheme({
   typography: {
     fontFamily: 'IRANSansLight',
   },
-  palette: {},
+  palette: {
+    error: { main: '#FF5151' },
+  },
   components: {},
 })
 

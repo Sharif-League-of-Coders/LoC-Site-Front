@@ -1,3 +1,4 @@
+import { AccountCircle, Lock, Person } from '@mui/icons-material'
 import {
   Stack,
   Tab,
@@ -9,6 +10,8 @@ import {
   Checkbox,
   Button,
   FormControlLabel,
+  styled,
+  InputAdornment,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -17,6 +20,19 @@ interface TabPanelProps {
   value: number
   isRegistration?: boolean
 }
+
+const StyledTextFiled = styled(TextField)(() => ({
+  '& .MuiInputBase-root': {
+    borderRadius: '10px',
+  },
+  '& .MuiInputBase-input': {
+    height: '3.25vw',
+    padding: '.5vw',
+    fontWeight: 200,
+    fontSize: '1.25vw',
+    lineHeight: '2vw',
+  },
+}))
 
 function TabPanel({ isRegistration, value, index, ...other }: TabPanelProps) {
   const [showPassword, setShowPassword] = useState(false)
@@ -29,49 +45,141 @@ function TabPanel({ isRegistration, value, index, ...other }: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: '1vw' }}>
           <Typography
             sx={{
               fontFamily: 'IRANSansLight',
             }}
           >
-            <Stack flexDirection="row">
-              <Typography>
+            <Stack
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{}}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 200,
+                  fontSize: '1.25vw',
+                  lineHeight: '2vw',
+                }}
+              >
                 {isRegistration ? 'ثبت نام در مسابقه' : 'ورود به پنل مسابقه'}
               </Typography>
               <Divider orientation="vertical" flexItem />
-              <Typography>اطلاعات کاربری وارد شده نادرست است</Typography>
+              <Typography
+                color="error"
+                sx={{
+                  fontFamily: 'IRANSansBold',
+                  fontWeight: 900,
+                  fontSize: '1.25vw',
+                  lineHeight: '2vw',
+                }}
+              >
+                اطلاعات کاربری وارد شده
+                <br /> نادرست است
+              </Typography>
             </Stack>
-            <Stack>
-              <TextField placeholder="رایانشانی / نام کاربری" />
+            <Stack sx={{ margin: '1vw 0' }}>
+              <StyledTextFiled
+                fullWidth
+                placeholder="رایانشانی / نام کاربری"
+                sx={{ height: '3.25vw', marginBottom: '2vw', fontSize: '1vw' }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Person />
+                    </InputAdornment>
+                  ),
+                }}
+              />
 
-              <TextField
+              <StyledTextFiled
+                fullWidth
                 placeholder="گذرواژه"
                 type={showPassword ? 'text' : 'password'}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Lock />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Stack>
-            <Stack flexDirection="row">
+            <Stack
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
               <FormControlLabel
+                sx={{ margin: 0, width: '100%' }}
                 control={
                   <Checkbox
                     value={showPassword}
                     onChange={() => setShowPassword(!showPassword)}
                   />
                 }
-                label="نمایش گذرواژه"
+                label={
+                  <Typography
+                    sx={{
+                      fontWeight: 200,
+                      fontSize: '1.1vw',
+                      lineHeight: '1.75vw',
+                    }}
+                  >
+                    نمایش گذرواژه
+                  </Typography>
+                }
               />
-              <Divider orientation="vertical" flexItem />
-              {!isRegistration && <Button>بازیابی رمز عبور</Button>}
+
+              {!isRegistration && (
+                <>
+                  <Divider orientation="vertical" flexItem />
+                  <Button
+                    sx={{
+                      width: '100%',
+                      fontWeight: 300,
+                      fontSize: '1.1vw',
+                      lineHeight: '1.75vw',
+                    }}
+                  >
+                    بـازیـابــی رمــــز عبـــور
+                  </Button>
+                </>
+              )}
             </Stack>
-            <Button>{isRegistration ? 'ثبت نام' : 'ورود'}</Button>
+            <Button
+              sx={{
+                background:
+                  'linear-gradient(90.2deg, #002B99 1.21%, #2164D6 99.83%)',
+                borderRadius: '10px',
+                width: '100%',
+                color: 'white',
+                fontWeight: 900,
+                fontSize: '1.9vw',
+                lineHeight: '2.9vw',
+                fontFamily: 'IRANSansBold',
+                margin: '1vw 0',
+              }}
+            >
+              {isRegistration ? 'ثبت نام' : 'ورود'}
+            </Button>
             <Stack flexDirection="row">
-              <Typography>
+              <Typography
+                sx={{
+                  fontWeight: 200,
+                  fontSize: '1vw',
+                  lineHeight: '1.5vw',
+                }}
+              >
                 {isRegistration ? 'حساب کاربری دارید؟' : 'حساب کاربری ندارید؟'}
+                <Button
+                  sx={{ fontSize: 'inherit', padding: 0, paddingRight: '.2vw' }}
+                >
+                  {isRegistration ? 'از اینجا وارد شوید' : 'از اینجا بسازید'}
+                </Button>
               </Typography>
-              <Button>
-                {' '}
-                {isRegistration ? 'از اینجا وارد شوید' : 'از اینجا بسازید'}
-              </Button>
             </Stack>
           </Typography>
         </Box>
@@ -79,6 +187,29 @@ function TabPanel({ isRegistration, value, index, ...other }: TabPanelProps) {
     </Stack>
   )
 }
+
+const StyledTab = styled(Tab)(() => ({
+  fontSize: '2vw',
+  color: 'rgba(0, 0, 0, 0.5)',
+  position: 'relative',
+  zIndex: 999,
+
+  '&.Mui-selected': {
+    background: '#FFFFFF',
+    boxShadow: '0px 0px 1.75vw 5px rgba(0, 0, 0, 0.09)',
+    borderRadius: '18px',
+    zIndex: '1000px',
+    color: 'black',
+  },
+}))
+
+const StyledTabs = styled(Tabs)(() => ({
+  marginBottom: '1vw',
+  borderRadius: 'inherit',
+  '& .MuiTabs-indicator': {
+    display: 'none',
+  },
+}))
 
 function a11yProps(index: number) {
   return {
@@ -94,16 +225,22 @@ export function RegisterSection() {
     setValue(newValue)
   }
   return (
-    <Stack sx={{ width: '30vw' }}>
-      <Tabs
+    <Stack
+      sx={{
+        width: '30vw',
+        boxShadow: '0px 0px 1.75vw 10px rgba(0, 0, 0, 0.09)',
+        borderRadius: '18px',
+      }}
+    >
+      <StyledTabs
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
         sx={{ width: '100%' }}
       >
-        <Tab label="ثبت نام" {...a11yProps(0)} sx={{ width: '50%' }} />
-        <Tab label="ورود" {...a11yProps(1)} sx={{ width: '50%' }} />
-      </Tabs>
+        <StyledTab label="ثبت نام" {...a11yProps(0)} sx={{ width: '50%' }} />
+        <StyledTab label="ورود" {...a11yProps(1)} sx={{ width: '50%' }} />
+      </StyledTabs>
       <TabPanel index={0} value={value} isRegistration />
       <TabPanel index={1} value={value} />
     </Stack>

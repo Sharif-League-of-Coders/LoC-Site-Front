@@ -5,8 +5,10 @@ export function ContactUs() {
   return (
     <Box
       sx={{
-        background: 'url("Contact Us.svg")',
+        background: 'url("contact-us.svg")',
+        backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: '100vw auto',
 
         width: '100vw',
         height: '60vw',

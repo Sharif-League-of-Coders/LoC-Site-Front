@@ -12,9 +12,9 @@ const Container = styled(Stack)(() => ({
   background: 'url(frequently-asked-questions.svg)',
   width: '100vw',
   height: '60vw',
+  backgroundPosition: 'top center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: '100vw auto',
-  backgroundPosition: 'top center',
 }))
 
 const StyledAccordion = styled(Accordion)`

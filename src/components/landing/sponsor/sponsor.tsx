@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 
 export function Sponsor() {
   return (
@@ -7,18 +7,24 @@ export function Sponsor() {
       justifyContent="center"
       alignItems="center"
       sx={{
-        padding: '40px',
         background: 'url("sponsor.svg")',
         height: '60vw',
         width: '100vw',
+        maxWidth: '100vw',
+        backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: '100vw auto',
       }}
     >
-      <div className="container">
+      <Box
+        sx={{
+          padding: '1.75vw',
+        }}
+      >
         <a href="https://mohaymen.ir/fa/" target="_blank">
           <img src="sponsor-logo.svg" style={{ width: '20vw' }} />
         </a>
-      </div>
+      </Box>
     </Stack>
   )
 }
