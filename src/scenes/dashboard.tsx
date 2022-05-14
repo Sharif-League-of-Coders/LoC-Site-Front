@@ -1,14 +1,22 @@
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography, useMediaQuery } from '@mui/material'
 import { Resources } from 'components/dashboard/resources'
 import { State } from 'components/dashboard/state'
-import { NavBar } from 'common/nav-var'
+import { NavBar } from 'common/nav-bar'
+import json2mq from 'json2mq'
 
 export function Dashboard() {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    })
+  )
   return (
     <Stack
       sx={{
         direction: 'rtl',
-        background: 'url(dashboard.svg)',
+        background: `url(assets/background/${
+          matches ? 'desktop' : 'mobile'
+        }/dashboard.svg)`,
         width: '100vw',
         height: '60vw',
         maxWidth: '98vw',

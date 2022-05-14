@@ -22,6 +22,7 @@ export function ContactUs() {
         width: '100vw',
         height: matches ? '60vw' : 'max-content',
         padding: '1.7vw',
+        boxSizing: 'border-box',
       }}
     >
       <Stack
@@ -49,6 +50,7 @@ export function ContactUs() {
             sx={{
               width: '100%',
               padding: '20px',
+              boxSizing: 'border-box',
             }}
           >
             <Typography
@@ -85,6 +87,7 @@ export function ContactUs() {
                     ? '0 0.9vw 0 0.5vw'
                     : '0.9vw 0.9vw 0.5vw 0.5vw',
                   height: 'fit-content',
+                  boxSizing: 'border-box',
                 }}
               >
                 <Stack
@@ -145,6 +148,7 @@ export function ContactUs() {
                   ? '0.2vw solid black'
                   : '0.6vw solid black;',
                 padding: '0 0.9vw 0.5vw 0',
+                boxSizing: 'border-box',
                 height: 'fit-content',
               }}
             >

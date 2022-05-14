@@ -30,7 +30,7 @@ export function DetailsBox({ imageSrc, description, title }) {
         sx={{
           borderRight: `${matches ? '0.25vw' : '0.6vw'} solid black`,
           padding: matches ? '0 0.9vw 0 0' : '0 2vw',
-
+          boxSizing: 'border-box',
           width: matches ? '32.5vw' : '100%',
         }}
       >

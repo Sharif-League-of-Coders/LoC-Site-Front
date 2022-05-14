@@ -1,6 +1,6 @@
 import json2mq from 'json2mq'
 import { Box, Stack, styled, Typography, useMediaQuery } from '@mui/material'
-import { NavBar } from '../../../common/nav-var'
+import { NavBar } from '../../../common/nav-bar'
 
 interface TypographyProps {
   matches: boolean

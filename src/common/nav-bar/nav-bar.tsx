@@ -42,6 +42,8 @@ export function NavBar() {
         padding: '2.25vw 0',
         display: 'flex',
         alignItems: 'center',
+        boxSizing: 'border-box',
+        marginTop: '2.5vw',
       }}
     >
       <Stack
@@ -74,7 +76,13 @@ export function NavBar() {
           {matches &&
             sections.map((section) => (
               <>
-                <Box sx={{ minWidth: 'fit-content', padding: '0 .5vw' }}>
+                <Box
+                  sx={{
+                    minWidth: 'fit-content',
+                    padding: '.5vw',
+                    boxSizing: 'border-box',
+                  }}
+                >
                   <Typography
                     fontSize="1.25vw"
                     sx={{ fontFamily: 'IRANSansLight' }}
@@ -98,7 +106,7 @@ export function NavBar() {
               fontWeight: 300,
               fontSize: matches ? '1.5vw' : '2.5vw',
               lineHeight: '2vw',
-              width: '8vw',
+              width: matches ? '8vw' : '11vw',
               marginLeft: '1vw',
             }}
           >

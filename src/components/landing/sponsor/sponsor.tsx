@@ -27,6 +27,7 @@ export function Sponsor() {
       <Box
         sx={{
           padding: matches ? '1.75vw' : '10vw 0 0',
+          boxSizing: 'border-box',
         }}
       >
         <a href="https://mohaymen.ir/fa/" target="_blank">

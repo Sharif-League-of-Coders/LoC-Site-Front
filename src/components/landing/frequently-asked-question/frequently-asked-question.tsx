@@ -20,7 +20,7 @@ const Container = styled(Stack)<ContainerProps>(({ matches }) => ({
     matches ? 'desktop' : 'mobile'
   }/frequently-asked-questions.svg)`,
   width: '100vw',
-  height: matches ? '65vw' : '150vw',
+  height: matches ? '65vw' : '160vw',
   backgroundPosition: 'top center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: '100vw auto',
@@ -33,6 +33,8 @@ const StyledAccordionSummary = styled(AccordionSummary)<ContainerProps>(
     height: matches ? '3.5vw' : '7vw',
     minHeight: matches ? '3.5vw' : '7vw',
     padding: matches ? 'none' : '1vw',
+    boxSizing: 'border-box',
+
     '& .MuiAccordionSummary-expandIconWrapper': {
       height: matches ? '1vw' : '2vw',
     },
@@ -49,6 +51,7 @@ const StyledAccordionDetails = styled(AccordionDetails)<ContainerProps>(
   ({ matches }) => ({
     fontSize: matches ? '1.5vw' : '3.5vw',
     padding: matches ? 'none' : '2vw',
+    boxSizing: 'border-box',
   })
 )
 
@@ -83,6 +86,7 @@ export function FrequentlyAskedQuestion() {
           width: '100%',
           height: '100%',
           paddingTop: '2vw',
+          boxSizing: 'border-box',
         }}
       >
         <Box
@@ -90,6 +94,7 @@ export function FrequentlyAskedQuestion() {
             width: matches ? '43vw' : '100%',
             marginRight: matches ? '9vw' : 0,
             padding: matches ? 'none' : '0 9vw',
+            boxSizing: 'border-box',
           }}
         >
           <StyledAccordion matches={matches}>
