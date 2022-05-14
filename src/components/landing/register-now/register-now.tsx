@@ -47,6 +47,7 @@ export function RegisterNow() {
         کنــیـد
       </Typography>
       <Button
+        href="/login"
         sx={{
           fontFamily: 'IRANSansBold !important',
           background:

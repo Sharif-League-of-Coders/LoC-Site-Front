@@ -54,6 +54,7 @@ export function Login() {
         <img src="assets/logos/logo.svg" width="100%" height="100%" />
       </Box>
       <Button
+        href="/"
         sx={{
           position: 'absolute',
           top: matches ? '2vw' : '3vw',

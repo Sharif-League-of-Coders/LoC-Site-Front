@@ -11,6 +11,7 @@ import {
   Box,
   Stack,
   useMediaQuery,
+  Link,
 } from '@mui/material'
 import json2mq from 'json2mq'
 
@@ -28,7 +29,12 @@ const StyledAppbar = styled(Stack)(() => ({
 }))
 
 export function NavBar() {
-  const sections = ['ارتباط با ما', 'سوالات متدوال', 'حامی', 'معرفی']
+  const sections = [
+    { text: 'ارتباط با ما', href: '#contact-us' },
+    { text: 'سوالات متدوال', href: '#faq' },
+    { text: 'حامی', href: '#sponsor' },
+    { text: 'معرفی', href: '#about-event' },
+  ]
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -74,7 +80,7 @@ export function NavBar() {
           )}
 
           {matches &&
-            sections.map((section) => (
+            sections.map(({ text, href }) => (
               <>
                 <Box
                   sx={{
@@ -83,13 +89,15 @@ export function NavBar() {
                     boxSizing: 'border-box',
                   }}
                 >
-                  <Typography
-                    fontSize="1.25vw"
-                    sx={{ fontFamily: 'IRANSansLight' }}
-                    color="black"
-                  >
-                    {section}
-                  </Typography>
+                  <Link href={href} sx={{ textDecoration: 'none' }}>
+                    <Typography
+                      fontSize="1.25vw"
+                      sx={{ fontFamily: 'IRANSansLight' }}
+                      color="black"
+                    >
+                      {text}
+                    </Typography>
+                  </Link>
                 </Box>
                 <StyledDivider orientation="vertical" flexItem color="black" />
               </>
@@ -97,6 +105,7 @@ export function NavBar() {
         </Stack>
         <Stack flexDirection="row" sx={{ height: matches ? '2.5vw' : '5vw' }}>
           <Button
+            href="/login"
             sx={{
               fontFamily: 'IRANSansLight !important',
               background:
@@ -113,6 +122,7 @@ export function NavBar() {
             {'ثبت نام'}
           </Button>
           <Button
+            href="/login"
             sx={{
               fontFamily: 'IRANSansLight !important',
               color: 'black',
