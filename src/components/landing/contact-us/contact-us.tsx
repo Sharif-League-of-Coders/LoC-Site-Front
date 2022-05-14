@@ -1,17 +1,26 @@
-import { Box, Link, Stack, Typography } from '@mui/material'
+import { Box, Link, Stack, Typography, useMediaQuery } from '@mui/material'
+import json2mq from 'json2mq'
+
 import { DetailsBox } from './components/details-box/details-box'
 
 export function ContactUs() {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    })
+  )
   return (
     <Box
       sx={{
-        background: 'url(assets/background/desktop/contact-us.svg)',
-        backgroundPosition: 'top center',
+        background: `url(assets/background/${
+          matches ? 'desktop' : 'mobile'
+        }/contact-us.svg)`,
+        backgroundPosition: matches ? 'top center' : 'center center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100vw auto',
 
         width: '100vw',
-        height: '60vw',
+        height: matches ? '60vw' : 'max-content',
         padding: '1.7vw',
       }}
     >
@@ -28,7 +37,7 @@ export function ContactUs() {
         <Stack
           sx={{
             width: '100%',
-            height: 'fit-content',
+            height: matches ? 'fit-content' : '30%',
           }}
           flexDirection="column"
           alignItems="flex-start"
@@ -46,7 +55,7 @@ export function ContactUs() {
               sx={{
                 fontFamily: 'IRANSansBold',
                 fontWeight: '900',
-                fontSize: '3.75vw',
+                fontSize: matches ? '3.75vw' : '11vw',
 
                 letterSpacing: '0.015em',
 
@@ -64,15 +73,17 @@ export function ContactUs() {
             <Stack
               justifyContent="space-between"
               flexDirection="row"
-              sx={{ width: '15vw', marginRight: '2vw' }}
+              sx={{ width: matches ? '15vw' : '100%', marginRight: '2vw' }}
             >
               <Stack
                 alignItems="center"
                 justifyContent="center"
                 sx={{
                   width: 'max-content',
-                  borderRight: '0.25vw solid black',
-                  padding: '0 0.9vw 0 0.5vw',
+                  borderRight: `${matches ? '0.25vw' : '0.6vw'} solid black`,
+                  padding: matches
+                    ? '0 0.9vw 0 0.5vw'
+                    : '0.9vw 0.9vw 0.5vw 0.5vw',
                   height: 'fit-content',
                 }}
               >
@@ -81,8 +92,8 @@ export function ContactUs() {
                   sx={{
                     fontFamily: 'Roboto, serif',
                     fontWeight: '400',
-                    fontSize: '1.5vw',
-                    lineHeight: '1.75vw',
+                    fontSize: matches ? '1.5vw' : '4vw',
+                    lineHeight: matches ? '1.75vw' : '4.5vw',
                     letterSpacing: '0.385em',
                     width: '100%',
                   }}
@@ -114,7 +125,10 @@ export function ContactUs() {
                   ].map(({ image, link }) => (
                     <a href="link" target="_blank">
                       <img
-                        style={{ width: '2.5vw', height: '2.5vw' }}
+                        style={{
+                          width: matches ? '2.5vw' : '6vw',
+                          height: matches ? '2.5vw' : '6vw',
+                        }}
                         src={`assets/icons/${image}.svg`}
                       />
                     </a>
@@ -127,7 +141,9 @@ export function ContactUs() {
               alignItems="flex-start"
               justifyContent="center"
               sx={{
-                borderRight: '0.2vw solid black',
+                borderRight: matches
+                  ? '0.2vw solid black'
+                  : '0.6vw solid black;',
                 padding: '0 0.9vw 0.5vw 0',
                 height: 'fit-content',
               }}
@@ -140,29 +156,27 @@ export function ContactUs() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     width: '100%',
+                    textDecoration: 'none',
                   }}
                 >
                   <img
                     style={{
                       maxWidth: '10vw',
                       maxHeight: '5vw',
-                      width: '1.8vw',
-                      height: '1.8vw',
+                      width: matches ? '1.8vw' : '4vw',
+                      height: matches ? '1.8vw' : '4vw',
                     }}
                     src="assets/icons/gmail.svg"
                   />
-                  <Stack
-                    alignItems="center"
-                    sx={{
-                      fontFamily: 'Roboto, sans-serif',
-                      fontWeight: '400',
-                      fontSize: '1.5vw',
-                      lineHeight: '1.75vw',
-                      color: '#000000',
-                    }}
+                  <Typography
+                    fontFamily="Roboto, sans-serif"
+                    fontWeight="400"
+                    fontSize={matches ? '1.5vw' : '4vw'}
+                    lineHeight={matches ? '1.75vw' : '4.5vw'}
+                    color="black"
                   >
                     LOCSHARIF@Gmail.com
-                  </Stack>
+                  </Typography>
                 </Link>
               </Stack>
               <Stack flexDirection="row" sx={{ marginTop: '1vw' }}>
@@ -171,8 +185,8 @@ export function ContactUs() {
                   style={{
                     maxWidth: '10vw',
                     maxHeight: '5vw',
-                    width: '1.8vw',
-                    height: '1.8vw',
+                    width: matches ? '1.8vw' : '4vw',
+                    height: matches ? '1.8vw' : '4vw',
                   }}
                 />
                 <Stack
@@ -180,8 +194,8 @@ export function ContactUs() {
                   sx={{
                     fontFamily: 'Roboto, sans-serif',
                     fontWeight: '400',
-                    fontSize: '1.5vw',
-                    lineHeight: '1.75vw',
+                    fontSize: matches ? '1.5vw' : '4vw',
+                    lineHeight: matches ? '1.75vw' : '4.5vw',
                     letterSpacing: '0.265em',
                     color: '#000000',
                   }}
@@ -211,10 +225,10 @@ export function ContactUs() {
         </Stack>
 
         <Stack
-          flexDirection="row"
+          flexDirection={matches ? 'row' : 'column-reverse'}
           alignItems="center"
           justifyContent="center"
-          sx={{ width: '100%', marginTop: '5vw' }}
+          sx={{ width: '100%', marginTop: matches ? '5vw' : '90vw' }}
         >
           <Stack sx={{ width: '100%' }} alignItems="center">
             <Stack
@@ -222,20 +236,29 @@ export function ContactUs() {
               alignItems="center"
               justifyContent="space-between"
               sx={{
-                width: '28.75vw',
+                width: matches ? '28.75vw' : 'fit-content',
                 height: '10vw',
+                marginBottom: matches ? 'none' : '2vw',
               }}
             >
               {[
                 {
                   src: 'sharif-logo',
-                  width: '6.5vw',
-                  height: '6.5vw',
+                  width: matches ? '6.5vw' : '14vw',
+                  height: matches ? '6.5vw' : '14vw',
                 },
-                { src: 'logo', width: '9.5vw', height: '6.5vw' },
-                { src: 'ssc-logo', width: '9.5vw', height: '6.5vw' },
+                {
+                  src: 'logo',
+                  width: matches ? '9.5vw' : '20vw',
+                  height: matches ? '6.5vw' : '11.5vw',
+                },
+                {
+                  src: 'ssc-logo',
+                  width: matches ? '9.5vw' : '19.5vw',
+                  height: matches ? '6.5vw' : '10vw',
+                },
               ].map(({ src, width, height }) => (
-                <Box sx={{ width, height }}>
+                <Box sx={{ width, height, marginLeft: matches ? 0 : '3vw' }}>
                   <img
                     src={`assets/logos/${src}.svg`}
                     width="100%"
@@ -248,10 +271,11 @@ export function ContactUs() {
           <Stack
             sx={{
               width: '100%',
-              paddingRight: '15vw',
+              paddingRight: matches ? '15vw' : 0,
               boxSizing: 'border-box',
+              marginBottom: matches ? '0' : '5vw',
             }}
-            alignItems="center"
+            alignItems={matches ? 'center' : 'flex-start'}
           >
             <DetailsBox
               imageSrc="pencil.svg"
@@ -260,8 +284,8 @@ export function ContactUs() {
                 <Typography
                   sx={{
                     fontWeight: '300',
-                    fontSize: '1.5vw',
-                    lineHeight: '2.5vw',
+                    fontSize: matches ? '1.5vw' : '4vw',
+                    lineHeight: matches ? '2.5vw' : '6vw',
                     fontFamily: 'IRANSansLight, sans-serif',
                   }}
                 >

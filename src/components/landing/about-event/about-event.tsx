@@ -1,4 +1,5 @@
-import { Box, Stack, styled, Typography } from '@mui/material'
+import { Box, Stack, styled, Typography, useMediaQuery } from '@mui/material'
+import json2mq from 'json2mq'
 
 const StyledSection = styled('section')`
   display: flex;
@@ -27,12 +28,19 @@ const LargeTypography = styled(Typography)(() => ({
 }))
 
 export function AboutEvent() {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    })
+  )
   return (
     <Stack
       alignItems="center"
       id="about-event"
       sx={{
-        background: 'url(assets/background/desktop/introduction.svg)',
+        background: `url(assets/background/${
+          matches ? 'desktop' : 'mobile'
+        }/introduction.svg)`,
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100vw auto',
