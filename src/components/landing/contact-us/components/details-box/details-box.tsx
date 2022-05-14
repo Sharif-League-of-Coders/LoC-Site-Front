@@ -5,8 +5,7 @@ export function DetailsBox({ imageSrc, description, title }) {
     <Stack
       alignItems="flex-start"
       flexDirection="row"
-      sx={{ width: '100%' }}
-      className="db-container"
+      sx={{ marginTop: '1.5vw' }}
     >
       <div className="icon">
         <img
@@ -15,13 +14,17 @@ export function DetailsBox({ imageSrc, description, title }) {
             maxHeight: '5vw',
             width: '1.5vw',
             height: '1.5vw',
+            marginLeft: '.5vw',
           }}
           src={`${imageSrc}`}
         />
       </div>
       <Stack
+        alignItems="flex-start"
         sx={{
           borderRight: '0.25vw solid black',
+          padding: '0 0.9vw 0 0',
+
           width: '32.5vw',
         }}
       >
@@ -41,7 +44,6 @@ export function DetailsBox({ imageSrc, description, title }) {
         <Stack
           alignItems="center"
           sx={{
-            padding: '0 0.9vw 0 0',
             fontWeight: '300',
             fontSize: '1.5vw',
             lineHeight: '2.5vw',

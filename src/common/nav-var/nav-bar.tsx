@@ -14,12 +14,8 @@ import {
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
-    marginTop: '1vw',
-    marginBottom: '1vw',
-  },
-
-  '&.MuiDivider-root:last-child': {
-    display: 'none',
+    marginTop: '.5vmin !important',
+    marginBottom: '.5vmin',
   },
 }))
 
@@ -41,28 +37,73 @@ export function NavBar() {
         alignItems: 'center',
       }}
     >
-      <Container sx={{ direction: 'rtl', height: '2.5vw' }}>
-        <Toolbar disableGutters sx={{ height: '2.5vw' }}>
-          <IconButton sx={{ height: '2.5vw' }}>
+      <Stack
+        sx={{
+          direction: 'rtl',
+          height: '2.5vw',
+          maxWidth: '100vw',
+          margin: '0 1.5vw',
+          boxSizing: 'border-box',
+          width: '90vw',
+        }}
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Stack flexDirection="row" alignItems="center" sx={{ height: '2.5vw' }}>
+          <IconButton sx={{ minHeight: '3.5vw', height: '2.5vw' }}>
             <img src="logo.svg" width="100%" height="100%" />
           </IconButton>
-          <StyledDivider orientation="vertical" flexItem />
+          <StyledDivider orientation="vertical" flexItem color="black" />
 
           {sections.map((section) => (
             <>
-              <MenuItem>
-                <Typography sx={{ fontFamily: 'IRANSansLight' }} color="black">
+              <Box sx={{ minWidth: 'fit-content', padding: '0 .5vw' }}>
+                <Typography
+                  fontSize="1.25vw"
+                  sx={{ fontFamily: 'IRANSansLight' }}
+                  color="black"
+                >
                   {section}
                 </Typography>
-              </MenuItem>
+              </Box>
               <StyledDivider orientation="vertical" flexItem color="black" />
             </>
           ))}
-          <Button sx={{ fontFamily: 'IRANSansLight !important' }}>
-            {'ثبت نام به زودی'}
+        </Stack>
+        <Stack flexDirection="row" sx={{ height: '2.5vw' }}>
+          <Button
+            sx={{
+              fontFamily: 'IRANSansLight !important',
+              background:
+                'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+              borderRadius: '10px',
+              color: 'white',
+              fontWeight: 300,
+              fontSize: '1.5vw',
+              lineHeight: '2vw',
+              width: '8vw',
+              marginLeft: '1vw',
+            }}
+          >
+            {'ثبت نام'}
           </Button>
-        </Toolbar>
-      </Container>
+          <Button
+            sx={{
+              fontFamily: 'IRANSansLight !important',
+              color: 'black',
+              fontWeight: 300,
+              fontSize: '1.5vw',
+              lineHeight: '2vw',
+              width: '8vw',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+          >
+            {'ورود'}
+          </Button>
+        </Stack>
+      </Stack>
     </StyledAppbar>
   )
 }

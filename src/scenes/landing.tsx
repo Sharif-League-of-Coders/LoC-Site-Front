@@ -3,6 +3,7 @@ import { AboutEvent } from 'components/landing/about-event'
 import { ContactUs } from 'components/landing/contact-us'
 import { FrequentlyAskedQuestion } from 'components/landing/frequently-asked-question'
 import { Header } from 'components/landing/header/header'
+import { RegisterNow } from 'components/landing/register-now'
 import { Sponsor } from 'components/landing/sponsor/sponsor'
 
 export function Landing() {
@@ -11,6 +12,7 @@ export function Landing() {
       <Header />
       <AboutEvent />
       <Sponsor />
+      <RegisterNow />
       <FrequentlyAskedQuestion />
       <ContactUs />
     </Stack>

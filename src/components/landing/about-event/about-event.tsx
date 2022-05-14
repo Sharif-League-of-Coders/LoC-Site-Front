@@ -49,6 +49,7 @@ export function AboutEvent() {
           fontSize: '3.75vw',
           lineHeight: '170%',
           letterSpacing: '0.015em',
+          fontFamily: 'IRANSansBold',
 
           background:
             'linear-gradient(90deg, #002b99 0%, #8000ff 60.42%, #f300f8 100%)',
