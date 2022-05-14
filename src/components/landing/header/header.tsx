@@ -1,4 +1,5 @@
-import { Box, Stack, styled, Typography } from '@mui/material'
+import json2mq from 'json2mq'
+import { Box, Stack, styled, Typography, useMediaQuery } from '@mui/material'
 import { NavBar } from '../../../common/nav-var'
 
 const StyledLargeTypography = styled(Typography)`
@@ -30,10 +31,17 @@ const StyledSmallTypography = styled(Typography)`
 `
 
 export function Header() {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    })
+  )
   return (
     <Box
       sx={{
-        background: 'url(img.png)',
+        background: `url(assets/background/${
+          matches ? 'desktop' : 'mobile'
+        }/header.png)`,
         width: '100vw',
         height: '60vw',
         backgroundPosition: 'top center',
@@ -74,7 +82,7 @@ export function Header() {
             }}
           >
             <a href="https://ssc.ce.sharif.edu">
-              <img width="100%" height="100%" src="ssc-logo.svg" />
+              <img width="100%" height="100%" src="assets/logos/ssc-logo.svg" />
             </a>
           </Box>
           <Box
@@ -86,7 +94,7 @@ export function Header() {
             }}
           >
             <a href="https://locsharif.com">
-              <img width="100%" height="100%" src="logo.svg" />
+              <img width="100%" height="100%" src="assets/logos/logo.svg" />
             </a>
           </Box>
         </Stack>

@@ -16,7 +16,7 @@ export function DetailsBox({ imageSrc, description, title }) {
             height: '1.5vw',
             marginLeft: '.5vw',
           }}
-          src={`${imageSrc}`}
+          src={`assets/icons/${imageSrc}`}
         />
       </div>
       <Stack

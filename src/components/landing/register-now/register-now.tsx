@@ -5,7 +5,7 @@ export function RegisterNow() {
     <Stack
       alignItems="center"
       sx={{
-        background: 'url("register-now.svg")',
+        background: 'url(assets/background/desktop/register-now.svg)',
         height: '60vw',
         width: '100vw',
         maxWidth: '100vw',

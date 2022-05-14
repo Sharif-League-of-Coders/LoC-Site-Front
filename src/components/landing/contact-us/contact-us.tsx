@@ -5,7 +5,7 @@ export function ContactUs() {
   return (
     <Box
       sx={{
-        background: 'url("contact-us.svg")',
+        background: 'url(assets/background/desktop/contact-us.svg)',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100vw auto',
@@ -115,7 +115,7 @@ export function ContactUs() {
                     <a href="link" target="_blank">
                       <img
                         style={{ width: '2.5vw', height: '2.5vw' }}
-                        src={`${image}.svg`}
+                        src={`assets/icons/${image}.svg`}
                       />
                     </a>
                   ))}
@@ -149,7 +149,7 @@ export function ContactUs() {
                       width: '1.8vw',
                       height: '1.8vw',
                     }}
-                    src="gmail.svg"
+                    src="assets/icons/gmail.svg"
                   />
                   <Stack
                     alignItems="center"
@@ -167,7 +167,7 @@ export function ContactUs() {
               </Stack>
               <Stack flexDirection="row" sx={{ marginTop: '1vw' }}>
                 <img
-                  src="phone.svg"
+                  src="assets/icons/phone.svg"
                   style={{
                     maxWidth: '10vw',
                     maxHeight: '5vw',
@@ -227,12 +227,20 @@ export function ContactUs() {
               }}
             >
               {[
-                { src: 'sharif-logo', width: '6.5vw', height: '6.5vw' },
+                {
+                  src: 'sharif-logo',
+                  width: '6.5vw',
+                  height: '6.5vw',
+                },
                 { src: 'logo', width: '9.5vw', height: '6.5vw' },
                 { src: 'ssc-logo', width: '9.5vw', height: '6.5vw' },
               ].map(({ src, width, height }) => (
                 <Box sx={{ width, height }}>
-                  <img src={`${src}.svg`} width="100%" height="100%" />
+                  <img
+                    src={`assets/logos/${src}.svg`}
+                    width="100%"
+                    height="100%"
+                  />
                 </Box>
               ))}
             </Stack>

@@ -52,7 +52,7 @@ export function NavBar() {
       >
         <Stack flexDirection="row" alignItems="center" sx={{ height: '2.5vw' }}>
           <IconButton sx={{ minHeight: '3.5vw', height: '2.5vw' }}>
-            <img src="logo.svg" width="100%" height="100%" />
+            <img src="assets/logos/logo.svg" width="100%" height="100%" />
           </IconButton>
           <StyledDivider orientation="vertical" flexItem color="black" />
 

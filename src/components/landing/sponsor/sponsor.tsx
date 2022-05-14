@@ -7,7 +7,7 @@ export function Sponsor() {
       justifyContent="center"
       alignItems="center"
       sx={{
-        background: 'url("sponsor.svg")',
+        background: 'url(assets/background/desktop/sponsor.svg)',
         height: '60vw',
         width: '100vw',
         maxWidth: '100vw',
@@ -22,7 +22,7 @@ export function Sponsor() {
         }}
       >
         <a href="https://mohaymen.ir/fa/" target="_blank">
-          <img src="sponsor-logo.svg" style={{ width: '20vw' }} />
+          <img src="assets/logos/sponsor-logo.svg" style={{ width: '20vw' }} />
         </a>
       </Box>
     </Stack>

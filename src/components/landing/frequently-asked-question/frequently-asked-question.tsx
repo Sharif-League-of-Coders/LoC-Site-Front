@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 
 const Container = styled(Stack)(() => ({
-  background: 'url(frequently-asked-questions.svg)',
+  background: 'url(assets/background/desktop/frequently-asked-questions.svg)',
   width: '100vw',
   height: '65vw',
   backgroundPosition: 'top center',
@@ -77,7 +77,9 @@ export function FrequentlyAskedQuestion() {
           }}
         >
           <StyledAccordion>
-            <StyledAccordionSummary expandIcon={<img src="arrow-down.svg" />}>
+            <StyledAccordionSummary
+              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+            >
               مسابقه چطوری هست؟
             </StyledAccordionSummary>
             <StyledAccordionDetails>
@@ -89,7 +91,9 @@ export function FrequentlyAskedQuestion() {
             </StyledAccordionDetails>
           </StyledAccordion>
           <StyledAccordion>
-            <StyledAccordionSummary expandIcon={<img src="arrow-down.svg" />}>
+            <StyledAccordionSummary
+              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+            >
               چیزی هم باید بلد باشیم تا بتونیم شرکت کنیم؟
             </StyledAccordionSummary>
             <StyledAccordionDetails>
@@ -100,7 +104,9 @@ export function FrequentlyAskedQuestion() {
             </StyledAccordionDetails>
           </StyledAccordion>
           <StyledAccordion>
-            <StyledAccordionSummary expandIcon={<img src="arrow-down.svg" />}>
+            <StyledAccordionSummary
+              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+            >
               خب ایول، حالا چطوری باید شرکت کنم؟
             </StyledAccordionSummary>
             <StyledAccordionDetails>
@@ -110,7 +116,9 @@ export function FrequentlyAskedQuestion() {
             </StyledAccordionDetails>
           </StyledAccordion>
           <StyledAccordion>
-            <StyledAccordionSummary expandIcon={<img src="arrow-down.svg" />}>
+            <StyledAccordionSummary
+              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+            >
               صبر کن ببینم، اگه سوال داشتم از کی بپرسم؟
             </StyledAccordionSummary>
             <StyledAccordionDetails>

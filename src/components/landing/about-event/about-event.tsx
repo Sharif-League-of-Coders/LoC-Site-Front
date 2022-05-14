@@ -32,7 +32,7 @@ export function AboutEvent() {
       alignItems="center"
       id="about-event"
       sx={{
-        background: 'url(introduction.svg)',
+        background: 'url(assets/background/desktop/introduction.svg)',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100vw auto',
