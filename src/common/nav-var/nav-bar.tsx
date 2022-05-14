@@ -10,7 +10,9 @@ import {
   styled,
   Box,
   Stack,
+  useMediaQuery,
 } from '@mui/material'
+import json2mq from 'json2mq'
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
@@ -27,6 +29,11 @@ const StyledAppbar = styled(Stack)(() => ({
 
 export function NavBar() {
   const sections = ['ارتباط با ما', 'سوالات متدوال', 'حامی', 'معرفی']
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    })
+  )
   return (
     <StyledAppbar
       sx={{
@@ -42,36 +49,45 @@ export function NavBar() {
           direction: 'rtl',
           height: '2.5vw',
           maxWidth: '100vw',
-          margin: '0 1.5vw',
+          margin: matches ? '0 1.5vw' : '0 2.5vw',
           boxSizing: 'border-box',
-          width: '90vw',
+          width: matches ? '90vw' : '85vw',
         }}
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
       >
-        <Stack flexDirection="row" alignItems="center" sx={{ height: '2.5vw' }}>
-          <IconButton sx={{ minHeight: '3.5vw', height: '2.5vw' }}>
+        <Stack
+          flexDirection="row"
+          alignItems="center"
+          sx={{ height: matches ? '2.5vw' : '5vw' }}
+        >
+          <IconButton
+            sx={{ minHeight: '3.5vw', height: matches ? '2.5vw' : '8vw' }}
+          >
             <img src="assets/logos/logo.svg" width="100%" height="100%" />
           </IconButton>
-          <StyledDivider orientation="vertical" flexItem color="black" />
+          {matches && (
+            <StyledDivider orientation="vertical" flexItem color="black" />
+          )}
 
-          {sections.map((section) => (
-            <>
-              <Box sx={{ minWidth: 'fit-content', padding: '0 .5vw' }}>
-                <Typography
-                  fontSize="1.25vw"
-                  sx={{ fontFamily: 'IRANSansLight' }}
-                  color="black"
-                >
-                  {section}
-                </Typography>
-              </Box>
-              <StyledDivider orientation="vertical" flexItem color="black" />
-            </>
-          ))}
+          {matches &&
+            sections.map((section) => (
+              <>
+                <Box sx={{ minWidth: 'fit-content', padding: '0 .5vw' }}>
+                  <Typography
+                    fontSize="1.25vw"
+                    sx={{ fontFamily: 'IRANSansLight' }}
+                    color="black"
+                  >
+                    {section}
+                  </Typography>
+                </Box>
+                <StyledDivider orientation="vertical" flexItem color="black" />
+              </>
+            ))}
         </Stack>
-        <Stack flexDirection="row" sx={{ height: '2.5vw' }}>
+        <Stack flexDirection="row" sx={{ height: matches ? '2.5vw' : '5vw' }}>
           <Button
             sx={{
               fontFamily: 'IRANSansLight !important',
@@ -80,7 +96,7 @@ export function NavBar() {
               borderRadius: '10px',
               color: 'white',
               fontWeight: 300,
-              fontSize: '1.5vw',
+              fontSize: matches ? '1.5vw' : '2.5vw',
               lineHeight: '2vw',
               width: '8vw',
               marginLeft: '1vw',
@@ -93,7 +109,7 @@ export function NavBar() {
               fontFamily: 'IRANSansLight !important',
               color: 'black',
               fontWeight: 300,
-              fontSize: '1.5vw',
+              fontSize: matches ? '1.5vw' : '2.5vw',
               lineHeight: '2vw',
               width: '8vw',
               border: '1px solid black',

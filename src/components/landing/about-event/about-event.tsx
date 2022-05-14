@@ -1,30 +1,32 @@
 import { Box, Stack, styled, Typography, useMediaQuery } from '@mui/material'
 import json2mq from 'json2mq'
 
-const StyledSection = styled('section')`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: right;
-  margin: 0.8vw;
-  width: 25vw;
-`
+interface SectionProps {
+  matches: boolean
+}
 
-const StyledParagraph = styled('p')`
-  font-family: IRANSansLight, sans-serif !important;
+const StyledSection = styled('section')<SectionProps>(({ matches }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  textAlign: 'right',
+  margin: '0.8vw',
+  width: matches ? '25vw' : '100%',
+}))
 
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.5vw;
-  line-height: 2.5vw;
-  text-align: justify;
-`
+const StyledParagraph = styled('p')<SectionProps>(({ matches }) => ({
+  fontFamily: 'IRANSansLight, sans-serif !important',
 
-const LargeTypography = styled(Typography)(() => ({
+  fontSize: matches ? '1.5vw' : '4vw',
+  lineHeight: matches ? '2.5vw' : '4.5vw',
+  textAlign: 'justify',
+}))
+
+const LargeTypography = styled(Typography)<SectionProps>(({ matches }) => ({
   fontFamily: 'IRANSansBold, sans-serif',
   fontWeight: 700,
-  fontSize: '1.5vw',
-  lineHeight: '2.5vw',
+  fontSize: matches ? '1.5vw' : '4vw',
+  lineHeight: matches ? '2.5vw' : '4vw',
 }))
 
 export function AboutEvent() {
@@ -43,10 +45,10 @@ export function AboutEvent() {
         }/introduction.svg)`,
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100vw auto',
+        backgroundSize: matches ? '100vw auto' : 'contain',
         width: '100vw',
         maxWith: '100vw',
-        height: '60vw',
+        height: matches ? '60vw' : '160vw',
         padding: '1.6vw 7.5vw 25vw',
         boxSizing: 'border-box',
       }}
@@ -54,7 +56,7 @@ export function AboutEvent() {
       <Typography
         sx={{
           fontWeight: 900,
-          fontSize: '3.75vw',
+          fontSize: matches ? '3.75vw' : '11vw',
           lineHeight: '170%',
           letterSpacing: '0.015em',
           fontFamily: 'IRANSansBold',
@@ -73,8 +75,8 @@ export function AboutEvent() {
         className="container"
         sx={{ borderRight: '0.05vw solid black', width: '100%' }}
       >
-        <StyledSection>
-          <StyledParagraph>
+        <StyledSection matches={matches}>
+          <StyledParagraph matches={matches}>
             رویداد لیگ برنامه‌نویسان شریف، توسط انجمن علمی دانشکده‌ی مهندسی
             کامپیوتر دانشگاه صنعتی شریف در نیم‌سال دوم تحصیلی ۱۴۰۰-۱۴۰۱ با مخاطب
             اصلی دانش‌جویان ترم دومی دانشگاه‌های مختلف برگزار می‌شود. در این
@@ -83,15 +85,15 @@ export function AboutEvent() {
             فرادرسی مربوط به برنامه‌نویسی، افزایش می‌دهند.
           </StyledParagraph>
         </StyledSection>
-        <StyledSection>
-          <LargeTypography>برگزار کننده</LargeTypography>
-          <StyledParagraph>
+        <StyledSection matches={matches}>
+          <LargeTypography matches={matches}>برگزار کننده</LargeTypography>
+          <StyledParagraph matches={matches}>
             انجمن علمی دانشکده‌ی مهندسی کامپیوتر دانشگاه صنعتی شریف
           </StyledParagraph>
         </StyledSection>
-        <StyledSection>
-          <LargeTypography>زمان برگزاری</LargeTypography>
-          <StyledParagraph>بهار ۱۴۰۱</StyledParagraph>
+        <StyledSection matches={matches}>
+          <LargeTypography matches={matches}>زمان برگزاری</LargeTypography>
+          <StyledParagraph matches={matches}>بهار ۱۴۰۱</StyledParagraph>
         </StyledSection>
       </Box>
     </Stack>
