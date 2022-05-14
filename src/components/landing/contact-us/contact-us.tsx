@@ -290,13 +290,13 @@ export function ContactUs() {
                   }}
                 >
                   <Typography fontFamily="inherit" fontSize="inherit">
-                    بک‌اند: علی‌حسینی، کمیل، غضنفری
+                    بک‌اند: حسین علی‌حســـــینی، کــمیل یحیی‌زاده، علیرضا غضنفری
                   </Typography>
                   <Typography fontFamily="inherit" fontSize="inherit">
-                    فرانت‌اند: دولت‌آبادی
+                    فرانت‌اند: محمدحسین دولت‌آبادی
                   </Typography>
                   <Typography fontFamily="inherit" fontSize="inherit">
-                    طراحی: مصیبی
+                    طراحی: محمد مصیبی
                   </Typography>
                   <Typography fontFamily="inherit" fontSize="inherit">
                     تمامی حقوق محفوظ است

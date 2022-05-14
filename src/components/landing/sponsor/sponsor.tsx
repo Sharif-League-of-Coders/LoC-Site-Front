@@ -10,27 +10,30 @@ export function Sponsor() {
   return (
     <Stack
       id="sponsor"
-      justifyContent="center"
+      justifyContent={matches ? 'center' : 'flexStart'}
       alignItems="center"
       sx={{
         background: `url(assets/background/${
           matches ? 'desktop' : 'mobile'
         }/sponsor.svg)`,
-        height: '60vw',
+        height: matches ? '60vw' : '100vw',
         width: '100vw',
         maxWidth: '100vw',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100vw auto',
+        backgroundSize: matches ? '100vw auto' : 'contain',
       }}
     >
       <Box
         sx={{
-          padding: '1.75vw',
+          padding: matches ? '1.75vw' : '10vw 0 0',
         }}
       >
         <a href="https://mohaymen.ir/fa/" target="_blank">
-          <img src="assets/logos/sponsor-logo.svg" style={{ width: '20vw' }} />
+          <img
+            src="assets/logos/sponsor-logo.svg"
+            style={{ width: matches ? '20vw' : '35vw' }}
+          />
         </a>
       </Box>
     </Stack>
