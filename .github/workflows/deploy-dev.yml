@@ -24,6 +24,7 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
+          ls -a
           cp -r deploy/* build
 
       - name: Configure git
