@@ -14,6 +14,7 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import json2mq from 'json2mq'
+import axios from 'axios'
 
 interface TextFieldProps {
   matches: boolean
@@ -46,6 +47,29 @@ export function TabPanel({
   ...other
 }: TabPanelProps) {
   const [showPassword, setShowPassword] = useState(false)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [isWrontCredential, setIsWrongCredential] = useState(false)
+
+  const handleRegister = () => {
+    axios
+      .post('http://loc.stest.ir:800/api/user/signup', {
+        email: username,
+        password_1: password,
+        password_2: password,
+        phone_number: '09128812024',
+      })
+      .then(console.log)
+  }
+  const handleLogin = () => {
+    axios
+      .post('http://loc.stest.ir:800/api/user/login', {
+        username,
+        password,
+      })
+      .then(console.log)
+  }
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -82,25 +106,29 @@ export function TabPanel({
                 {isRegistration ? 'ثبت نام در مسابقه' : 'ورود به پنل مسابقه'}
               </Typography>
               <Divider orientation="vertical" flexItem />
-              <Typography
-                color="error"
-                sx={{
-                  fontFamily: 'IRANSansBold',
-                  fontWeight: 900,
-                  fontSize: matches ? '1.25vw' : '3vw',
-                  lineHeight: matches ? '2vw' : '4.7vw',
-                  marginLeft: matches ? 0 : '5vw',
-                }}
-              >
-                اطلاعات کاربری وارد شده
-                <br /> نادرست است
-              </Typography>
+              {isWrontCredential && (
+                <Typography
+                  color="error"
+                  sx={{
+                    fontFamily: 'IRANSansBold',
+                    fontWeight: 900,
+                    fontSize: matches ? '1.25vw' : '3vw',
+                    lineHeight: matches ? '2vw' : '4.7vw',
+                    marginLeft: matches ? 0 : '5vw',
+                  }}
+                >
+                  اطلاعات کاربری وارد شده
+                  <br /> نادرست است
+                </Typography>
+              )}
             </Stack>
             <Stack sx={{ margin: '1vw 0' }}>
               <StyledTextFiled
                 fullWidth
                 matches={matches}
                 placeholder="رایانشانی / نام کاربری"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
                 sx={{
                   height: '3.25vw',
                   marginBottom: matches ? '2vw' : '7vw',
@@ -118,8 +146,10 @@ export function TabPanel({
               <StyledTextFiled
                 fullWidth
                 matches={matches}
+                value={password}
                 placeholder="گذرواژه"
                 type={showPassword ? 'text' : 'password'}
+                onChange={(e) => setPassword(e.target.value)}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -172,6 +202,9 @@ export function TabPanel({
               )}
             </Stack>
             <Button
+              onClick={() =>
+                isRegistration ? handleRegister() : handleLogin()
+              }
               sx={{
                 background:
                   'linear-gradient(90.2deg, #002B99 1.21%, #2164D6 99.83%)',
