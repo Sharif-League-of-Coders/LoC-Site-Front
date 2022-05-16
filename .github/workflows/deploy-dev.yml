@@ -24,9 +24,7 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
-          mkdir to_be_deployed
-          cp -r build/* to_be_deployed
-          cp -r deploy/* to_be_deployed
+          cp -r deploy/* build
 
       - name: Configure git
         run: |
@@ -42,7 +40,7 @@ jobs:
         env:
           REPO: self
           BRANCH: ${{ steps.extract_branch.outputs.branch }}
-          FOLDER: to_be_deployed
+          FOLDER: .
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
 
@@ -66,5 +64,6 @@ jobs:
             git checkout ${{ steps.extract_branch.outputs.branch }}
             git fetch --all
             git reset --hard origin/master
+            cd build
             docker-compose build
             docker-compose up -d
