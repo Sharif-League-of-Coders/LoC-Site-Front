@@ -12,6 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
+      - name: Prepare files
+        run: |
+          mkdir to_be_pushed
+          cp * to_be_pushed
+
       - name: Yarn install
         uses: borales/actions-yarn@v2.3.0
         with:
@@ -24,11 +29,7 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
-          mkdir to_be_deployed
-          cp -r build/* to_be_deployed
-          rm -r build
-          cp -r deploy/* to_be_deployed
-          mv to_be_deployed build
+          cp -r build/* to_be_pushed/deploy
 
       - name: Configure git
         run: |
@@ -44,7 +45,7 @@ jobs:
         env:
           REPO: self
           BRANCH: ${{ steps.extract_branch.outputs.branch }}
-          FOLDER: .
+          FOLDER: to_be_pushed
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Build"
 
@@ -68,6 +69,6 @@ jobs:
             git checkout ${{ steps.extract_branch.outputs.branch }}
             git fetch --all
             git reset --hard origin/master
-            cd build
+            cd deploy
             docker-compose build
             docker-compose up -d
