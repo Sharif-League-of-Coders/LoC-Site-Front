@@ -24,8 +24,11 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
-          ls -al
-          cp -r deploy/* build
+          mkdir to_be_deployed
+          cp -r build/* to_be_deployed
+          rm -r build
+          cp -r deploy/* to_be_deployed
+          mv to_be_deployed build
 
       - name: Configure git
         run: |
