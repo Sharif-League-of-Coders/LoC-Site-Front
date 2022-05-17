@@ -93,8 +93,8 @@ function FieldsArea({
       .then(({ data, status }) => {
         if(status === 200){
           console.log(data)
-          dispatch(setIsLoggedIn(true))
-          dispatch(setToken(data.token))
+          dispatch(setIsLoggedIn({ isLoggedIn: true }))
+          dispatch(setToken({ token: data.token }))
           window.open('/dashboard')
         }
       })
