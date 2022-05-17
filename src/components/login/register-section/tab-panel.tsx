@@ -15,8 +15,8 @@ import {
 import React from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
-import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
-import { useDispatch } from 'react-redux'
+// import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
+// import { useDispatch } from 'react-redux'
 
 interface TextFieldProps {
   matches: boolean
@@ -62,26 +62,25 @@ function FieldsArea({
   showPassword,
   setShowPassword,
   isRegistration,
-  setShowActivationEmailSentNotes,
-  setIsWrongCredential,
+  // setShowActivationEmailSentNotes,
+  // setIsWrongCredential,
 }: FieldsAreaProps) {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const handleRegister = () => {
-    setShowActivationEmailSentNotes(true)
-    setIsWrongCredential(true)
-    dispatch(reduxSetUsername({ username }))
+    // setShowActivationEmailSentNotes(true)
+    // setIsWrongCredential(true)
+    // dispatch(reduxSetUsername({ username }))
     axios
-      .post('http://loc.stest.ir:800/api/user/signup', {
+      .post('https://loc.stest.ir/api/user/signup', {
         email: username,
         password_1: password,
         password_2: password,
-        phone_number: '09128812024',
       })
       .then(console.log)
   }
   const handleLogin = () => {
     axios
-      .post('http://loc.stest.ir:800/api/user/login', {
+      .post('https://loc.stest.ir/api/user/login', {
         username,
         password,
       })
