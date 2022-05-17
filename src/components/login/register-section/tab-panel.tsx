@@ -15,6 +15,8 @@ import {
 import React, { useState } from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
+import { usernameView, setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
+import { useDispatch, useSelector } from 'react-redux'
 
 interface TextFieldProps {
   matches: boolean
@@ -59,9 +61,11 @@ function FieldsArea({
   setShowActivationEmailSentNotes,
   setIsWrongCredential,
 }: FieldsAreaProps) {
+  const dispatch = useDispatch()
   const handleRegister = () => {
     setShowActivationEmailSentNotes(true)
     setIsWrongCredential(true)
+    dispatch(reduxSetUsername({ username }))
     axios
       .post('http://loc.stest.ir:800/api/user/signup', {
         email: username,
@@ -79,6 +83,13 @@ function FieldsArea({
       })
       .then(console.log)
   }
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value)
+  }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
   return (
     <Stack>
       <Stack sx={{ margin: '1vw 0' }}>
@@ -86,33 +97,63 @@ function FieldsArea({
           fullWidth
           matches={matches}
           placeholder="رایانشانی / نام کاربری"
-          onChange={e => setUsername(e.target.value)}
+          onChange={handleUsernameChange}
           value={username}
           sx={{
-            height: '3.25vw',
-            marginBottom: matches ? '2vw' : '7vw',
             fontSize: matches ? '1vw' : '2.4vw',
           }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Person />
+                <Person sx={{
+                  width: matches ? '2vw' : '4vw',
+                  height: matches ? '2vw' : '4vw'
+                }}/>
               </InputAdornment>
             ),
           }}
         />
 
         <StyledTextFiled
+          sx={{
+            marginTop: matches ? '1vw' : '2vw',
+
+          }}
           fullWidth
           matches={matches}
           value={password}
           placeholder="گذرواژه"
           type={showPassword ? 'text' : 'password'}
-          onChange={e => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start" >
+                <Lock sx={{
+                  width: matches ? '2vw' : '4vw',
+                  height: matches ? '2vw' : '4vw'
+                }}/>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <StyledTextFiled
+          sx={{
+            marginTop: matches ? '1vw' : '2vw',
+
+          }}
+          fullWidth
+          matches={matches}
+          value={password}
+          placeholder="تکرار گذرواژه"
+          type={showPassword ? 'text' : 'password'}
+          onChange={handlePasswordChange}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Lock />
+                <Lock sx={{
+                  width: matches ? '2vw' : '4vw',
+                  height: matches ? '2vw' : '4vw'
+                }} />
               </InputAdornment>
             ),
           }}
@@ -251,7 +292,9 @@ export function TabPanel({
   ...other
 }: TabPanelProps) {
   const [showPassword, setShowPassword] = useState(false)
-  const [username, setUsername] = useState('')
+  const storeUsername = useSelector(usernameView)
+  console.log(storeUsername)
+  const [username, setUsername] = useState(storeUsername)
   const [password, setPassword] = useState('')
   const [isWrongCredential, setIsWrongCredential] = useState(false)
   const [showActivationEmailSentNotes, setShowActivationEmailSent] =

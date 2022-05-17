@@ -18,13 +18,8 @@ store.subscribe(() => {
   localStorage.setItem(
     'LoC',
     JSON.stringify({
-      login: state.login,
+      account: state.account,
     }),
   )
 })
-
-export type RootState = ReturnType<typeof store.getState>
-
-
-export const { dispatch, getState } = store
 export default store
