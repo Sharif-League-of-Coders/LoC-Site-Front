@@ -30,7 +30,6 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
-          rsync -a build/.[^.]* to_be_pushed/deploy
           rsync -a build/* to_be_pushed/deploy
 
       - name: Configure git
