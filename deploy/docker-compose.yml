@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   front_nginx:
-    container_name: loc_front_nginx
+    container_name: loc_frontend
     build:
       context: .
       dockerfile: Dockerfile
