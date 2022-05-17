@@ -120,7 +120,7 @@ export function NavBar() {
               </Box>
             ))}
         </Stack>
-        {!isLoggedIn ? (
+        {isLoggedIn ? (
           <Box>
             <Button
               href="/dashboard"
