@@ -1,4 +1,5 @@
-import { Stack } from '@mui/material'
+import { Stack, useMediaQuery } from '@mui/material'
+import json2mq from 'json2mq'
 import {
   BoldStyledTypography,
   LightStyledTypography,
@@ -6,14 +7,22 @@ import {
 } from '../components'
 
 export function State() {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    }),
+  )
   return (
     <Stack
       sx={{
         boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
 
-        borderRadius: '65px',
-        width: '29vw',
-        height: '30vw',
+        borderRadius: matches ? '3vw' : '7vw',
+        width: matches ? '29.25vw' : '100%',
+        height: matches ? '30vw' : '70vw',
+
+        boxSizing: 'border-box',
+        marginTop: matches ? 0 : '7.25vw',
       }}
     >
       <Stack
@@ -21,29 +30,44 @@ export function State() {
         justifyContent="center"
         sx={{
           width: 'calc(100% -10px)',
-          height: '6.5vw',
-          borderRadius: '65px 65px 0 0',
+          height: matches ? '6.5vw' : '15vw',
+          borderRadius: 'inherit',
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
           border: '5px solid #1C1C1E',
           boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
         }}
       >
-        <BoldStyledTypography>وضعیت</BoldStyledTypography>
+        <BoldStyledTypography matches={matches}>وضعیت</BoldStyledTypography>
       </Stack>
       <Stack
-        sx={{ height: '100%', padding: '3.25vw', boxSizing: 'border-box' }}
+        sx={{
+          height: '100%',
+          padding: matches ? '2vw' : '5vw',
+          boxSizing: 'border-box',
+          borderRadius: 'inherit',
+        }}
       >
-        <ShadowStack>
-          <LightStyledTypography>شماره و نام فاز</LightStyledTypography>
+        <ShadowStack matches={matches}>
+          <LightStyledTypography matches={matches}>
+            شماره و نام فاز
+          </LightStyledTypography>
         </ShadowStack>
-        <ShadowStack>
-          <LightStyledTypography>فایل سوال</LightStyledTypography>
+        <ShadowStack matches={matches}>
+          <LightStyledTypography matches={matches}>
+            فایل سوال
+          </LightStyledTypography>
         </ShadowStack>
-        <ShadowStack>
-          <LightStyledTypography>مدت زمان باقی مانده</LightStyledTypography>
+        <ShadowStack matches={matches}>
+          <LightStyledTypography matches={matches}>
+            مدت زمان باقی مانده
+          </LightStyledTypography>
         </ShadowStack>
 
-        <ShadowStack>
-          <LightStyledTypography>تاریخ ددلاین نهایی</LightStyledTypography>
+        <ShadowStack matches={matches}>
+          <LightStyledTypography matches={matches}>
+            تاریخ ددلاین نهایی
+          </LightStyledTypography>
         </ShadowStack>
       </Stack>
     </Stack>

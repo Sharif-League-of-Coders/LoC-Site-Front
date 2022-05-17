@@ -12,11 +12,14 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
-import { usernameView, setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
-import { useDispatch, useSelector } from 'react-redux'
+import {
+
+  setUsername as reduxSetUsername,
+} from '../../../scenes/_slice/account.slice'
+import { useDispatch } from 'react-redux'
 
 interface TextFieldProps {
   matches: boolean
@@ -42,8 +45,10 @@ interface FieldsAreaProps {
   password: string
   showPassword: boolean
   isRegistration: boolean
+  secondPassword: string
   setUsername: React.Dispatch<React.SetStateAction<string>>
   setPassword: React.Dispatch<React.SetStateAction<string>>
+  setSecondPassword: React.Dispatch<React.SetStateAction<string>>
   setShowPassword: React.Dispatch<React.SetStateAction<boolean>>
   setShowActivationEmailSentNotes: React.Dispatch<React.SetStateAction<boolean>>
   setIsWrongCredential: React.Dispatch<React.SetStateAction<boolean>>
@@ -55,6 +60,8 @@ function FieldsArea({
   username,
   password,
   setPassword,
+  secondPassword,
+  setSecondPassword,
   showPassword,
   setShowPassword,
   isRegistration,
@@ -84,11 +91,14 @@ function FieldsArea({
       .then(console.log)
   }
 
-  const handleUsernameChange = (e) => {
+  const handleUsernameChange = e => {
     setUsername(e.target.value)
   }
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = e => {
     setPassword(e.target.value)
+  }
+  const handleSecondPasswordChange = e => {
+    setSecondPassword(e.target.value)
   }
   return (
     <Stack>
@@ -105,10 +115,12 @@ function FieldsArea({
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Person sx={{
-                  width: matches ? '2vw' : '4vw',
-                  height: matches ? '2vw' : '4vw'
-                }}/>
+                <Person
+                  sx={{
+                    width: matches ? '2vw' : '4vw',
+                    height: matches ? '2vw' : '4vw',
+                  }}
+                />
               </InputAdornment>
             ),
           }}
@@ -117,7 +129,6 @@ function FieldsArea({
         <StyledTextFiled
           sx={{
             marginTop: matches ? '1vw' : '2vw',
-
           }}
           fullWidth
           matches={matches}
@@ -127,11 +138,13 @@ function FieldsArea({
           onChange={handlePasswordChange}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start" >
-                <Lock sx={{
-                  width: matches ? '2vw' : '4vw',
-                  height: matches ? '2vw' : '4vw'
-                }}/>
+              <InputAdornment position="start">
+                <Lock
+                  sx={{
+                    width: matches ? '2vw' : '4vw',
+                    height: matches ? '2vw' : '4vw',
+                  }}
+                />
               </InputAdornment>
             ),
           }}
@@ -139,21 +152,22 @@ function FieldsArea({
         <StyledTextFiled
           sx={{
             marginTop: matches ? '1vw' : '2vw',
-
           }}
           fullWidth
           matches={matches}
-          value={password}
+          value={secondPassword}
           placeholder="تکرار گذرواژه"
           type={showPassword ? 'text' : 'password'}
-          onChange={handlePasswordChange}
+          onChange={handleSecondPasswordChange}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Lock sx={{
-                  width: matches ? '2vw' : '4vw',
-                  height: matches ? '2vw' : '4vw'
-                }} />
+                <Lock
+                  sx={{
+                    width: matches ? '2vw' : '4vw',
+                    height: matches ? '2vw' : '4vw',
+                  }}
+                />
               </InputAdornment>
             ),
           }}
@@ -282,24 +296,39 @@ function ActivationEmailSentNotes({
 interface TabPanelProps {
   index: number
   value: number
+  username: string
+  password: string
+  secondPassword: string
+  showPassword: boolean
+  showActivationEmailSentNotes: boolean
+  isWrongCredential: boolean
   isRegistration?: boolean
+  setUsername: React.Dispatch<React.SetStateAction<string>>
+  setPassword: React.Dispatch<React.SetStateAction<string>>
+  setSecondPassword: React.Dispatch<React.SetStateAction<string>>
+  setShowPassword: React.Dispatch<React.SetStateAction<boolean>>
+  setShowActivationEmailSentNotes: React.Dispatch<React.SetStateAction<boolean>>
+  setIsWrongCredential: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function TabPanel({
   isRegistration,
   value,
   index,
+  isWrongCredential,
+  showActivationEmailSentNotes,
+  secondPassword,
+  password,
+  username,
+  setUsername,
+  setPassword,
+  showPassword,
+  setSecondPassword,
+  setShowPassword,
+  setShowActivationEmailSentNotes,
+  setIsWrongCredential,
   ...other
 }: TabPanelProps) {
-  const [showPassword, setShowPassword] = useState(false)
-  const storeUsername = useSelector(usernameView)
-  console.log(storeUsername)
-  const [username, setUsername] = useState(storeUsername)
-  const [password, setPassword] = useState('')
-  const [isWrongCredential, setIsWrongCredential] = useState(false)
-  const [showActivationEmailSentNotes, setShowActivationEmailSent] =
-    useState(false)
-
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -361,18 +390,20 @@ export function TabPanel({
             {showActivationEmailSentNotes ? (
               <ActivationEmailSentNotes
                 matches={matches}
-                setShowActivationEmailSentNotes={setShowActivationEmailSent}
+                setShowActivationEmailSentNotes={setShowActivationEmailSentNotes}
               />
             ) : (
               <FieldsArea
                 matches={matches}
                 username={username}
                 password={password}
+                secondPassword={secondPassword}
                 showPassword={showPassword}
                 isRegistration={isRegistration}
                 setUsername={setUsername}
                 setPassword={setPassword}
-                setShowActivationEmailSentNotes={setShowActivationEmailSent}
+                setSecondPassword={setSecondPassword}
+                setShowActivationEmailSentNotes={setShowActivationEmailSentNotes}
                 setShowPassword={setShowPassword}
                 setIsWrongCredential={setIsWrongCredential}
               />

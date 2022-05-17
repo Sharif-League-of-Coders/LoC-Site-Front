@@ -1,7 +1,9 @@
 import { Stack, Tab, Tabs, styled, useMediaQuery } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import json2mq from 'json2mq'
 import { TabPanel } from './tab-panel'
+import { useSelector } from 'react-redux'
+import { usernameView } from '../../../scenes/_slice/account.slice'
 
 interface TabProps {
   matches: boolean
@@ -45,6 +47,15 @@ function a11yProps(index: number) {
 
 export function RegisterSection() {
   const [value, setValue] = React.useState(0)
+  const [showPassword, setShowPassword] = useState(false)
+  const storeUsername = useSelector(usernameView)
+  console.log(storeUsername)
+  const [username, setUsername] = useState(storeUsername)
+  const [password, setPassword] = useState('')
+  const [secondPassword, setSecondPassword] = useState('')
+  const [isWrongCredential, setIsWrongCredential] = useState(false)
+  const [showActivationEmailSentNotes, setShowActivationEmailSent] =
+    useState(false)
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -54,6 +65,7 @@ export function RegisterSection() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
+
   return (
     <Stack
       sx={{
@@ -81,8 +93,25 @@ export function RegisterSection() {
           sx={{ width: '50%' }}
         />
       </StyledTabs>
-      <TabPanel index={0} value={value} isRegistration />
-      <TabPanel index={1} value={value} />
+      {[0, 1].map(index => (
+        <TabPanel
+          index={index}
+          value={value}
+          isRegistration
+          username={username}
+          password={password}
+          secondPassword={secondPassword}
+          showPassword={showPassword}
+          showActivationEmailSentNotes={showActivationEmailSentNotes}
+          isWrongCredential={isWrongCredential}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          setSecondPassword={setSecondPassword}
+          setShowActivationEmailSentNotes={setShowActivationEmailSent}
+          setShowPassword={setShowPassword}
+          setIsWrongCredential={setIsWrongCredential}
+        />
+      ))}
     </Stack>
   )
 }

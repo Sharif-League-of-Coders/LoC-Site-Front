@@ -8,7 +8,7 @@ export function Dashboard() {
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
-    })
+    }),
   )
   return (
     <Stack
@@ -25,7 +25,14 @@ export function Dashboard() {
     >
       <NavBar />
       <Typography>داشبورد</Typography>
-      <Stack flexDirection="row" justifyContent="center">
+      <Stack
+        flexDirection={matches ? 'row' : 'column'}
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          padding: matches ? 0 : '3vw'
+        }}
+      >
         <Resources></Resources>
         <State></State>
       </Stack>
