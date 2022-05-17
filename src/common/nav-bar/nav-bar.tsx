@@ -1,10 +1,6 @@
 import {
-  AppBar,
-  Container,
   IconButton,
   Divider,
-  Toolbar,
-  MenuItem,
   Typography,
   Button,
   styled,
@@ -38,7 +34,7 @@ export function NavBar() {
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
-    })
+    }),
   )
   return (
     <StyledAppbar
@@ -73,7 +69,7 @@ export function NavBar() {
           <IconButton
             sx={{ minHeight: '3.5vw', height: matches ? '2.5vw' : '8vw' }}
           >
-            <img src="assets/logos/logo.svg" width="100%" height="100%" />
+            <img src="/assets/logos/logo.svg" width="100%" height="100%"  alt="league-of-coders"/>
           </IconButton>
           {matches && (
             <StyledDivider orientation="vertical" flexItem color="black" />
@@ -119,7 +115,7 @@ export function NavBar() {
               marginLeft: '1vw',
             }}
           >
-            {'ثبت نام'}
+            ثبت نام
           </Button>
           <Button
             href="/login"
@@ -134,7 +130,7 @@ export function NavBar() {
               borderRadius: '10px',
             }}
           >
-            {'ورود'}
+            ورود
           </Button>
         </Stack>
       </Stack>

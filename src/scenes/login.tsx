@@ -51,7 +51,7 @@ export function Login() {
           height: matches ? '4vw' : '9.6vw',
         }}
       >
-        <img src="assets/logos/logo.svg" width="100%" height="100%" />
+        <img src="/assets/logos/logo.svg" width="100%" height="100%" alt="league-of-coders"/>
       </Box>
       <Button
         href="/"
@@ -64,7 +64,7 @@ export function Login() {
         }}
         endIcon={
           <Box width={matches ? '1.5vw' : '3vw'}>
-            <img src="assets/icons/arrow-left.svg" width="100%" height="100%" />
+            <img src="/assets/icons/arrow-left.svg" width="100%" height="100%" alt="left-arrow"/>
           </Box>
         }
       >
