@@ -48,7 +48,7 @@ export function RegisterSection() {
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
-    })
+    }),
   )
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
