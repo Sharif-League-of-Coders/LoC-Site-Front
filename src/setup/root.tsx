@@ -11,7 +11,7 @@ export function Root() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/login/:email_verified?" element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isRegistration={false}/>}/>
+      <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isRegistration={false}/>}/>
       <Route path="/signup" element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isRegistration/>} />
 
 
