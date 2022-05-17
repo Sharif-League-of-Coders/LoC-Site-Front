@@ -19,6 +19,7 @@ const accountSlice = createSlice({
     },
     setUsername: (state, action) => {
       const { username } = action.payload
+      console.log(username)
       state.username = username
     },
 
@@ -30,9 +31,9 @@ export const { setIsLoggedIn, setIsFetching, setUsername } = actions
 export default reducer
 
 // Views
-export const isLoggedInVew = state => state.isLoggedIn
-export const isFetchingView = state => state.isFetching
-export const usernameView = state => state.username
+export const isLoggedInVew = state => state.account.isLoggedIn
+export const isFetchingView = state => state.account.isFetching
+export const usernameView = state => state.account.username
 
 // // Getters
 // export const getIsLoggedIn = state => (state ?? getState()).isLoggedIn

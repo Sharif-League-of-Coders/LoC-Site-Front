@@ -16,7 +16,6 @@ import React from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
 import {
-
   setUsername as reduxSetUsername,
 } from '../../../scenes/_slice/account.slice'
 import { useDispatch } from 'react-redux'
@@ -108,7 +107,6 @@ function FieldsArea({
           matches={matches}
           placeholder="رایانشانی / نام کاربری"
           onChange={handleUsernameChange}
-          value={username}
           sx={{
             fontSize: matches ? '1vw' : '2.4vw',
           }}

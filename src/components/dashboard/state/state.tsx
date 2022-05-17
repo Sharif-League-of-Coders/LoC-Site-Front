@@ -5,6 +5,7 @@ import {
   LightStyledTypography,
   ShadowStack,
 } from '../components'
+import { BlurLayer } from '../components/blur-layer'
 
 export function State() {
   const matches = useMediaQuery(
@@ -23,8 +24,11 @@ export function State() {
 
         boxSizing: 'border-box',
         marginTop: matches ? 0 : '7.25vw',
+
+        position: 'relative'
       }}
     >
+      <BlurLayer matches={matches} />
       <Stack
         alignItems="center"
         justifyContent="center"

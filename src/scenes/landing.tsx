@@ -5,14 +5,17 @@ import { FrequentlyAskedQuestion } from 'components/landing/frequently-asked-que
 import { Header } from 'components/landing/header/header'
 import { RegisterNow } from 'components/landing/register-now'
 import { Sponsor } from 'components/landing/sponsor/sponsor'
+import { useSelector } from 'react-redux'
+import { isLoggedInVew } from './_slice/account.slice'
 
 export function Landing() {
+  const isLoggedIn = useSelector(isLoggedInVew)
   return (
     <Stack sx={{ overflow: 'hidden', direction: 'rtl', maxWidth: '100%' }}>
       <Header />
       <AboutEvent />
       <Sponsor />
-      <RegisterNow />
+      {isLoggedIn && <RegisterNow />}
       <FrequentlyAskedQuestion />
       <ContactUs />
     </Stack>
