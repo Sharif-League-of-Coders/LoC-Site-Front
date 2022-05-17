@@ -11,7 +11,8 @@ import {
 } from '@mui/material'
 import json2mq from 'json2mq'
 import { useDispatch, useSelector } from 'react-redux'
-import { isLoggedInVew, setIsLoggedIn, setToken, usernameView } from '../../scenes/_slice/account.slice'
+import { isLoggedInVew, setIsLoggedIn, setToken, tokenView, usernameView } from '../../scenes/_slice/account.slice'
+import axios from 'axios'
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
@@ -29,6 +30,7 @@ const StyledAppbar = styled(Stack)(() => ({
 export function NavBar() {
   const isLoggedIn = useSelector(isLoggedInVew)
   const username = useSelector(usernameView)
+  const token = useSelector(tokenView)
   console.log(isLoggedIn, username)
   const sections = [
     { text: 'ارتباط با ما', href: '/#contact-us' },
@@ -45,6 +47,10 @@ export function NavBar() {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
+    axios.post('https://locsharif.com/api/user/logout', {
+      username,
+      token,
+    }).then(console.log)
     dispatch(setToken(''))
     dispatch(setIsLoggedIn(''))
     window.open('/login', '_self')

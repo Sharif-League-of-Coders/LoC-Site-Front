@@ -468,6 +468,7 @@ export function TabPanel({
                     paddingRight: matches ? '.2vw' : '.6vw',
                     boxSizing: 'border-box',
                   }}
+                  href={isRegistration ? '/login' : '/signup'}
                 >
                   {isRegistration ? 'از اینجا وارد شوید' : 'از اینجا بسازید'}
                 </Button>

@@ -37,7 +37,7 @@ export default reducer
 export const isLoggedInVew = state => state.account.isLoggedIn
 export const isFetchingView = state => state.account.isFetching
 export const usernameView = state => state.account.username
-export const token = state => state.account.token
+export const tokenView = state => state.account.token
 
 // // Getters
 // export const getIsLoggedIn = state => (state ?? getState()).isLoggedIn
