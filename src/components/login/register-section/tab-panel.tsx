@@ -16,7 +16,8 @@ import React from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
 // import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setIsLoggedIn } from '../../../scenes/_slice/account.slice'
 
 interface TextFieldProps {
   matches: boolean
@@ -62,22 +63,25 @@ function FieldsArea({
   showPassword,
   setShowPassword,
   isRegistration,
-  // setShowActivationEmailSentNotes,
-  // setIsWrongCredential,
+  setIsWrongCredential,
+  setShowActivationEmailSentNotes,
 }: FieldsAreaProps) {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const handleRegister = () => {
-    // setShowActivationEmailSentNotes(true)
-    // setIsWrongCredential(true)
-    // dispatch(reduxSetUsername({ username }))
     axios
       .post('https://locsharif.com/api/user/signup', {
         email: username,
         password_1: password,
         password_2: password,
       })
-      .then((data) => {
-        console.log(data)
+      .then(({ data , status}) => {
+        if(status === 200){
+          setShowActivationEmailSentNotes(true)
+          console.log(data)
+        }
+      })
+      .catch(() => {
+        setIsWrongCredential(true)
       })
   }
   const handleLogin = () => {
@@ -86,7 +90,16 @@ function FieldsArea({
         username,
         password,
       })
-      .then(console.log)
+      .then(({ data, status }) => {
+        if(status === 200){
+          console.log(data)
+          dispatch(setIsLoggedIn(true))
+          window.open('/dashboard')
+        }
+      })
+      .catch(() => {
+        setIsWrongCredential(true)
+      })
   }
 
   const handleUsernameChange = e => {
@@ -183,8 +196,8 @@ function FieldsArea({
               onChange={() => setShowPassword(!showPassword)}
               sx={{
                 '& .MuiSvgIcon-root': {
-                  width: matches? '2vw' : '5vw',
-                  height: matches? '2vw' :'5vw',
+                  width: matches ? '2vw' : '5vw',
+                  height: matches ? '2vw' : '5vw',
                 },
               }}
             />
