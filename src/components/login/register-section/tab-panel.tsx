@@ -71,16 +71,18 @@ function FieldsArea({
     // setIsWrongCredential(true)
     // dispatch(reduxSetUsername({ username }))
     axios
-      .post('https://loc.stest.ir/api/user/signup', {
+      .post('https://locshairf.com/api/user/signup', {
         email: username,
         password_1: password,
         password_2: password,
       })
-      .then(console.log)
+      .then((data) => {
+        console.log(data)
+      })
   }
   const handleLogin = () => {
     axios
-      .post('https://loc.stest.ir/api/user/login', {
+      .post('https://locsharif.com/api/user/login', {
         username,
         password,
       })
