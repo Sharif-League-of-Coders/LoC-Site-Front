@@ -1,13 +1,15 @@
 import { Box, Button, Stack, Typography, useMediaQuery } from '@mui/material'
 import json2mq from 'json2mq'
 import { RegisterSection } from 'components/login/register-section'
+import { useParams } from 'react-router-dom'
 
-export function Login() {
+export function Login({isRegistration}:{isRegistration: boolean}) {
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
     })
   )
+  const emailVerified = useParams()['email_verified']
   return (
     <Box
       sx={{
@@ -40,7 +42,7 @@ export function Login() {
           paddingX: matches ? 0 : '5vw',
         }}
       >
-        <RegisterSection />
+        <RegisterSection isRegistration={isRegistration} isEmailVerified={Boolean(emailVerified)}/>
       </Stack>
       <Box
         sx={{

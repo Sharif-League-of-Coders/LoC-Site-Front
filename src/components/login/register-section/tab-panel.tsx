@@ -15,7 +15,7 @@ import {
 import React from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
-// import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
+import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
 import { useDispatch } from 'react-redux'
 import { setIsLoggedIn, setToken } from '../../../scenes/_slice/account.slice'
 
@@ -74,8 +74,8 @@ function FieldsArea({
         password_1: password,
         password_2: password,
       })
-      .then(({ data , status}) => {
-        if(status === 200){
+      .then(({ data, status }) => {
+        if (status === 200) {
           setShowActivationEmailSentNotes(true)
           console.log(data)
         }
@@ -91,8 +91,9 @@ function FieldsArea({
         password,
       })
       .then(({ data, status }) => {
-        if(status === 200){
+        if (status === 200) {
           console.log(data)
+          dispatch(reduxSetUsername({ username }))
           dispatch(setIsLoggedIn({ isLoggedIn: true }))
           dispatch(setToken({ token: data.token }))
           window.open('/dashboard')
@@ -160,29 +161,31 @@ function FieldsArea({
             ),
           }}
         />
-        <StyledTextFiled
-          sx={{
-            marginTop: matches ? '1vw' : '2vw',
-          }}
-          fullWidth
-          matches={matches}
-          value={secondPassword}
-          placeholder="تکرار گذرواژه"
-          type={showPassword ? 'text' : 'password'}
-          onChange={handleSecondPasswordChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Lock
-                  sx={{
-                    width: matches ? '2vw' : '4vw',
-                    height: matches ? '2vw' : '4vw',
-                  }}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
+        {isRegistration && (
+          <StyledTextFiled
+            sx={{
+              marginTop: matches ? '1vw' : '2vw',
+            }}
+            fullWidth
+            matches={matches}
+            value={secondPassword}
+            placeholder="تکرار گذرواژه"
+            type={showPassword ? 'text' : 'password'}
+            onChange={handleSecondPasswordChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock
+                    sx={{
+                      width: matches ? '2vw' : '4vw',
+                      height: matches ? '2vw' : '4vw',
+                    }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
       </Stack>
       <Stack
         flexDirection="row"
@@ -194,7 +197,7 @@ function FieldsArea({
           control={
             <Checkbox
               value={showPassword}
-              onChange={() => setShowPassword(!showPassword)}
+              onChange={() => setShowPassword(prev => !prev)}
               sx={{
                 '& .MuiSvgIcon-root': {
                   width: matches ? '2vw' : '5vw',
@@ -320,6 +323,7 @@ interface TabPanelProps {
   showActivationEmailSentNotes: boolean
   isWrongCredential: boolean
   isRegistration?: boolean
+  isEmailVerified: boolean
   setUsername: React.Dispatch<React.SetStateAction<string>>
   setPassword: React.Dispatch<React.SetStateAction<string>>
   setSecondPassword: React.Dispatch<React.SetStateAction<string>>
@@ -333,6 +337,7 @@ export function TabPanel({
   value,
   index,
   isWrongCredential,
+  isEmailVerified,
   showActivationEmailSentNotes,
   secondPassword,
   password,
@@ -400,6 +405,24 @@ export function TabPanel({
                   >
                     اطلاعات کاربری وارد شده
                     <br /> نادرست است
+                  </Typography>
+                </>
+              )}
+              {!isWrongCredential && isEmailVerified && !showActivationEmailSentNotes && (
+                <>
+                  <Divider orientation="vertical" flexItem />
+
+                  <Typography
+                    color="error"
+                    sx={{
+                      fontFamily: 'IRANSansBold',
+                      fontWeight: 900,
+                      fontSize: matches ? '1.25vw' : '3vw',
+                      lineHeight: matches ? '2vw' : '4.7vw',
+                      marginLeft: matches ? 0 : '5vw',
+                    }}
+                  >
+                    ایمیل شما با موفقیت تایید گشت
                   </Typography>
                 </>
               )}

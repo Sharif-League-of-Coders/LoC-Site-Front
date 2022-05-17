@@ -131,7 +131,7 @@ export function NavBar() {
         ) : (
           <Stack flexDirection="row" sx={{ height: matches ? '2.5vw' : '5vw' }}>
             <Button
-              href="/login"
+              href="/signup"
               sx={{
                 fontFamily: 'IRANSansLight !important',
                 background:

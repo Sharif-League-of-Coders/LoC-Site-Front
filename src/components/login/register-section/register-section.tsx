@@ -45,8 +45,9 @@ function a11yProps(index: number) {
   }
 }
 
-export function RegisterSection() {
-  const [value, setValue] = React.useState(0)
+export function RegisterSection({isRegistration, isEmailVerified}:{isRegistration: boolean
+isEmailVerified: boolean}) {
+  const [value, setValue] = React.useState(isRegistration ? 0 : 1)
   const [showPassword, setShowPassword] = useState(false)
   const storeUsername = useSelector(usernameView)
   console.log(storeUsername)
@@ -104,6 +105,7 @@ export function RegisterSection() {
           showPassword={showPassword}
           showActivationEmailSentNotes={showActivationEmailSentNotes}
           isWrongCredential={isWrongCredential}
+          isEmailVerified={isEmailVerified}
           setUsername={setUsername}
           setPassword={setPassword}
           setSecondPassword={setSecondPassword}
