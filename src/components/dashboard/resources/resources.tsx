@@ -23,7 +23,7 @@ export function Resources() {
         width: '29.25vw',
         height: '30vw',
         padding: '45px 50px',
-        background: 'tarnsparent',
+        background: 'transparent',
         boxSizing: 'border-box',
       }}
     >
