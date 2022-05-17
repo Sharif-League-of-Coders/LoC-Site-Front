@@ -17,7 +17,7 @@ import json2mq from 'json2mq'
 import axios from 'axios'
 // import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
 import { useDispatch } from 'react-redux'
-import { setIsLoggedIn } from '../../../scenes/_slice/account.slice'
+import { setIsLoggedIn, setToken } from '../../../scenes/_slice/account.slice'
 
 interface TextFieldProps {
   matches: boolean
@@ -94,6 +94,7 @@ function FieldsArea({
         if(status === 200){
           console.log(data)
           dispatch(setIsLoggedIn(true))
+          dispatch(setToken(data.token))
           window.open('/dashboard')
         }
       })
@@ -215,21 +216,21 @@ function FieldsArea({
           }
         />
 
-        {!isRegistration && (
-          <>
-            <Divider orientation="vertical" flexItem />
-            <Button
-              sx={{
-                width: '100%',
-                fontWeight: 300,
-                fontSize: matches ? '1.1vw' : '2.7vw',
-                lineHeight: matches ? '1.75vw' : '4.2vw',
-              }}
-            >
-              بـازیـابــی رمــــز عبـــور
-            </Button>
-          </>
-        )}
+        {/*{!isRegistration && (*/}
+        {/*  <>*/}
+        {/*    <Divider orientation="vertical" flexItem />*/}
+        {/*    <Button*/}
+        {/*      sx={{*/}
+        {/*        width: '100%',*/}
+        {/*        fontWeight: 300,*/}
+        {/*        fontSize: matches ? '1.1vw' : '2.7vw',*/}
+        {/*        lineHeight: matches ? '1.75vw' : '4.2vw',*/}
+        {/*      }}*/}
+        {/*    >*/}
+        {/*      بـازیـابــی رمــــز عبـــور*/}
+        {/*    </Button>*/}
+        {/*  </>*/}
+        {/*)}*/}
       </Stack>
       <Button
         onClick={() => (isRegistration ? handleRegister() : handleLogin())}
