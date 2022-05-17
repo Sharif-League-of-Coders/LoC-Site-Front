@@ -4,14 +4,17 @@ import { ThemeProvider } from 'setup/material-theme'
 import { BrowserRouter } from 'react-router-dom'
 
 import { Root } from 'setup/root'
+import ReduxProvider from './setup/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <BrowserRouter>
-        <Root />
-      </BrowserRouter>
-    </ThemeProvider>
+    <ReduxProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Root />
+        </BrowserRouter>
+      </ThemeProvider>
+    </ReduxProvider>
   </React.StrictMode>,
 )
