@@ -1,5 +1,4 @@
 import { Stack } from '@mui/material'
-import { Box } from '@mui/system'
 import {
   BoldStyledTypography,
   LightStyledTypography,

@@ -1,13 +1,13 @@
 import { Box, Link, Stack, Typography, useMediaQuery } from '@mui/material'
 import json2mq from 'json2mq'
 
-import { DetailsBox } from './components/details-box/details-box'
+import { DetailsBox } from './components/details-box'
 
 export function ContactUs() {
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
-    })
+    }),
   )
   return (
     <Box
@@ -126,13 +126,14 @@ export function ContactUs() {
                     },
                     { image: 'telegram', link: 'https://t.me/locsharif/' },
                   ].map(({ image, link }) => (
-                    <a href="link" target="_blank">
+                    <a href={link} target="_blank">
                       <img
                         style={{
                           width: matches ? '2.5vw' : '6vw',
                           height: matches ? '2.5vw' : '6vw',
                         }}
                         src={`assets/icons/${image}.svg`}
+                        alt={image}
                       />
                     </a>
                   ))}
@@ -170,7 +171,8 @@ export function ContactUs() {
                       width: matches ? '1.8vw' : '4vw',
                       height: matches ? '1.8vw' : '4vw',
                     }}
-                    src="assets/icons/gmail.svg"
+                    src="/assets/icons/gmail.svg"
+                    alt="gmail"
                   />
                   <Typography
                     fontFamily="Roboto, sans-serif"
@@ -185,13 +187,14 @@ export function ContactUs() {
               </Stack>
               <Stack flexDirection="row" sx={{ marginTop: '1vw' }}>
                 <img
-                  src="assets/icons/phone.svg"
+                  src="/assets/icons/phone.svg"
                   style={{
                     maxWidth: '10vw',
                     maxHeight: '5vw',
                     width: matches ? '1.8vw' : '4vw',
                     height: matches ? '1.8vw' : '4vw',
                   }}
+                  alt="phone"
                 />
                 <Stack
                   alignItems="center"
@@ -267,6 +270,7 @@ export function ContactUs() {
                     src={`assets/logos/${src}.svg`}
                     width="100%"
                     height="100%"
+                    alt="src"
                   />
                 </Box>
               ))}

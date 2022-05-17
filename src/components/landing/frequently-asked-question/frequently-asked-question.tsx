@@ -8,7 +8,6 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { match } from 'assert'
 import json2mq from 'json2mq'
 
 interface ContainerProps {
@@ -100,7 +99,7 @@ export function FrequentlyAskedQuestion() {
           <StyledAccordion matches={matches}>
             <StyledAccordionSummary
               matches={matches}
-              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+              expandIcon={<img src="/assets/icons/arrow-down.svg" alt="down-arrow" />}
             >
               مسابقه چطوری هست؟
             </StyledAccordionSummary>
@@ -115,7 +114,7 @@ export function FrequentlyAskedQuestion() {
           <StyledAccordion matches={matches}>
             <StyledAccordionSummary
               matches={matches}
-              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+              expandIcon={<img src="/assets/icons/arrow-down.svg" alt="down-arrow"/>}
             >
               چیزی هم باید بلد باشیم تا بتونیم شرکت کنیم؟
             </StyledAccordionSummary>
@@ -129,7 +128,7 @@ export function FrequentlyAskedQuestion() {
           <StyledAccordion matches={matches}>
             <StyledAccordionSummary
               matches={matches}
-              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+              expandIcon={<img src="/assets/icons/arrow-down.svg" alt="down-arrow"/>}
             >
               خب ایول، حالا چطوری باید شرکت کنم؟
             </StyledAccordionSummary>
@@ -142,7 +141,7 @@ export function FrequentlyAskedQuestion() {
           <StyledAccordion matches={matches}>
             <StyledAccordionSummary
               matches={matches}
-              expandIcon={<img src="assets/icons/arrow-down.svg" />}
+              expandIcon={<img src="/assets/icons/arrow-down.svg" alt="down-arrow"/>}
             >
               صبر کن ببینم، اگه سوال داشتم از کی بپرسم؟
             </StyledAccordionSummary>

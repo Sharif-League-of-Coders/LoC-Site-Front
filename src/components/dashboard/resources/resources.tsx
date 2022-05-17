@@ -1,4 +1,4 @@
-import { Stack, styled, Typography } from '@mui/material'
+import { Stack, styled } from '@mui/material'
 import { BoldStyledTypography, ShadowStack } from '../components'
 
 const WrapperStack = styled(Stack)(() => ({

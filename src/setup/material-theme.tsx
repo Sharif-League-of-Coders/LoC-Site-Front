@@ -2,7 +2,6 @@ import React from 'react'
 import {
   createTheme,
   ThemeProvider as MuiThemeProvider,
-  Theme,
   StyledEngineProvider,
 } from '@mui/material'
 
@@ -21,7 +20,6 @@ interface Props {
   children: JSX.Element
 }
 
-/* <CssBaseline /> */
 export function ThemeProvider({ children }: Props) {
   return (
     <StyledEngineProvider injectFirst>
