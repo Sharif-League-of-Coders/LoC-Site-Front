@@ -11,13 +11,31 @@ export function Root() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isRegistration={false}/>}/>
-      <Route path="/signup" element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isRegistration/>} />
-
-
+      <Route
+        path="/login"
+        element={
+          isLoggedIn ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Login isRegistration={false} />
+          )
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          isLoggedIn ? (
+            <Navigate to="/dashboard" replace />
+          ) : (
+            <Login isRegistration />
+          )
+        }
+      />
       <Route
         path="/dashboard"
-        element={!isLoggedIn ? <Navigate to="/signup" replace /> : <Dashboard />}
+        element={
+          isLoggedIn ? <Navigate to="/signup" replace /> : <Dashboard />
+        }
       />
     </Routes>
   )

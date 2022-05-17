@@ -10,8 +10,8 @@ import {
   Link,
 } from '@mui/material'
 import json2mq from 'json2mq'
-import { useSelector } from 'react-redux'
-import { isLoggedInVew, usernameView } from '../../scenes/_slice/account.slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { isLoggedInVew, setIsLoggedIn, setToken, usernameView } from '../../scenes/_slice/account.slice'
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
@@ -41,6 +41,14 @@ export function NavBar() {
       minWidth: 750,
     }),
   )
+
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(setToken(''))
+    dispatch(setIsLoggedIn(''))
+    window.open('/login', '_self')
+  }
   return (
     <StyledAppbar
       justifyContent="center"
@@ -112,22 +120,40 @@ export function NavBar() {
               </Box>
             ))}
         </Stack>
-        {isLoggedIn ? (
-          <Button
-            href="/dashboard"
-            sx={{
-              fontFamily: 'IRANSansLight !important',
-              color: 'black',
-              fontWeight: 300,
-              fontSize: matches ? '1.5vw' : '2.5vw',
-              lineHeight: '2vw',
-              width: 'fit-content',
-              border: '1px solid black',
-              borderRadius: '10px',
-            }}
-          >
-            {username}
-          </Button>
+        {!isLoggedIn ? (
+          <Box>
+            <Button
+              href="/dashboard"
+              sx={{
+                fontFamily: 'IRANSansLight !important',
+                color: 'black',
+                fontWeight: 300,
+                fontSize: matches ? '1.5vw' : '2.5vw',
+                lineHeight: '2vw',
+                width: 'fit-content',
+                border: '1px solid black',
+                borderRadius: '10px',
+              }}
+            >
+              {username}
+            </Button>
+            <Button
+              sx={{
+                fontFamily: 'IRANSansLight !important',
+                color: 'red',
+                fontWeight: 300,
+                fontSize: matches ? '1.5vw' : '2.5vw',
+                lineHeight: '2vw',
+                width: 'fit-content',
+                border: '1px solid red',
+                borderRadius: '10px',
+                marginRight: '1vw'
+              }}
+              onClick={handleLogout}
+            >
+              خروج
+            </Button>
+          </Box>
         ) : (
           <Stack flexDirection="row" sx={{ height: matches ? '2.5vw' : '5vw' }}>
             <Button
