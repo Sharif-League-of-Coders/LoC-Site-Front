@@ -97,7 +97,7 @@ export function RegisterSection() {
         <TabPanel
           index={index}
           value={value}
-          isRegistration
+          isRegistration={value === 0}
           username={username}
           password={password}
           secondPassword={secondPassword}
