@@ -15,9 +15,7 @@ import {
 import React from 'react'
 import json2mq from 'json2mq'
 import axios from 'axios'
-import {
-  setUsername as reduxSetUsername,
-} from '../../../scenes/_slice/account.slice'
+import { setUsername as reduxSetUsername } from '../../../scenes/_slice/account.slice'
 import { useDispatch } from 'react-redux'
 
 interface TextFieldProps {
@@ -182,6 +180,12 @@ function FieldsArea({
             <Checkbox
               value={showPassword}
               onChange={() => setShowPassword(!showPassword)}
+              sx={{
+                '& .MuiSvgIcon-root': {
+                  width: matches? '2vw' : '5vw',
+                  height: matches? '2vw' :'5vw',
+                },
+              }}
             />
           }
           label={
@@ -388,7 +392,9 @@ export function TabPanel({
             {showActivationEmailSentNotes ? (
               <ActivationEmailSentNotes
                 matches={matches}
-                setShowActivationEmailSentNotes={setShowActivationEmailSentNotes}
+                setShowActivationEmailSentNotes={
+                  setShowActivationEmailSentNotes
+                }
               />
             ) : (
               <FieldsArea
@@ -401,7 +407,9 @@ export function TabPanel({
                 setUsername={setUsername}
                 setPassword={setPassword}
                 setSecondPassword={setSecondPassword}
-                setShowActivationEmailSentNotes={setShowActivationEmailSentNotes}
+                setShowActivationEmailSentNotes={
+                  setShowActivationEmailSentNotes
+                }
                 setShowPassword={setShowPassword}
                 setIsWrongCredential={setIsWrongCredential}
               />
