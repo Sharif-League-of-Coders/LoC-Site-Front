@@ -72,7 +72,7 @@ function FieldsArea({
       .post('https://locsharif.com/api/user/signup', {
         email: username,
         password_1: password,
-        password_2: password,
+        password_2: secondPassword,
       })
       .then(({ data, status }) => {
         if (status === 200) {
@@ -120,6 +120,7 @@ function FieldsArea({
           fullWidth
           matches={matches}
           placeholder="پست الکترونیک"
+          value={username}
           onChange={handleUsernameChange}
           sx={{
             fontSize: matches ? '1vw' : '2.4vw',
