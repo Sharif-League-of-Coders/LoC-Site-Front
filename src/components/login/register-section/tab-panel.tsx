@@ -119,7 +119,7 @@ function FieldsArea({
         <StyledTextFiled
           fullWidth
           matches={matches}
-          placeholder="رایانشانی / نام کاربری"
+          placeholder="پست الکترونیک"
           onChange={handleUsernameChange}
           sx={{
             fontSize: matches ? '1vw' : '2.4vw',
