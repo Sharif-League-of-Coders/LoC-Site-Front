@@ -31,7 +31,6 @@ export function NavBar() {
   const isLoggedIn = useSelector(isLoggedInVew)
   const username = useSelector(usernameView)
   const token = useSelector(tokenView)
-  console.log(isLoggedIn, username)
   const sections = [
     { text: 'ارتباط با ما', href: '/#contact-us' },
     { text: 'سوالات متدوال', href: '/#faq' },
