@@ -72,12 +72,11 @@ function FieldsArea({
       .post('https://locsharif.com/api/user/signup', {
         email: username,
         password_1: password,
-        password_2: password,
+        password_2: secondPassword,
       })
-      .then(({ data, status }) => {
+      .then(({ status }) => {
         if (status === 200) {
           setShowActivationEmailSentNotes(true)
-          console.log(data)
         }
       })
       .catch(() => {
@@ -92,11 +91,10 @@ function FieldsArea({
       })
       .then(({ data, status }) => {
         if (status === 200) {
-          console.log(data)
           dispatch(reduxSetUsername({ username }))
           dispatch(setIsLoggedIn({ isLoggedIn: true }))
           dispatch(setToken({ token: data.token }))
-          window.open('/dashboard')
+          window.open('/dashboard','_self')
         }
       })
       .catch(() => {
@@ -119,7 +117,8 @@ function FieldsArea({
         <StyledTextFiled
           fullWidth
           matches={matches}
-          placeholder="رایانشانی / نام کاربری"
+          placeholder="پست الکترونیک"
+          value={username}
           onChange={handleUsernameChange}
           sx={{
             fontSize: matches ? '1vw' : '2.4vw',

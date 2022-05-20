@@ -2,8 +2,6 @@ import { Stack, Tab, Tabs, styled, useMediaQuery } from '@mui/material'
 import React, { useState } from 'react'
 import json2mq from 'json2mq'
 import { TabPanel } from './tab-panel'
-import { useSelector } from 'react-redux'
-import { usernameView } from '../../../scenes/_slice/account.slice'
 
 interface TabProps {
   matches: boolean
@@ -49,9 +47,7 @@ export function RegisterSection({isRegistration, isEmailVerified}:{isRegistratio
 isEmailVerified: boolean}) {
   const [value, setValue] = React.useState(isRegistration ? 0 : 1)
   const [showPassword, setShowPassword] = useState(false)
-  const storeUsername = useSelector(usernameView)
-  console.log(storeUsername)
-  const [username, setUsername] = useState(storeUsername)
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [secondPassword, setSecondPassword] = useState('')
   const [isWrongCredential, setIsWrongCredential] = useState(false)
