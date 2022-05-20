@@ -1,7 +1,7 @@
 import { Stack, Tab, Tabs, styled, useMediaQuery } from '@mui/material'
 import React, { useState } from 'react'
 import json2mq from 'json2mq'
-import { TabPanel } from './tab-panel'
+import { TabPanel } from './components/tab-panel'
 
 interface TabProps {
   matches: boolean
@@ -50,7 +50,7 @@ isEmailVerified: boolean}) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [secondPassword, setSecondPassword] = useState('')
-  const [isWrongCredential, setIsWrongCredential] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [showActivationEmailSentNotes, setShowActivationEmailSent] =
     useState(false)
   const matches = useMediaQuery(
@@ -100,14 +100,14 @@ isEmailVerified: boolean}) {
           secondPassword={secondPassword}
           showPassword={showPassword}
           showActivationEmailSentNotes={showActivationEmailSentNotes}
-          isWrongCredential={isWrongCredential}
+          errorMessage={errorMessage}
           isEmailVerified={isEmailVerified}
           setUsername={setUsername}
           setPassword={setPassword}
           setSecondPassword={setSecondPassword}
           setShowActivationEmailSentNotes={setShowActivationEmailSent}
           setShowPassword={setShowPassword}
-          setIsWrongCredential={setIsWrongCredential}
+          setErrorMessage={setErrorMessage}
         />
       ))}
     </Stack>

@@ -11,7 +11,13 @@ import {
 } from '@mui/material'
 import json2mq from 'json2mq'
 import { useDispatch, useSelector } from 'react-redux'
-import { isLoggedInVew, setIsLoggedIn, setToken, tokenView, usernameView } from '../../scenes/_slice/account.slice'
+import {
+  isLoggedInVew,
+  setIsLoggedIn,
+  setToken,
+  tokenView,
+  usernameView,
+} from '../../scenes/_slice/account.slice'
 import axios from 'axios'
 
 const StyledDivider = styled(Divider)(() => ({
@@ -46,13 +52,16 @@ export function NavBar() {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    axios.post('https://locsharif.com/api/user/logout', {
-      username,
-      token,
-    }).then(console.log)
-    dispatch(setToken(''))
-    dispatch(setIsLoggedIn(''))
-    window.open('/login', '_self')
+    axios
+      .post('https://locsharif.com/api/user/logout', {
+        username,
+        token,
+      })
+      .then(() => {
+        dispatch(setToken(''))
+        dispatch(setIsLoggedIn(''))
+        window.open('/login', '_self')
+      })
   }
   return (
     <StyledAppbar
@@ -152,7 +161,7 @@ export function NavBar() {
                 width: 'fit-content',
                 border: '1px solid red',
                 borderRadius: '10px',
-                marginRight: '1vw'
+                marginRight: '1vw',
               }}
               onClick={handleLogout}
             >
