@@ -22,17 +22,20 @@ const StyledTab = styled(Tab)<TabProps>(({ matches }) => ({
   '&.Mui-selected': {
     background: '#FFFFFF',
     boxShadow: '0px 0px 1.75vw 5px rgba(0, 0, 0, 0.09)',
-    borderRadius: '18px',
+    borderRadius: matches ? '1vw' : '1.5vw',
     zIndex: '1000px',
     color: 'black',
   },
 }))
 
-const StyledTabs = styled(Tabs)(() => ({
+const StyledTabs = styled(Tabs)<TabProps>(({ matches }) => ({
   marginBottom: '1vw',
   borderRadius: 'inherit',
   '& .MuiTabs-indicator': {
     display: 'none',
+  },
+  '& .MuiTabs-scroller': {
+    height: matches ? '6vw' : '10vw',
   },
 }))
 
@@ -43,8 +46,13 @@ function a11yProps(index: number) {
   }
 }
 
-export function RegisterSection({isRegistration, isEmailVerified}:{isRegistration: boolean
-isEmailVerified: boolean}) {
+export function RegisterSection({
+  isRegistration,
+  isEmailVerified,
+}: {
+  isRegistration: boolean
+  isEmailVerified: boolean
+}) {
   const [value, setValue] = React.useState(isRegistration ? 0 : 1)
   const [showPassword, setShowPassword] = useState(false)
   const [username, setUsername] = useState('')
@@ -72,6 +80,7 @@ isEmailVerified: boolean}) {
       }}
     >
       <StyledTabs
+        matches={matches}
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"

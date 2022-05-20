@@ -21,7 +21,6 @@ interface TabPanelProps {
   showActivationEmailSentNotes: boolean
   errorMessage: string
   isRegistration?: boolean
-  isEmailVerified: boolean
   setUsername: React.Dispatch<React.SetStateAction<string>>
   setPassword: React.Dispatch<React.SetStateAction<string>>
   setSecondPassword: React.Dispatch<React.SetStateAction<string>>
@@ -35,7 +34,6 @@ export function TabPanel({
   value,
   index,
   errorMessage,
-  isEmailVerified,
   showActivationEmailSentNotes,
   secondPassword,
   password,
@@ -83,14 +81,14 @@ export function TabPanel({
                   fontWeight: 200,
                   fontSize: matches ? '1.25vw' : '3vw',
                   lineHeight: matches ? '2vw' : '4.7vw',
+                  marginRight: matches ? '1vw' : '2vw'
                 }}
               >
                 {isRegistration ? 'ثبت نام در مسابقه' : 'ورود به پنل مسابقه'}
               </Typography>
               {errorMessage && !showActivationEmailSentNotes && (
-                <>
-                  <Divider orientation="vertical" flexItem />
-
+                <Stack direction='row'>
+                  <Divider orientation="vertical" flexItem  />
                   <Typography
                     color="error"
                     sx={{
@@ -98,34 +96,14 @@ export function TabPanel({
                       fontWeight: 900,
                       fontSize: matches ? '1.25vw' : '3vw',
                       lineHeight: matches ? '2vw' : '4.7vw',
-                      marginLeft: matches ? 0 : '5vw',
-                      maxWidth: '13vw'
+                      maxWidth: matches ? '13vw' : '50vw',
+                      marginRight: matches ? '1vw' : '2vw'
                     }}
                   >
                     {errorMessage}
                   </Typography>
-                </>
+                </Stack>
               )}
-              {!errorMessage &&
-                isEmailVerified &&
-                !showActivationEmailSentNotes && (
-                  <>
-                    <Divider orientation="vertical" flexItem />
-
-                    <Typography
-                      color="error"
-                      sx={{
-                        fontFamily: 'IRANSansBold',
-                        fontWeight: 900,
-                        fontSize: matches ? '1.25vw' : '3vw',
-                        lineHeight: matches ? '2vw' : '4.7vw',
-                        marginLeft: matches ? 0 : '5vw',
-                      }}
-                    >
-                      ایمیل شما با موفقیت تایید گشت
-                    </Typography>
-                  </>
-                )}
             </Stack>
             {showActivationEmailSentNotes ? (
               <ActivationEmailSentNotes

@@ -9,6 +9,7 @@ import {
 import {
   Button,
   Checkbox,
+  Divider,
   FormControlLabel,
   InputAdornment,
   Stack,
@@ -69,6 +70,7 @@ export function FieldsArea({
   const [usernameError, setUsernameError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
   const [secondPasswordError, setSecondPasswordError] = useState(false)
+  const [resetPasswordMode, setResetPasswordMode] = useState(false)
   const handleShowError = (email, password_1, ...arg) => {
     if (email) setUsernameError(true)
     if (password_1) setPasswordError(true)
@@ -139,6 +141,14 @@ export function FieldsArea({
       })
   }
 
+  const handleResetPassword = () => {
+    axios
+      .post('https://locsharif.com/api/user/password/reset', {
+        email: username,
+      })
+      .then(console.log)
+  }
+
   const handleUsernameChange = e => {
     setUsername(e.target.value)
   }
@@ -176,29 +186,33 @@ export function FieldsArea({
           }}
         />
 
-        <StyledTextFiled
-          sx={{
-            marginTop: matches ? '1vw' : '2vw',
-          }}
-          fullWidth
-          required
-          error={passwordError}
-          matches={matches}
-          value={password}
-          placeholder="گذرواژه"
-          type={showPassword ? 'text' : 'password'}
-          onChange={handlePasswordChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Lock
-                  height={matches ? '2vw' : '4vw'}
-                  width={matches ? '2vw' : '4vw'}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
+        {!resetPasswordMode && (
+          <StyledTextFiled
+            sx={{
+              marginTop: matches ? '1vw' : '2vw',
+            }}
+            fullWidth
+            required
+            error={passwordError}
+            matches={matches}
+            value={password}
+            placeholder="گذرواژه"
+            type={showPassword ? 'text' : 'password'}
+            onChange={handlePasswordChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock
+                    sx={{
+                      height: matches ? '2vw' : '4vw',
+                      width: matches ? '2vw' : '4vw',
+                    }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
         {isRegistration && (
           <StyledTextFiled
             sx={{
@@ -233,7 +247,7 @@ export function FieldsArea({
         justifyContent="space-between"
       >
         <FormControlLabel
-          sx={{ margin: 0, width: '100%' }}
+          sx={{ margin: 0, minWidth: matches ? '9vw' : '29vw' }}
           control={
             <Checkbox
               value={showPassword}
@@ -259,24 +273,38 @@ export function FieldsArea({
           }
         />
 
-        {/*{!isRegistration && (*/}
-        {/*  <>*/}
-        {/*    <Divider orientation="vertical" flexItem />*/}
-        {/*    <Button*/}
-        {/*      sx={{*/}
-        {/*        width: '100%',*/}
-        {/*        fontWeight: 300,*/}
-        {/*        fontSize: matches ? '1.1vw' : '2.7vw',*/}
-        {/*        lineHeight: matches ? '1.75vw' : '4.2vw',*/}
-        {/*      }}*/}
-        {/*    >*/}
-        {/*      بـازیـابــی رمــــز عبـــور*/}
-        {/*    </Button>*/}
-        {/*  </>*/}
-        {/*)}*/}
+        {!isRegistration && (
+          <Stack
+            direction="row"
+            sx={{
+              width: '100%',
+              maxWidth: matches ? '13vw' : '80vw',
+              marginRight: matches ? '1vw' : '2vw',
+            }}
+          >
+            <Divider orientation="vertical" flexItem />
+            <Button
+              sx={{
+                width: '100%',
+                fontWeight: 300,
+                fontSize: matches ? '1.1vw' : '2.7vw',
+                lineHeight: matches ? '1.75vw' : '4.2vw',
+              }}
+              onClick={() => setResetPasswordMode(true)}
+            >
+              بـازیـابــی گذرواژه
+            </Button>
+          </Stack>
+        )}
       </Stack>
       <Button
-        onClick={() => (isRegistration ? handleRegister() : handleLogin())}
+        onClick={() =>
+          resetPasswordMode
+            ? handleResetPassword()
+            : isRegistration
+            ? handleRegister()
+            : handleLogin()
+        }
         sx={{
           background: 'linear-gradient(90.2deg, #002B99 1.21%, #2164D6 99.83%)',
           borderRadius: '10px',
@@ -289,7 +317,7 @@ export function FieldsArea({
           margin: matches ? '1vw 0' : '2.4vw 0',
         }}
       >
-        {isRegistration ? 'ثبت نام' : 'ورود'}
+        {resetPasswordMode ? 'بازیابی' : isRegistration ? 'ثبت نام' : 'ورود'}
       </Button>
     </Stack>
   )
