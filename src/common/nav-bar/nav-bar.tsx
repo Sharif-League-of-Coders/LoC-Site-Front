@@ -34,7 +34,7 @@ export function NavBar() {
   console.log(isLoggedIn, username)
   const sections = [
     { text: 'ارتباط با ما', href: '/#contact-us' },
-    { text: 'سوالات متدوال', href: '/#faq' },
+    { text: 'سوالات متداول', href: '/#faq' },
     { text: 'حامی', href: '/#sponsor' },
     { text: 'معرفی', href: '/#about-event' },
   ]
