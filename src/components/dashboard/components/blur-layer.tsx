@@ -12,7 +12,12 @@ const BlurLayerWrapper = styled(Stack)(() => ({
   justifyContent: 'center',
 }))
 
-export function BlurLayer({ matches }: { matches: boolean }) {
+interface BlurLayerProps {
+  matches: boolean
+  text: string
+}
+
+export function BlurLayer({ matches, text }: BlurLayerProps) {
   return (
     <BlurLayerWrapper>
       <Typography
@@ -27,7 +32,7 @@ export function BlurLayer({ matches }: { matches: boolean }) {
           backgroundClip: 'text',
         }}
       >
-        به زودی...
+        {text}
       </Typography>
     </BlurLayerWrapper>
   )

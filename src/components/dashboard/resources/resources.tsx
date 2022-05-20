@@ -43,7 +43,7 @@ export function Resources() {
         position: 'relative',
       }}
     >
-      <BlurLayer matches={matches}/>
+      <BlurLayer matches={matches} text="به زودی..."/>
       <ShadowStack matches={matches}>
         <BoldStyledTypography matches={matches}>داشبورد</BoldStyledTypography>
       </ShadowStack>
