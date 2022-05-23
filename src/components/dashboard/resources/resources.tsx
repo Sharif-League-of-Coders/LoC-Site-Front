@@ -20,8 +20,6 @@ const WrapperStack = styled(Stack)<WrapperStackProps>(({ matches }) => ({
   borderRadius: 'inherit',
 }))
 
-
-
 export function Resources() {
   const matches = useMediaQuery(
     json2mq({
@@ -43,7 +41,7 @@ export function Resources() {
         position: 'relative',
       }}
     >
-      <BlurLayer matches={matches}/>
+      <BlurLayer matches={matches} />
       <ShadowStack matches={matches}>
         <BoldStyledTypography matches={matches}>داشبورد</BoldStyledTypography>
       </ShadowStack>
