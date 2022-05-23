@@ -113,7 +113,9 @@ export function TeamMaking() {
     }),
   )
   const updateState = (value, label) => {
+    console.log("start")
     setState(state => ({ ...state, [label]: value }))
+    console.log("end")
   }
   return (
     <Stack
