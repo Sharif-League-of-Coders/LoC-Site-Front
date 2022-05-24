@@ -27,7 +27,7 @@ export function Dashboard() {
       }}
     >
       <NavBar />
-      <MailBoxModal />
+      {/*<MailBoxModal />*/}
 
       <Stack
         flexDirection={matches ? 'row' : 'column'}
@@ -39,10 +39,10 @@ export function Dashboard() {
         }}
       >
 
-        <Information />
-        <TeamMaking />
-        {/* <Resources></Resources>
-        <State></State> */}
+        {/*<Information />*/}
+        {/*<TeamMaking />*/}
+        <Resources></Resources>
+        <State></State>
       </Stack>
     </Stack>
   )

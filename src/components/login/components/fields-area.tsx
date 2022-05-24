@@ -283,17 +283,17 @@ export function FieldsArea({
             }}
           >
             <Divider orientation="vertical" flexItem />
-            <Button
-              sx={{
-                width: '100%',
-                fontWeight: 300,
-                fontSize: matches ? '1.1vw' : '2.7vw',
-                lineHeight: matches ? '1.75vw' : '4.2vw',
-              }}
-              onClick={() => setResetPasswordMode(true)}
-            >
-              بـازیـابــی گذرواژه
-            </Button>
+            {/*<Button*/}
+            {/*  sx={{*/}
+            {/*    width: '100%',*/}
+            {/*    fontWeight: 300,*/}
+            {/*    fontSize: matches ? '1.1vw' : '2.7vw',*/}
+            {/*    lineHeight: matches ? '1.75vw' : '4.2vw',*/}
+            {/*  }}*/}
+            {/*  onClick={() => setResetPasswordMode(true)}*/}
+            {/*>*/}
+            {/*  بـازیـابــی گذرواژه*/}
+            {/*</Button>*/}
           </Stack>
         )}
       </Stack>

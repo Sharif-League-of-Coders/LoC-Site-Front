@@ -55,7 +55,10 @@ export function NavBar() {
     axios
       .post('https://locsharif.com/api/user/logout', {
         username,
-        token,
+      }, {
+        headers: {
+          Authorization: 'Token ' + token
+        }
       })
       .then(() => {
         dispatch(setToken(''))

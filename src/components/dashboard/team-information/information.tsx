@@ -34,7 +34,7 @@ export function Information() {
     code: '',
     name: '',
     familyName: '',
-    birthDate: '',
+    birthDate: null,
     phone: '',
     univercity: '',
     studentNumber: '',
@@ -83,9 +83,10 @@ export function Information() {
       label: 'ایمیل:',
     },
   ]
-  const updateState = (event, label) => {
-    setState(state => ({ ...state, [label]: event.target.value }))
-  }
+  const updateState = (value, label) => {
+    console.log("start")
+    setState(state => ({ ...state, [label]: value }))
+    console.log("end")  }
   return (
     <Box>
       <Box
