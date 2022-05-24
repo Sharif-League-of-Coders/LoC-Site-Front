@@ -189,29 +189,6 @@ export function Information() {
               </Stack>
               {/* CustomizedSnackbar */}
             </Grid>
-            <Grid
-              item
-              md={12}
-              sx={{ mt: 1 }}
-              justifyContent="center"
-              alignItems="center"
-              alignContent="center"
-            >
-              <Stack direction={'row'} justifyContent="center">
-                <Button
-                  sx={{
-                    background:
-                      'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
-                    width: '80%',
-                  }}
-                  variant="contained"
-                  onClick={() => setOpen(!open)}
-                >
-                  ثبت
-                </Button>
-
-              </Stack>
-            </Grid>
           </Grid>
         </Box>
 
