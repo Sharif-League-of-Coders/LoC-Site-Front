@@ -6,8 +6,11 @@ import json2mq from 'json2mq'
 import { Information } from 'components/dashboard/team-information/information'
 import { TeamMaking } from 'components/dashboard/team-information/team'
 import { MailBoxModal } from '../components/dashboard/mail-box-modal'
+import { useState } from 'react'
 
 export function Dashboard() {
+  const [isMailBoxModalOpen, setIsMailBoxModalOpen] = useState(false)
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -26,8 +29,8 @@ export function Dashboard() {
         backgroundSize: '100vw auto',
       }}
     >
-      <NavBar />
-      <MailBoxModal />
+      <NavBar setIsMailBoxModalOpen={setIsMailBoxModalOpen}/>
+      <MailBoxModal isOpen={isMailBoxModalOpen} setIsOpen={setIsMailBoxModalOpen}/>
 
       <Stack
         flexDirection={matches ? 'row' : 'column'}
@@ -39,10 +42,10 @@ export function Dashboard() {
         }}
       >
 
-        {/*<Information />*/}
-        {/*<TeamMaking />*/}
-        <Resources></Resources>
-        <State></State>
+        <Information />
+        <TeamMaking />
+        {/*<Resources></Resources>*/}
+        {/*<State></State>*/}
       </Stack>
     </Stack>
   )

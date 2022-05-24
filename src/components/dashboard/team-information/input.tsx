@@ -12,10 +12,11 @@ import { styled } from '@mui/material/styles'
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css'
 import DatePicker from '@hassanmojab/react-modern-calendar-datepicker'
 import Input from '@mui/material/Input'
+
 export const MyInput = styled(Input)(({ name }: { name?: string }) => ({
   width: '100%',
   border: 1,
-  minHeight: 40,
+  minHeight: '1.75vw',
   borderColor: 'transparent',
   padding: '0.5vw 1vw ',
   borderRadius:
@@ -53,7 +54,6 @@ export const InformationInput = ({
           />
         </InputAdornment>
       }
-      // size="small"
     />
   )
   return (
@@ -75,13 +75,7 @@ export const InformationInput = ({
         ) : (
           <MyInput
             value={value}
-            // defaultValue={name == 'code' ? 'کد یکتای کاربری' : ''}
-            // sx={{
-            // placeholder={name == 'code' ? 'کد یکتای کاربری' : ''}
-            // }}
             onChange={event => updateState(event.target.value, name)}
-            // variant = "outlined"
-            // variant="standard"
             dir="rtl"
             name={name}
             disableUnderline={true}
@@ -95,20 +89,6 @@ export const InformationInput = ({
                   }
                 : {}
             }
-            // inputProps={{
-            //   classes: {
-            //     placeholder: {
-            //       // '&::placeholder': {
-            //         color: 'white',
-            //       // },
-            //     },
-            //   },
-            // }}
-            // sx={{
-            //   '&::placeholder': {
-            //     color: 'white',
-            //   },
-            // }}
             endAdornment={
               name == 'code' ? null : (
                 <InputAdornment position="end">
@@ -121,7 +101,6 @@ export const InformationInput = ({
                 </InputAdornment>
               )
             }
-            // size="small"
           />
         )}
       </Stack>

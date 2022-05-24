@@ -26,3 +26,6 @@ export const getRequest = ({ path, params, data, headers }) =>
 export const postRequest = ({ path, data, config }) =>
   responseHandler(instance.post(path, data, config))
 
+export const putRequest = ({ path, data, config }) =>
+  responseHandler(instance.put(path, data, config))
+

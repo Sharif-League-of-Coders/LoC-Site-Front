@@ -19,6 +19,8 @@ import {
   usernameView,
 } from '../../scenes/_slice/account.slice'
 import axios from 'axios'
+import { Dispatch, SetStateAction } from 'react'
+import { fetchInvitations } from '../../service/backend'
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
@@ -33,7 +35,11 @@ const StyledAppbar = styled(Stack)(() => ({
   width: '100%',
 }))
 
-export function NavBar() {
+interface Props {
+  setIsMailBoxModalOpen?: Dispatch<SetStateAction<boolean>>
+}
+
+export function NavBar({ setIsMailBoxModalOpen }: Props) {
   const isLoggedIn = useSelector(isLoggedInVew)
   const username = useSelector(usernameView)
   const token = useSelector(tokenView)
@@ -53,13 +59,17 @@ export function NavBar() {
 
   const handleLogout = () => {
     axios
-      .post('https://locsharif.com/api/user/logout', {
-        username,
-      }, {
-        headers: {
-          Authorization: 'Token ' + token
-        }
-      })
+      .post(
+        'https://locsharif.com/api/user/logout',
+        {
+          username,
+        },
+        {
+          headers: {
+            Authorization: 'Token ' + token,
+          },
+        },
+      )
       .then(() => {
         dispatch(setToken(''))
         dispatch(setIsLoggedIn(''))
@@ -139,6 +149,18 @@ export function NavBar() {
         </Stack>
         {isLoggedIn ? (
           <Box>
+            <IconButton
+              sx={{
+                height: '5.5vw',
+                padding: '1vw',
+                boxSizing: 'border-box',
+              }}
+              onClick={() => {
+                fetchInvitations().then(() => setIsMailBoxModalOpen(true))
+              }}
+            >
+              <img src="/assets/icons/email.svg" height="100%" />
+            </IconButton>
             <Button
               href="/dashboard"
               sx={{

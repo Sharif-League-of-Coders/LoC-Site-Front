@@ -1,10 +1,27 @@
-import { Dialog, Stack, Typography, useMediaQuery } from '@mui/material'
-import { useState } from 'react'
+import { Dialog, IconButton, Stack, styled, Typography, useMediaQuery } from '@mui/material'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import json2mq from 'json2mq'
 import { MailItem, t } from '.'
+import { useSelector } from 'react-redux'
+import { invitationsView, tokenView } from '../../../scenes/_slice/account.slice'
 
-export function MailBoxModal() {
-  const [isOpen, setIsOpen] = useState(true)
+const StyledDialog = styled(Dialog)`
+  .MuiPaper-root {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+`
+
+interface Props {
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+}
+
+export function MailBoxModal({ isOpen, setIsOpen }: Props) {
+  const invitations = useSelector(invitationsView)
+  const token = useSelector(tokenView)
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -12,24 +29,32 @@ export function MailBoxModal() {
   )
 
   return (
-    <Dialog open={isOpen}>
-      <Stack sx={{ direction: 'rtl', padding: '40px'}}>
+    <StyledDialog open={isOpen} sx={{ width: '100%', height: '100%' }}>
+      <Stack
+        sx={{
+          direction: 'rtl',
+          padding: '40px',
+        }}
+      >
         <Stack alignItems="flex-end" sx={{ height: matches ? '1vw' : '2.4vw' }}>
-          <img
-            src="/assets/icons/close.svg"
-            alt="close"
-            height="100%"
-          />
+          <IconButton>
+            <img
+              src="/assets/icons/close.svg"
+              alt="close"
+              height="100%"
+              onClick={() => setIsOpen(false)}
+            />
+          </IconButton>
         </Stack>
         <Stack>
           <Typography>{t.title}</Typography>
         </Stack>
         <Stack>
-          {['فلانی شما را به تیم دعوت کرده است'].map(text => (
-            <MailItem text={text} />
+          {invitations.map(invite => (
+            <MailItem invite={invite} token={token}/>
           ))}
         </Stack>
       </Stack>
-    </Dialog>
+    </StyledDialog>
   )
 }

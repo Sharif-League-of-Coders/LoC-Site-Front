@@ -2,20 +2,21 @@ import {
   Box,
   Divider,
   Grid,
+  IconButton,
   Input,
   InputAdornment,
   Stack,
   styled,
-  TextField,
   Typography,
   useMediaQuery,
 } from '@mui/material'
 import { BoldStyledTypography, ShadowStack } from '../components'
 import json2mq from 'json2mq'
-import { BlurLayer } from '../components/blur-layer'
 import { useState } from 'react'
 import { MyInput } from './input'
-import { border, borderRadius } from '@mui/system'
+import { sendInvitation } from '../../../service/backend'
+import { useSelector } from 'react-redux'
+import { tokenView } from '../../../scenes/_slice/account.slice'
 
 interface WrapperStackProps {
   matches: boolean
@@ -33,7 +34,8 @@ const WrapperStack = styled(Stack)<WrapperStackProps>(({ matches }) => ({
 
   borderRadius: 'inherit',
 }))
-const TeamCreator = ({ label, value, updateState }) => {
+const TeamCreator = ({ label, value, updateState, placeholder }) => {
+  const token = useSelector(tokenView)
   return (
     <Stack
       direction={'row'}
@@ -48,29 +50,30 @@ const TeamCreator = ({ label, value, updateState }) => {
           mx: 2,
           borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
         }}
-        onChange={event => updateState(event.target.value, name)}
-        // variant = "outlined"
-        // variant="standard"
+        onChange={event => updateState(event.target.value, label)}
         dir="rtl"
         disableUnderline={true}
+        placeholder={placeholder}
       />
-      <img src="assets/icons/random.svg" style={{ width: '3vw' }} />
 
-      <img src="assets/icons/tick.svg" style={{ width: '3vw' }} />
+      <IconButton onClick={() => sendInvitation({ user_email: value, token })}>
+        <img src="/assets/icons/tick.svg" style={{ width: '3vw' }} />
+      </IconButton>
     </Stack>
   )
 }
 const GradientInput = styled(Input)(({ name }: { name?: string }) => ({
   input: {
-    fontSize:22,
-    fontWeight:"bold",
-    background: '-webkit-linear-gradient(0deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+    fontSize: 22,
+    fontWeight: 'bold',
+    background:
+      '-webkit-linear-gradient(0deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
     '-webkit-background-clip': 'text',
     '-webkit-text-fill-color': 'transparent',
   },
 }))
 
-const TeamGrid = (state, updateState) => {
+const TeamGrid = ({ state, updateState }) => {
   return (
     <Box
       sx={{
@@ -80,7 +83,6 @@ const TeamGrid = (state, updateState) => {
         padding: '1vw 2vw',
       }}
     >
-      {/* <Box  >sdsdsd</Box> */}
       <Grid container spacing={2}>
         <Grid item xs={1}>
           <Box
@@ -99,16 +101,14 @@ const TeamGrid = (state, updateState) => {
 
                 borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
               }}
-              onChange={event => updateState(event.target.value, name)}
-              // variant = "outlined"
-              // variant="standard"
+              onChange={event => updateState(event.target.value, 'teamName')}
               endAdornment={
                 <InputAdornment position="end">
                   <img
                     style={{
                       maxHeight: '1vw',
                     }}
-                    src={`assets/icons/pencil.svg`}
+                    src="/assets/icons/pencil.svg"
                   />
                 </InputAdornment>
               }
@@ -140,12 +140,14 @@ const TeamGrid = (state, updateState) => {
               label={'first'}
               value={state.first}
               updateState={updateState}
+              placeholder="پست الکترونیک نفر اول"
             />
             <Box sx={{ height: '3vh' }} />
             <TeamCreator
               label={'second'}
               value={state.second}
               updateState={updateState}
+              placeholder="پست الکترونیک نفر دوم"
             />
           </Stack>
         </Grid>
@@ -153,21 +155,24 @@ const TeamGrid = (state, updateState) => {
     </Box>
   )
 }
+
 export function TeamMaking() {
   const [state, setState] = useState({
     teamName: '',
     first: '',
     second: '',
   })
+  // const [teamName, setTeamName] = useState('')
+  // const [firstTeammate, setFirstTeammate] = useState('')
+  // const [secondTeammate, setSecondTeammate] = useState('')
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
     }),
   )
   const updateState = (value, label) => {
-    console.log('start')
     setState(state => ({ ...state, [label]: value }))
-    console.log('end')
   }
   return (
     <Stack
@@ -192,7 +197,11 @@ export function TeamMaking() {
           flexDirection: 'row',
         }}
       >
-        <img src="assets/icons/group.svg" style={{ width: '4vw' }} />
+        <img
+          src="/assets/icons/group.svg"
+          style={{ width: '4vw' }}
+          alt="group"
+        />
         <Box sx={{ width: '1vw' }} />
         <BoldStyledTypography
           style={{ fontSize: matches ? '2.25vw' : '5.2vw' }}

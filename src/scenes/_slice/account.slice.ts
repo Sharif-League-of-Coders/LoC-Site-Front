@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import * as R from 'ramda'
+
 
 const accountSlice = createSlice({
   name: 'account',
@@ -7,6 +9,7 @@ const accountSlice = createSlice({
     isFetching: false,
     username: '',
     token: '',
+    invitations: [],
   },
   reducers: {
     setIsLoggedIn: (state, action) => {
@@ -25,11 +28,21 @@ const accountSlice = createSlice({
       const { username } = action.payload
       state.username = username
     },
+    setInvitations: (state, action) => {
+      const { data } = action.payload
+      state.invitations = R.uniq([...state.invitations, ...data])
+    },
   },
 })
 
 const { actions, reducer } = accountSlice
-export const { setIsLoggedIn, setIsFetching, setUsername, setToken } = actions
+export const {
+  setIsLoggedIn,
+  setIsFetching,
+  setUsername,
+  setToken,
+  setInvitations,
+} = actions
 export default reducer
 
 // Views
@@ -37,6 +50,7 @@ export const isLoggedInVew = state => state.account.isLoggedIn
 export const isFetchingView = state => state.account.isFetching
 export const usernameView = state => state.account.username
 export const tokenView = state => state.account.token
+export const invitationsView = state => state.account.invitations
 
 // // Getters
 // export const getIsLoggedIn = state => (state ?? getState()).isLoggedIn

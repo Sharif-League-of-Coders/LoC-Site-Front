@@ -1,4 +1,4 @@
-import { getRequest, postRequest } from '../../setup/api'
+import { getRequest, postRequest, putRequest } from '../../setup/api'
 
 export const createTeam = ({ name, creator, members, token }) =>
   postRequest({
@@ -38,7 +38,7 @@ export const sendInvitation = ({ user_email, token }) =>
     },
   })
 
-export const getInvitations = ({token}) =>
+export const getSentInvitations = ({ token }) =>
   getRequest({
     path: '/api/team/invitations/team_sent',
     headers: {
@@ -46,4 +46,40 @@ export const getInvitations = ({token}) =>
     },
     data: {},
     params: {},
+  })
+
+export const getReceivedInvitations = ({ token }) =>
+  getRequest({
+    path: '/api/team/invitations/user_pending',
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+    data: {},
+    params: {},
+  })
+
+export const acceptRequest = ({ token, inviteId }) =>
+  putRequest({
+    path: `/api/team/invitations/user_pending/${inviteId}`,
+    config: {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    },
+    data: {
+      answer: 1,
+    },
+  })
+
+export const rejectRequest = ({ token, inviteId }) =>
+  putRequest({
+    path: `/api/team/invitations/user_pending/${inviteId}`,
+    config: {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    },
+    data: {
+      reject: 1,
+    },
   })
