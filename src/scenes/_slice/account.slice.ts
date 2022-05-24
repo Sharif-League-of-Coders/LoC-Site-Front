@@ -18,14 +18,13 @@ const accountSlice = createSlice({
       state.username = isFetching
     },
     setToken: (state, action) => {
-      const {token} = action.payload
+      const { token } = action.payload
       state.token = token
     },
     setUsername: (state, action) => {
       const { username } = action.payload
       state.username = username
     },
-
   },
 })
 

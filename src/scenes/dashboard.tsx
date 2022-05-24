@@ -5,6 +5,7 @@ import { NavBar } from 'common/nav-bar'
 import json2mq from 'json2mq'
 import { Information } from 'components/dashboard/team-information/information'
 import { TeamMaking } from 'components/dashboard/team-information/team'
+import { MailBoxModal } from '../components/dashboard/mail-box-modal'
 
 export function Dashboard() {
   const matches = useMediaQuery(
@@ -26,7 +27,7 @@ export function Dashboard() {
       }}
     >
       <NavBar />
-      
+      <MailBoxModal />
 
       <Stack
         flexDirection={matches ? 'row' : 'column'}
@@ -37,6 +38,7 @@ export function Dashboard() {
           
         }}
       >
+
         <Information />
         <TeamMaking />
         {/* <Resources></Resources>

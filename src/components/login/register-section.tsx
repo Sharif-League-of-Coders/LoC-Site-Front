@@ -48,10 +48,8 @@ function a11yProps(index: number) {
 
 export function RegisterSection({
   isRegistration,
-  isEmailVerified,
 }: {
   isRegistration: boolean
-  isEmailVerified: boolean
 }) {
   const [value, setValue] = React.useState(isRegistration ? 0 : 1)
   const [showPassword, setShowPassword] = useState(false)
@@ -110,7 +108,6 @@ export function RegisterSection({
           showPassword={showPassword}
           showActivationEmailSentNotes={showActivationEmailSentNotes}
           errorMessage={errorMessage}
-          isEmailVerified={isEmailVerified}
           setUsername={setUsername}
           setPassword={setPassword}
           setSecondPassword={setSecondPassword}

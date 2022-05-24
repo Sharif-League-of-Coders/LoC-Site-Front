@@ -1,15 +1,13 @@
 import { Box, Button, Stack, Typography, useMediaQuery } from '@mui/material'
 import json2mq from 'json2mq'
 import { RegisterSection } from 'components/login/register-section'
-import { useParams } from 'react-router-dom'
 
-export function Login({isRegistration}:{isRegistration: boolean}) {
+export function Login({ isRegistration }: { isRegistration: boolean }) {
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
-    })
+    }),
   )
-  const emailVerified = useParams()['email_verified']
   return (
     <Box
       sx={{
@@ -42,7 +40,7 @@ export function Login({isRegistration}:{isRegistration: boolean}) {
           paddingX: matches ? 0 : '5vw',
         }}
       >
-        <RegisterSection isRegistration={isRegistration} isEmailVerified={Boolean(emailVerified)}/>
+        <RegisterSection isRegistration={isRegistration} />
       </Stack>
       <Box
         sx={{
@@ -53,7 +51,12 @@ export function Login({isRegistration}:{isRegistration: boolean}) {
           height: matches ? '4vw' : '9.6vw',
         }}
       >
-        <img src="/assets/logos/logo.svg" width="100%" height="100%" alt="league-of-coders"/>
+        <img
+          src="/assets/logos/logo.svg"
+          width="100%"
+          height="100%"
+          alt="league-of-coders"
+        />
       </Box>
       <Button
         href="/"
@@ -66,7 +69,12 @@ export function Login({isRegistration}:{isRegistration: boolean}) {
         }}
         endIcon={
           <Box width={matches ? '1.5vw' : '3vw'}>
-            <img src="/assets/icons/arrow-left.svg" width="100%" height="100%" alt="left-arrow"/>
+            <img
+              src="/assets/icons/arrow-left.svg"
+              width="100%"
+              height="100%"
+              alt="left-arrow"
+            />
           </Box>
         }
       >
