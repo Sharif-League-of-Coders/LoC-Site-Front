@@ -20,5 +20,9 @@ const responseHandler = response =>
       })
   })
 
-export const getRequest = ({ path, params, data }) =>
-  responseHandler(instance.get(path, { params, data }))
+export const getRequest = ({ path, params, data, headers }) =>
+  responseHandler(instance.get(path, { params, data, headers }))
+
+export const postRequest = ({ path, data, config }) =>
+  responseHandler(instance.post(path, data, config))
+

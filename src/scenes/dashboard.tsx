@@ -27,7 +27,7 @@ export function Dashboard() {
       }}
     >
       <NavBar />
-      {/*<MailBoxModal />*/}
+      <MailBoxModal />
 
       <Stack
         flexDirection={matches ? 'row' : 'column'}

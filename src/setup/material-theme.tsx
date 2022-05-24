@@ -12,6 +12,9 @@ const theme = createTheme({
   },
   palette: {
     error: { main: '#FF5151' },
+    success: {
+      main: '#32D74B'
+    }
   },
   components: {},
 })

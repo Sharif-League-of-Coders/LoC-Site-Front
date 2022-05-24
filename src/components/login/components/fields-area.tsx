@@ -70,7 +70,7 @@ export function FieldsArea({
   const [usernameError, setUsernameError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
   const [secondPasswordError, setSecondPasswordError] = useState(false)
-  const [resetPasswordMode, setResetPasswordMode] = useState(false)
+  const [resetPasswordMode] = useState(false)
   const handleShowError = (email, password_1, ...arg) => {
     if (email) setUsernameError(true)
     if (password_1) setPasswordError(true)
