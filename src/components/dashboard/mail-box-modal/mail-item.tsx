@@ -46,7 +46,7 @@ export function MailItem({ invite, token }: Props) {
               },
             }}
           >
-            <img src="/assets/icons/tick.svg" />
+            <img src="/assets/icons/tick2.svg" />
             قبول
           </Button>
           <Button
