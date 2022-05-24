@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Grid,
   Input,
@@ -54,23 +55,24 @@ const TeamCreator = ({ label, value, updateState }) => {
         dir="rtl"
         disableUnderline={true}
       />
-      <img src="assets/icons/random.svg" style={{ width: '3vw' }} />
+      {/* <img src="assets/icons/random.svg" style={{ width: '3vw' }} /> */}
 
       <img src="assets/icons/tick.svg" style={{ width: '3vw' }} />
     </Stack>
   )
 }
-const GradientInput = styled(Input)(({ name }: { name?: string }) => ({
+const GradientInput = styled(Input)({
   input: {
-    fontSize:22,
-    fontWeight:"bold",
-    background: '-webkit-linear-gradient(0deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+    fontSize: 22,
+    fontWeight: 'bold',
+    background:
+      '-webkit-linear-gradient(0deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
     '-webkit-background-clip': 'text',
     '-webkit-text-fill-color': 'transparent',
   },
-}))
+})
 
-const TeamGrid = (state, updateState) => {
+const TeamGrid = ({ state, updateState }) => {
   return (
     <Box
       sx={{
@@ -82,40 +84,71 @@ const TeamGrid = (state, updateState) => {
     >
       {/* <Box  >sdsdsd</Box> */}
       <Grid container spacing={2}>
-        <Grid item xs={1}>
-          <Box
+        <Grid item xs={2}>
+          <Stack
             sx={{
-              transform: 'rotate(270deg)',
+              // transform: 'rotate(270deg)',
+              height:"100%",
               p: 0,
             }}
+            justifyContent="space-between"
+            // direction="row"
           >
             <GradientInput
               name={'teamName'}
               value={state.teamName}
-              sx={{
+              style={{
                 // height: '5vh',
-                width: '15vh',
+                width: '120%',
+                height:"80%",
                 // mx: 2,
 
-                borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
+                // transform: 'translateX(-50%) translateY(-50%) rotate(270deg)',
+                transform: 'rotate(-90deg)',
+
+                // borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
               }}
-              onChange={event => updateState(event.target.value, name)}
+              onChange={event => updateState(event.target.value, "teamName")}
               // variant = "outlined"
               // variant="standard"
-              endAdornment={
-                <InputAdornment position="end">
-                  <img
-                    style={{
-                      maxHeight: '1vw',
-                    }}
-                    src={`assets/icons/pencil.svg`}
-                  />
-                </InputAdornment>
-              }
+              // endAdornment={
+              //   <InputAdornment position="end">
+              //     <Button
+              //       sx={{
+              //         background:
+              //           'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+              //         transform: 'rotate(90deg)',
+              //         color: 'white',
+              //         fontSize: '0.7vw',
+              //         p: '0.2vw',
+              //       }}
+              //       onClick={() => {
+              //         console.log()
+              //       }}
+              //     >
+              //       ثبت تیم
+              //     </Button>
+              //   </InputAdornment>
+              // }
               dir="rtl"
               disableUnderline={true}
             />
-          </Box>
+            <Button
+                    sx={{
+                      background:
+                        'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+                      // transform: 'rotate(90deg)',
+                      color: 'white',
+                      fontSize:"0.7vw",
+                      p:"0.2vw"
+                    }}
+                    onClick={() => {
+                      console.log()
+                    }}
+                  >
+                    ثبت تیم
+                  </Button>
+          </Stack>
         </Grid>
         <Grid item xs={1}>
           <Divider
@@ -134,7 +167,7 @@ const TeamGrid = (state, updateState) => {
           />
         </Grid>
 
-        <Grid item xs={10} sx={{ bgColor: 'red', justifyContent: 'center' }}>
+        <Grid item xs={9} sx={{ bgColor: 'red', justifyContent: 'center' }}>
           <Stack justifyContent={'space-between'}>
             <TeamCreator
               label={'first'}
@@ -155,7 +188,7 @@ const TeamGrid = (state, updateState) => {
 }
 export function TeamMaking() {
   const [state, setState] = useState({
-    teamName: '',
+    teamName: 'نام تیم',
     first: '',
     second: '',
   })
