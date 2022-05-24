@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Grid,
   Stack,
   styled,
@@ -31,7 +32,7 @@ const WrapperStack = styled(Stack)<WrapperStackProps>(({ matches }) => ({
 export function Information() {
   const [state, setState] = useState({
     username: '',
-    code: '',
+    code: 'کد یکتای کاربری',
     name: '',
     familyName: '',
     birthDate: null,
@@ -56,7 +57,7 @@ export function Information() {
     },
     {
       name: 'name',
-      label: 'نام',
+      label: 'نام:',
     },
     {
       name: 'familyName',
@@ -84,9 +85,10 @@ export function Information() {
     },
   ]
   const updateState = (value, label) => {
-    console.log("start")
+    console.log('start')
     setState(state => ({ ...state, [label]: value }))
-    console.log("end")  }
+    console.log('end')
+  }
   return (
     <Box>
       <Box
@@ -109,11 +111,8 @@ export function Information() {
         sx={{
           boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
           marginLeft: matches ? '7.25vw' : 0,
-
           borderRadius: matches ? '3vw' : '7vw',
           width: matches ? '35.25vw' : '100%',
-          height: matches ? '32vw' : '70vw',
-          // padding: matches ? '1vw' : '3vw',
           background: 'transparent',
           boxSizing: 'border-box',
           position: 'relative',
@@ -121,30 +120,21 @@ export function Information() {
       >
         <Stack
           sx={{
-            alignItems: 'center',
+            // alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'row',
-            borderBottom: 2,
-            padding: matches ? '1vw' : '3vw',
+            // borderBottom: 2,
+            borderRadius: matches ? '3vw 3vw 0px 0px' : '7vw 7vw 0px 0px',
+            // borderRadius: '40px 40px 0px 0px',
+            border: 3,
+
+            padding: matches ? '0.7vw' : '2vw',
             borderColor: 'black',
             //   mb: 0,
           }}
         >
-          <Box
-            sx={{
-              background: `url(assets/icons/person.svg)`,
-              backgroundPosition: matches ? 'top center' : 'center center',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: '100vw auto',
-
-              width: 20,
-              height:20,
-              // height: matches ? '60vw' : 'max-content',
-              // padding: '1.7vw',
-              // boxSizing: 'border-box',
-            }}
-          ></Box>
-
+          <img src="assets/icons/person.svg" style={{ width: '2.8vw' }} />
+          <Box sx={{ width: '0.7vw' }} />
           <BoldStyledTypography
             style={{ fontSize: matches ? '2.25vw' : '5.2vw' }}
             matches={matches}
@@ -175,6 +165,34 @@ export function Information() {
                 name={inputs[8].name}
                 value={state[inputs[8].name]}
               />
+            </Grid>
+            <Grid
+              item
+              md={12}
+              sx={{mt:1}}
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+            >
+              <Stack direction={'row'} justifyContent="center">
+                <Button
+                  sx={{
+                    background:
+                      'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+                    width: '80%',
+                  }}
+                  variant="contained"
+                >
+                  ثبت
+                </Button>
+              </Stack>
+
+              {/* <InformationInput
+                label={inputs[8].label}
+                updateState={updateState}
+                name={inputs[8].name}
+                value={state[inputs[8].name]}
+              /> */}
             </Grid>
           </Grid>
         </Box>
