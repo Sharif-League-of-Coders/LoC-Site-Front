@@ -11,6 +11,7 @@ import { BoldStyledTypography } from '../components'
 import json2mq from 'json2mq'
 import { InformationInput } from './input'
 import { useState } from 'react'
+import CustomizedSnackbar from 'components/snackbar'
 
 interface WrapperStackProps {
   matches: boolean
@@ -169,7 +170,7 @@ export function Information() {
             <Grid
               item
               md={12}
-              sx={{mt:1}}
+              sx={{ mt: 1 }}
               justifyContent="center"
               alignItems="center"
               alignContent="center"
@@ -186,13 +187,30 @@ export function Information() {
                   ثبت
                 </Button>
               </Stack>
+              {/* CustomizedSnackbar */}
+            </Grid>
+            <Grid
+              item
+              md={12}
+              sx={{ mt: 1 }}
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+            >
+              <Stack direction={'row'} justifyContent="center">
+                <Button
+                  sx={{
+                    background:
+                      'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+                    width: '80%',
+                  }}
+                  variant="contained"
+                  onClick={() => setOpen(!open)}
+                >
+                  ثبت
+                </Button>
 
-              {/* <InformationInput
-                label={inputs[8].label}
-                updateState={updateState}
-                name={inputs[8].name}
-                value={state[inputs[8].name]}
-              /> */}
+              </Stack>
             </Grid>
           </Grid>
         </Box>
