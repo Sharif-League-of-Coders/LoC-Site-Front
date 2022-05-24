@@ -2,6 +2,8 @@ import {
   Box,
   Divider,
   Grid,
+  Input,
+  InputAdornment,
   Stack,
   styled,
   TextField,
@@ -12,6 +14,8 @@ import { BoldStyledTypography, ShadowStack } from '../components'
 import json2mq from 'json2mq'
 import { BlurLayer } from '../components/blur-layer'
 import { useState } from 'react'
+import { MyInput } from './input'
+import { border, borderRadius } from '@mui/system'
 
 interface WrapperStackProps {
   matches: boolean
@@ -29,36 +33,55 @@ const WrapperStack = styled(Stack)<WrapperStackProps>(({ matches }) => ({
 
   borderRadius: 'inherit',
 }))
-const TeamCreator = () => {
+const TeamCreator = ({ label, value, updateState }) => {
   return (
     <Stack
       direction={'row'}
-      justifyContent="space-around"
+      justifyContent="space-between"
       sx={{ bgColor: 'red' }}
     >
-      <TextField size="small" />
-      <Box
+      <MyInput
+        name={label}
+        value={value}
         sx={{
-          width: 40,
-          height: 40,
-          background: `url(assets/icons/person.svg)`,
+          height: '5vh',
+          mx: 2,
+          borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
         }}
+        onChange={event => updateState(event.target.value, name)}
+        // variant = "outlined"
+        // variant="standard"
+        dir="rtl"
+        disableUnderline={true}
       />
-      <Box
-        sx={{
-          width: 40,
-          height: 40,
-          background: `url(assets/icons/person.svg)`,
-        }}
-      />
+      <img src="assets/icons/random.svg" style={{ width: '3vw' }} />
+
+      <img src="assets/icons/tick.svg" style={{ width: '3vw' }} />
     </Stack>
   )
 }
-const TeamGrid = (value, updateState) => {
+const GradientInput = styled(Input)(({ name }: { name?: string }) => ({
+  input: {
+    fontSize:22,
+    fontWeight:"bold",
+    background: '-webkit-linear-gradient(0deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+    '-webkit-background-clip': 'text',
+    '-webkit-text-fill-color': 'transparent',
+  },
+}))
+
+const TeamGrid = (state, updateState) => {
   return (
-    <Box sx={{}}>
+    <Box
+      sx={{
+        border: 3,
+        borderRadius: '0px 5vh 0px 0px',
+        borderColor: 'black',
+        padding: '1vw 2vw',
+      }}
+    >
       {/* <Box  >sdsdsd</Box> */}
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={1}>
           <Box
             sx={{
@@ -66,10 +89,31 @@ const TeamGrid = (value, updateState) => {
               p: 0,
             }}
           >
-            <TextField
-              sx={{ width: 100, position: 'absolute', top: -30, right: 20 }}
-              value={value}
-              onChange={event => updateState(event.target.value, 'teamName')}
+            <GradientInput
+              name={'teamName'}
+              value={state.teamName}
+              sx={{
+                // height: '5vh',
+                width: '15vh',
+                // mx: 2,
+
+                borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
+              }}
+              onChange={event => updateState(event.target.value, name)}
+              // variant = "outlined"
+              // variant="standard"
+              endAdornment={
+                <InputAdornment position="end">
+                  <img
+                    style={{
+                      maxHeight: '1vw',
+                    }}
+                    src={`assets/icons/pencil.svg`}
+                  />
+                </InputAdornment>
+              }
+              dir="rtl"
+              disableUnderline={true}
             />
           </Box>
         </Grid>
@@ -90,11 +134,19 @@ const TeamGrid = (value, updateState) => {
           />
         </Grid>
 
-        <Grid item xs={10} sx={{ bgColor: 'red' }}>
+        <Grid item xs={10} sx={{ bgColor: 'red', justifyContent: 'center' }}>
           <Stack justifyContent={'space-between'}>
-            <TeamCreator />
+            <TeamCreator
+              label={'first'}
+              value={state.first}
+              updateState={updateState}
+            />
             <Box sx={{ height: '3vh' }} />
-            <TeamCreator />
+            <TeamCreator
+              label={'second'}
+              value={state.second}
+              updateState={updateState}
+            />
           </Stack>
         </Grid>
       </Grid>
@@ -104,8 +156,8 @@ const TeamGrid = (value, updateState) => {
 export function TeamMaking() {
   const [state, setState] = useState({
     teamName: '',
-    firstCode: '',
-    secondCode: '',
+    first: '',
+    second: '',
   })
   const matches = useMediaQuery(
     json2mq({
@@ -113,20 +165,21 @@ export function TeamMaking() {
     }),
   )
   const updateState = (value, label) => {
-    console.log("start")
+    console.log('start')
     setState(state => ({ ...state, [label]: value }))
-    console.log("end")
+    console.log('end')
   }
   return (
     <Stack
-      justifyContent="space-between"
+      // justifyContent="space-around"
+      spacing={2}
       sx={{
         boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
         marginLeft: matches ? '7.25vw' : 0,
         borderRadius: matches ? '3vw' : '7vw',
         width: matches ? '35.25vw' : '100%',
-        height: matches ? '35vw' : '70vw',
-        padding: matches ? '2vw' : '5vw',
+        // height: matches ? '35vw' : '70vw',
+        padding: matches ? '0vw 2vw 2vw 2vw' : '1vw 5vw 5vw 5vw',
         background: 'transparent',
         boxSizing: 'border-box',
         position: 'relative',
@@ -139,6 +192,8 @@ export function TeamMaking() {
           flexDirection: 'row',
         }}
       >
+        <img src="assets/icons/group.svg" style={{ width: '4vw' }} />
+        <Box sx={{ width: '1vw' }} />
         <BoldStyledTypography
           style={{ fontSize: matches ? '2.25vw' : '5.2vw' }}
           matches={matches}
@@ -146,7 +201,7 @@ export function TeamMaking() {
           تیم
         </BoldStyledTypography>
       </Stack>
-      <TeamGrid value={state.teamName} updateState={updateState} />
+      <TeamGrid state={state} updateState={updateState} />
       <Box sx={{ borderColor: 'black', border: 1, borderRadius: 1, p: 1 }}>
         <Stack>
           <Typography fontStyle={{ fontWeight: 'bold' }}>
