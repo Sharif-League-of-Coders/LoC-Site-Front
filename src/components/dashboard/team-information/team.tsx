@@ -93,6 +93,7 @@ export function TeamMaking() {
   }, [])
 
   const [open, setOpen] = useState(false)
+  const [goToCompetetion, setGoToCompetetion] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -103,6 +104,17 @@ export function TeamMaking() {
     if (confirmed) {
       deleteTeam({ token })
       setTeam(null)
+    }
+  }
+
+  const handleClickOpenCompetition = () => {
+    setGoToCompetetion(true)
+  }
+
+  const handleCloseCompetition = (confirmed: boolean) => {
+    setGoToCompetetion(false)
+    if (confirmed) {
+      window.open('https://quera.org/contest/add_to_contest/lmmoXeJyfN1b0BV/')
     }
   }
 
@@ -147,6 +159,29 @@ export function TeamMaking() {
         <DialogActions>
           <Button onClick={() => handleClose(false)}>انصراف</Button>
           <Button onClick={() => handleClose(true)} autoFocus>
+            تایید
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={goToCompetetion}
+        sx={{
+          direction: 'rtl',
+        }}
+        onClose={() => handleClose(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            پس از فشردن دکمه تایید به صفحه مسابقه هدایت می‌شوید. اگر این اولین
+            باری است که به صفحه مسابقه می‌روید، با وارد رمز Loc-1400-Sharif به
+            روش فردی به مسابقه اضافه شوید.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => handleCloseCompetition(false)}>انصراف</Button>
+          <Button onClick={() => handleCloseCompetition(true)} autoFocus>
             تایید
           </Button>
         </DialogActions>
@@ -227,58 +262,71 @@ export function TeamMaking() {
               کافیست پست الکترونیک هم‌تیمی خود را در ورودی مربوطه نوشته و دکمه
               ارسال دعوت‌نامه را بفشارید. پیامی مبنی بر این درخواست شما به صندوق
               فرد مورد نظر ارسال می‌شود که در صورت موافقت وی تیم‌بندی نهایی
-              می‌شود.
+              می‌شود. در صورت تمایل به تشکیل تیم ۳ نفره نیاز است تا به صورت
+              جداگانه دعوت‌نامه ارسال کنید.
             </Typography>
           </Stack>
         </Stack>
       </Box>
       {team && (
-        <Box
-          sx={{
-            border: 3,
-            borderRadius: '0px 5vh 0px 0px',
-            borderColor: 'black',
-            padding: '1vw 2vw',
-          }}
-        >
-          <Stack
-            justifyContent="space-between"
+        <>
+          <Button
             sx={{
-              padding: '1.5vw',
+              background:
+                'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
+              color: 'white',
+            }}
+            onClick={() => handleClickOpenCompetition()}
+          >
+            شرکت در مسابقه
+          </Button>
+          <Box
+            sx={{
+              border: 3,
+              borderRadius: '0px 5vh 0px 0px',
+              borderColor: 'black',
+              padding: '1vw 2vw',
             }}
           >
-            <Typography>اطلاعات تیم</Typography>
-            <Divider sx={{ marginBottom: '3vw' }} />
-            <Typography>{`نام تیم: ${team.name}`}</Typography>
-
-            <Typography>{`سازنده: ${team.creator.email}`}</Typography>
-
-            {team.members && team.members[0] && (
-              <Typography>{`نفر اول: ${team.members[0].email}`}</Typography>
-            )}
-            {team.members && team.members[1] && (
-              <Typography>{`نفر دوم: ${team.members[1].email}`}</Typography>
-            )}
-            {team.members && team.members[2] && (
-              <Typography>{`نفر سوم: ${team.members[2].email}`}</Typography>
-            )}
-            <Button
-              onClick={() => {
-                handleClickOpen()
-              }}
+            <Stack
+              justifyContent="space-between"
               sx={{
-                bgcolor: 'error.main',
-                color: 'white',
-                marginTop: '10vw',
-                ':hover': {
-                  bgcolor: 'error.main',
-                },
+                padding: '1.5vw',
               }}
             >
-              ترک و حذف گروه
-            </Button>
-          </Stack>
-        </Box>
+              <Typography>اطلاعات تیم</Typography>
+              <Divider sx={{ marginBottom: '3vw' }} />
+              <Typography>{`نام تیم: ${team.name}`}</Typography>
+
+              <Typography>{`سازنده: ${team.creator.email}`}</Typography>
+
+              {team.members && team.members[0] && (
+                <Typography>{`نفر اول: ${team.members[0].email}`}</Typography>
+              )}
+              {team.members && team.members[1] && (
+                <Typography>{`نفر دوم: ${team.members[1].email}`}</Typography>
+              )}
+              {team.members && team.members[2] && (
+                <Typography>{`نفر سوم: ${team.members[2].email}`}</Typography>
+              )}
+              <Button
+                onClick={() => {
+                  handleClickOpen()
+                }}
+                sx={{
+                  bgcolor: 'error.main',
+                  color: 'white',
+                  marginTop: '10vw',
+                  ':hover': {
+                    bgcolor: 'error.main',
+                  },
+                }}
+              >
+                ترک و حذف گروه
+              </Button>
+            </Stack>
+          </Box>
+        </>
       )}
     </Stack>
   )
