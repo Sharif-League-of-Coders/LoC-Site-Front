@@ -8,9 +8,14 @@ import {
 } from '@mui/material'
 import { BoldStyledTypography } from '../components'
 import json2mq from 'json2mq'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { MyInput } from './input'
-import { createTeam, sendInvitation } from '../../../service/backend'
+import {
+  createTeam,
+  deleteTeam,
+  getTeam,
+  sendInvitation,
+} from '../../../service/backend'
 import { useSelector } from 'react-redux'
 import { tokenView, usernameView } from '../../../scenes/_slice/account.slice'
 
@@ -34,7 +39,7 @@ const TeamCreator = ({
       direction={'row'}
       justifyContent="space-between"
       sx={{
-        marginTop: '3vw',
+        margin: '3vw 0',
       }}
     >
       <MyInput
@@ -56,7 +61,7 @@ const TeamCreator = ({
           background:
             'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
           color: 'white',
-          width: 'fit-content',
+          minWidth: 'fit-content',
         }}
       >
         {buttonText}
@@ -68,9 +73,18 @@ const TeamCreator = ({
 export function TeamMaking() {
   const [teamName, setTeamName] = useState('')
   const [teammate, setTeammate] = useState('')
+  const [team, setTeam] = useState(null)
 
   const token = useSelector(tokenView)
   const username = useSelector(usernameView)
+
+  useEffect(() => {
+    if(team) return
+    getTeam({ token }).then(res => {
+      setTeam(res)
+      console.log(res)
+    })
+  })
 
   const matches = useMediaQuery(
     json2mq({
@@ -92,7 +106,6 @@ export function TeamMaking() {
         bgcolor: 'white',
       }}
     >
-
       <Stack
         sx={{
           alignItems: 'center',
@@ -136,10 +149,7 @@ export function TeamMaking() {
               })
             }
           />
-          <Typography>
-            توجه کنید که در صورتی که از قبل تیم داشته باشید با ثبت تیم جدید تیم
-            فعلی شما حذف می‌شود
-          </Typography>
+
           <Divider />
           <TeamCreator
             value={teammate}
@@ -173,6 +183,52 @@ export function TeamMaking() {
           </Stack>
         </Stack>
       </Box>
+      {team && (
+        <Box
+          sx={{
+            border: 3,
+            borderRadius: '0px 5vh 0px 0px',
+            borderColor: 'black',
+            padding: '1vw 2vw',
+          }}
+        >
+          <Stack
+            justifyContent="space-between"
+            sx={{
+              padding: '1.5vw',
+            }}
+          >
+            <Typography>اطلاعات تیم</Typography>
+            <Divider sx={{ marginBottom: '3vw' }} />
+            <Typography>{`نام تیم: ${team.name}`}</Typography>
+
+            <Typography>{`سازنده: ${team.creator.email}`}</Typography>
+
+            {team.members && team.members[1] && (
+              <Typography>{`نفر اول: ${team.members[1].email}`}</Typography>
+            )}
+            {team.members && team.members[2] && (
+              <Typography>{`نفر دوم: ${team.members[2].email}`}</Typography>
+            )}
+            <Button
+              onClick={() => {
+                deleteTeam({ token })
+                setTeam(null)
+              }}
+              sx={{
+                bgcolor: 'error.main',
+                color: 'white',
+                marginTop: '10vw',
+                ':hover': {
+                  bgcolor: 'error.main',
+                },
+              }}
+            >
+              ترک و حذف گروه
+            </Button>
+          </Stack>
+        </Box>
+      )}
     </Stack>
   )
 }
