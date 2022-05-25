@@ -12,7 +12,7 @@ import {
 import json2mq from 'json2mq'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  isLoggedInVew,
+  isLoggedInVew, setInvitations,
   setIsLoggedIn,
   setToken,
   tokenView,
@@ -73,6 +73,7 @@ export function NavBar({ setIsMailBoxModalOpen }: Props) {
       .then(() => {
         dispatch(setToken(''))
         dispatch(setIsLoggedIn(''))
+        dispatch(setInvitations([]))
         window.open('/login', '_self')
       })
   }
@@ -159,7 +160,7 @@ export function NavBar({ setIsMailBoxModalOpen }: Props) {
                 fetchInvitations().then(() => setIsMailBoxModalOpen(true))
               }}
             >
-              <img src="/assets/icons/email.svg" height="100%" />
+              <img src="/assets/icons/email.svg" height="100%" alt="email" />
             </IconButton>
             <Button
               href="/dashboard"

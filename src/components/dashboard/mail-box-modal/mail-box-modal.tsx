@@ -30,12 +30,13 @@ export function MailBoxModal({ isOpen, setIsOpen }: Props) {
         }}
       >
         <Stack alignItems="flex-end">
-          <IconButton>
+          <IconButton
+              onClick={() => setIsOpen(false)}
+          >
             <img
               src="/assets/icons/close.svg"
               alt="close"
               height="100%"
-              onClick={() => setIsOpen(false)}
             />
           </IconButton>
         </Stack>
@@ -44,9 +45,9 @@ export function MailBoxModal({ isOpen, setIsOpen }: Props) {
         </Stack>
         <Divider />
         <Stack>
-          {invitations.map(invite => (
+          {invitations ? invitations.map(invite => (
             <MailItem invite={invite} token={token}/>
-          ))}
+          )) : <Typography>هیچ پیامی ندارید</Typography>}
         </Stack>
       </Stack>
     </StyledDialog>
