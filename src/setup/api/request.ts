@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { HTTP_BACKEND } from '.'
+import { toast } from 'react-toastify'
 
 const instance = axios.create({ baseURL: HTTP_BACKEND })
 
@@ -15,10 +16,17 @@ const responseHandler = response =>
         resolve(res.data)
       })
       .catch(error => {
+        toast.error(error.response.data.detail)
         console.log('snackbar::error:get', error)
-        reject(error)
+        return error
       })
   })
 
-export const getRequest = ({ path, params, data }) =>
-  responseHandler(instance.get(path, { params, data }))
+export const getRequest = ({ path, params, data, headers }) =>
+  responseHandler(instance.get(path, { params, data, headers }))
+
+export const postRequest = ({ path, data, config }) =>
+  responseHandler(instance.post(path, data, config))
+
+export const putRequest = ({ path, data, config }) =>
+  responseHandler(instance.put(path, data, config))

@@ -11,8 +11,16 @@ import {
 } from '@mui/material'
 import json2mq from 'json2mq'
 import { useDispatch, useSelector } from 'react-redux'
-import { isLoggedInVew, setIsLoggedIn, setToken, tokenView, usernameView } from '../../scenes/_slice/account.slice'
+import {
+  isLoggedInVew,
+  setIsLoggedIn,
+  setToken,
+  tokenView,
+  usernameView,
+} from '../../scenes/_slice/account.slice'
 import axios from 'axios'
+import { Dispatch, SetStateAction } from 'react'
+import { fetchInvitations } from '../../service/backend'
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
@@ -27,14 +35,17 @@ const StyledAppbar = styled(Stack)(() => ({
   width: '100%',
 }))
 
-export function NavBar() {
+interface Props {
+  setIsMailBoxModalOpen?: Dispatch<SetStateAction<boolean>>
+}
+
+export function NavBar({ setIsMailBoxModalOpen }: Props) {
   const isLoggedIn = useSelector(isLoggedInVew)
   const username = useSelector(usernameView)
   const token = useSelector(tokenView)
-  console.log(isLoggedIn, username)
   const sections = [
     { text: 'ارتباط با ما', href: '/#contact-us' },
-    { text: 'سوالات متدوال', href: '/#faq' },
+    { text: 'سوالات متداول', href: '/#faq' },
     { text: 'حامی', href: '/#sponsor' },
     { text: 'معرفی', href: '/#about-event' },
   ]
@@ -47,13 +58,23 @@ export function NavBar() {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    axios.post('https://locsharif.com/api/user/logout', {
-      username,
-      token,
-    }).then(console.log)
-    dispatch(setToken(''))
-    dispatch(setIsLoggedIn(''))
-    window.open('/login', '_self')
+    axios
+      .post(
+        'https://locsharif.com/api/user/logout',
+        {
+          username,
+        },
+        {
+          headers: {
+            Authorization: 'Token ' + token,
+          },
+        },
+      )
+      .then(() => {
+        dispatch(setToken(''))
+        dispatch(setIsLoggedIn(''))
+        window.open('/login', '_self')
+      })
   }
   return (
     <StyledAppbar
@@ -128,6 +149,18 @@ export function NavBar() {
         </Stack>
         {isLoggedIn ? (
           <Box>
+            <IconButton
+              sx={{
+                height: '5.5vw',
+                padding: '1vw',
+                boxSizing: 'border-box',
+              }}
+              onClick={() => {
+                fetchInvitations().then(() => setIsMailBoxModalOpen(true))
+              }}
+            >
+              <img src="/assets/icons/email.svg" height="100%" />
+            </IconButton>
             <Button
               href="/dashboard"
               sx={{
@@ -153,7 +186,7 @@ export function NavBar() {
                 width: 'fit-content',
                 border: '1px solid red',
                 borderRadius: '10px',
-                marginRight: '1vw'
+                marginRight: '1vw',
               }}
               onClick={handleLogout}
             >

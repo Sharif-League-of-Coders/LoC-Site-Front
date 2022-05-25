@@ -1,9 +1,7 @@
 import { Stack, Tab, Tabs, styled, useMediaQuery } from '@mui/material'
 import React, { useState } from 'react'
 import json2mq from 'json2mq'
-import { TabPanel } from './tab-panel'
-import { useSelector } from 'react-redux'
-import { usernameView } from '../../../scenes/_slice/account.slice'
+import { TabPanel } from './components/tab-panel'
 
 interface TabProps {
   matches: boolean
@@ -24,17 +22,20 @@ const StyledTab = styled(Tab)<TabProps>(({ matches }) => ({
   '&.Mui-selected': {
     background: '#FFFFFF',
     boxShadow: '0px 0px 1.75vw 5px rgba(0, 0, 0, 0.09)',
-    borderRadius: '18px',
+    borderRadius: matches ? '1vw' : '1.5vw',
     zIndex: '1000px',
     color: 'black',
   },
 }))
 
-const StyledTabs = styled(Tabs)(() => ({
+const StyledTabs = styled(Tabs)<TabProps>(({ matches }) => ({
   marginBottom: '1vw',
   borderRadius: 'inherit',
   '& .MuiTabs-indicator': {
     display: 'none',
+  },
+  '& .MuiTabs-scroller': {
+    height: matches ? '6vw' : '10vw',
   },
 }))
 
@@ -45,16 +46,17 @@ function a11yProps(index: number) {
   }
 }
 
-export function RegisterSection({isRegistration, isEmailVerified}:{isRegistration: boolean
-isEmailVerified: boolean}) {
+export function RegisterSection({
+  isRegistration,
+}: {
+  isRegistration: boolean
+}) {
   const [value, setValue] = React.useState(isRegistration ? 0 : 1)
   const [showPassword, setShowPassword] = useState(false)
-  const storeUsername = useSelector(usernameView)
-  console.log(storeUsername)
-  const [username, setUsername] = useState(storeUsername)
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [secondPassword, setSecondPassword] = useState('')
-  const [isWrongCredential, setIsWrongCredential] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [showActivationEmailSentNotes, setShowActivationEmailSent] =
     useState(false)
   const matches = useMediaQuery(
@@ -76,6 +78,7 @@ isEmailVerified: boolean}) {
       }}
     >
       <StyledTabs
+        matches={matches}
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
@@ -104,14 +107,13 @@ isEmailVerified: boolean}) {
           secondPassword={secondPassword}
           showPassword={showPassword}
           showActivationEmailSentNotes={showActivationEmailSentNotes}
-          isWrongCredential={isWrongCredential}
-          isEmailVerified={isEmailVerified}
+          errorMessage={errorMessage}
           setUsername={setUsername}
           setPassword={setPassword}
           setSecondPassword={setSecondPassword}
           setShowActivationEmailSentNotes={setShowActivationEmailSent}
           setShowPassword={setShowPassword}
-          setIsWrongCredential={setIsWrongCredential}
+          setErrorMessage={setErrorMessage}
         />
       ))}
     </Stack>

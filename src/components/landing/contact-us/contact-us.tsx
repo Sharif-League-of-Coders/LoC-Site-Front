@@ -26,10 +26,10 @@ export function ContactUs() {
       }}
     >
       <Stack
-        flexDirection="column"
-        alignItems="flex-start"
-        justifyContent="space-between"
-        id="contact-us"
+        flexDirection='column'
+        alignItems='flex-start'
+        justifyContent='space-between'
+        id='contact-us'
         sx={{
           width: '100%',
           height: 'fit-content',
@@ -40,13 +40,13 @@ export function ContactUs() {
             width: '100%',
             height: matches ? 'fit-content' : '30%',
           }}
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="space-between"
+          flexDirection='column'
+          alignItems='flex-start'
+          justifyContent='space-between'
         >
           <Stack
-            flexDirection="row"
-            justifyContent="center"
+            flexDirection='row'
+            justifyContent='center'
             sx={{
               width: '100%',
               padding: '20px',
@@ -71,15 +71,15 @@ export function ContactUs() {
               ارتباط با ما
             </Typography>
           </Stack>
-          <Stack flexDirection="row" alignItems="center">
+          <Stack flexDirection='row' alignItems='center'>
             <Stack
-              justifyContent="space-between"
-              flexDirection="row"
+              justifyContent='space-between'
+              flexDirection='row'
               sx={{ width: matches ? '15vw' : '100%', marginRight: '2vw' }}
             >
               <Stack
-                alignItems="center"
-                justifyContent="center"
+                alignItems='center'
+                justifyContent='center'
                 sx={{
                   width: 'max-content',
                   borderRight: `${matches ? '0.25vw' : '0.6vw'} solid black`,
@@ -91,7 +91,7 @@ export function ContactUs() {
                 }}
               >
                 <Stack
-                  alignItems="center"
+                  alignItems='center'
                   sx={{
                     fontFamily: 'Roboto, serif',
                     fontWeight: '400',
@@ -104,8 +104,8 @@ export function ContactUs() {
                   LOCSHARIF
                 </Stack>
                 <Stack
-                  flexDirection="row"
-                  justifyContent="space-between"
+                  flexDirection='row'
+                  justifyContent='space-between'
                   sx={{
                     width: '100%',
                     marginTop: '1vw',
@@ -126,7 +126,7 @@ export function ContactUs() {
                     },
                     { image: 'telegram', link: 'https://t.me/locsharif/' },
                   ].map(({ image, link }) => (
-                    <a href={link} target="_blank">
+                    <a href={link} target='_blank'>
                       <img
                         style={{
                           width: matches ? '2.5vw' : '6vw',
@@ -141,9 +141,9 @@ export function ContactUs() {
               </Stack>
             </Stack>
             <Stack
-              flexDirection="column"
-              alignItems="flex-start"
-              justifyContent="center"
+              flexDirection='column'
+              alignItems='flex-start'
+              justifyContent='center'
               sx={{
                 borderRight: matches
                   ? '0.2vw solid black'
@@ -155,8 +155,8 @@ export function ContactUs() {
             >
               <Stack sx={{ width: '100%' }}>
                 <Link
-                  href="mailto:locsharif@gmail.com"
-                  target="_blank"
+                  href='mailto:locsharif@gmail.com'
+                  target='_blank'
                   sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -171,33 +171,33 @@ export function ContactUs() {
                       width: matches ? '1.8vw' : '4vw',
                       height: matches ? '1.8vw' : '4vw',
                     }}
-                    src="/assets/icons/gmail.svg"
-                    alt="gmail"
+                    src='/assets/icons/gmail.svg'
+                    alt='gmail'
                   />
                   <Typography
-                    fontFamily="Roboto, sans-serif"
-                    fontWeight="400"
+                    fontFamily='Roboto, sans-serif'
+                    fontWeight='400'
                     fontSize={matches ? '1.5vw' : '4vw'}
                     lineHeight={matches ? '1.75vw' : '4.5vw'}
-                    color="black"
+                    color='black'
                   >
                     LOCSHARIF@Gmail.com
                   </Typography>
                 </Link>
               </Stack>
-              <Stack flexDirection="row" sx={{ marginTop: '1vw' }}>
+              <Stack flexDirection='row' sx={{ marginTop: '1vw' }}>
                 <img
-                  src="/assets/icons/phone.svg"
+                  src='/assets/icons/phone.svg'
                   style={{
                     maxWidth: '10vw',
                     maxHeight: '5vw',
                     width: matches ? '1.8vw' : '4vw',
                     height: matches ? '1.8vw' : '4vw',
                   }}
-                  alt="phone"
+                  alt='phone'
                 />
                 <Stack
-                  alignItems="center"
+                  alignItems='center'
                   sx={{
                     fontFamily: 'Roboto, sans-serif',
                     fontWeight: '400',
@@ -206,7 +206,7 @@ export function ContactUs() {
                     letterSpacing: '0.265em',
                     color: '#000000',
                   }}
-                  dir="ltr"
+                  dir='ltr'
                 >
                   {'(+98)9330880908'}
                 </Stack>
@@ -215,33 +215,33 @@ export function ContactUs() {
           </Stack>
 
           <DetailsBox
-            imageSrc="location.svg"
-            title="آدرس"
-            description="
+            imageSrc='location.svg'
+            title='آدرس'
+            description='
               اتاق انجمن علمی (SSC) - طبقه‌ی همکف دانشکده‌ی مهندسـی کامــپیوتر -
-              دانشگاه صنعتـــی شریـــــف"
+              دانشگاه صنعتـــی شریـــــف'
           ></DetailsBox>
           <DetailsBox
-            imageSrc="question-mark.svg"
-            title="آیا می‌دانید؟"
-            description="
+            imageSrc='question-mark.svg'
+            title='آیا می‌دانید؟'
+            description='
           شکل‌های استفاده شده در این طراحی، شکل‌های ناممکن (Impossible shapes)
               نام دارند که این مورد با شعار رویــداد (Make it Possible) هـم
-              راستــا است."
+              راستــا است.'
           ></DetailsBox>
         </Stack>
 
         <Stack
           flexDirection={matches ? 'row' : 'column-reverse'}
-          alignItems="center"
-          justifyContent="center"
+          alignItems='center'
+          justifyContent='center'
           sx={{ width: '100%', marginTop: matches ? '5vw' : '90vw' }}
         >
-          <Stack sx={{ width: '100%' }} alignItems="center">
+          <Stack sx={{ width: '100%' }} alignItems='center'>
             <Stack
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="space-between"
+              flexDirection='row'
+              alignItems='center'
+              justifyContent='space-between'
               sx={{
                 width: matches ? '28.75vw' : 'fit-content',
                 height: '10vw',
@@ -268,51 +268,20 @@ export function ContactUs() {
                 <Box sx={{ width, height, marginLeft: matches ? 0 : '3vw' }}>
                   <img
                     src={`assets/logos/${src}.svg`}
-                    width="100%"
-                    height="100%"
-                    alt="src"
+                    width='100%'
+                    height='100%'
+                    alt='src'
                   />
                 </Box>
               ))}
+
             </Stack>
+            <Typography fontSize={matches ? '1vw' : '2.4vw'}>
+              تمامی حقوق برای توسعه‌دهندگان محفوظ است
+            </Typography>
           </Stack>
-          <Stack
-            sx={{
-              width: '100%',
-              paddingRight: matches ? '15vw' : 0,
-              boxSizing: 'border-box',
-              marginBottom: matches ? '0' : '5vw',
-            }}
-            alignItems={matches ? 'center' : 'flex-start'}
-          >
-            <DetailsBox
-              imageSrc="pencil.svg"
-              title="توسعه دهندگان"
-              description={
-                <Typography
-                  sx={{
-                    fontWeight: '300',
-                    fontSize: matches ? '1.5vw' : '4vw',
-                    lineHeight: matches ? '2.5vw' : '6vw',
-                    fontFamily: 'IRANSansLight, sans-serif',
-                  }}
-                >
-                  <Typography fontFamily="inherit" fontSize="inherit">
-                    بک‌اند: حسین علی‌حســـــینی، کــمیل یحیی‌زاده، علیرضا غضنفری
-                  </Typography>
-                  <Typography fontFamily="inherit" fontSize="inherit">
-                    فرانت‌اند: محمدحسین دولت‌آبادی
-                  </Typography>
-                  <Typography fontFamily="inherit" fontSize="inherit">
-                    طراحی: محمد مصیبی
-                  </Typography>
-                  <Typography fontFamily="inherit" fontSize="inherit">
-                    تمامی حقوق محفوظ است
-                  </Typography>
-                </Typography>
-              }
-            />
-          </Stack>
+
+
         </Stack>
       </Stack>
     </Box>

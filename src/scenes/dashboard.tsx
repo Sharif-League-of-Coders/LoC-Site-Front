@@ -1,10 +1,13 @@
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material'
-import { Resources } from 'components/dashboard/resources'
-import { State } from 'components/dashboard/state'
+import { Stack, useMediaQuery } from '@mui/material'
 import { NavBar } from 'common/nav-bar'
 import json2mq from 'json2mq'
+import { TeamMaking } from 'components/dashboard/team-information/team'
+import { MailBoxModal } from '../components/dashboard/mail-box-modal'
+import { useState } from 'react'
 
 export function Dashboard() {
+  const [isMailBoxModalOpen, setIsMailBoxModalOpen] = useState(false)
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -23,21 +26,8 @@ export function Dashboard() {
         backgroundSize: '100vw auto',
       }}
     >
-      <NavBar />
-      <Box
-        sx={{
-          width: '10vw',
-          margin: matches ? '0 4vw' : '3vw 7vw',
-          borderBottom: '3px solid black',
-        }}
-      >
-        <Typography
-          fontSize={matches ? '1.5vw' : '3.5vw'}
-          lineHeight={matches ? '2vw' : '5vw'}
-        >
-          داشبورد
-        </Typography>
-      </Box>
+      <NavBar setIsMailBoxModalOpen={setIsMailBoxModalOpen}/>
+      <MailBoxModal isOpen={isMailBoxModalOpen} setIsOpen={setIsMailBoxModalOpen}/>
 
       <Stack
         flexDirection={matches ? 'row' : 'column'}
@@ -45,10 +35,14 @@ export function Dashboard() {
         alignItems="center"
         sx={{
           padding: matches ? 0 : '3vw',
+          // zIndex:100,
         }}
       >
-        <Resources></Resources>
-        <State></State>
+
+        {/*<Information />*/}
+        <TeamMaking />
+        {/*<Resources></Resources>*/}
+        {/*<State></State>*/}
       </Stack>
     </Stack>
   )

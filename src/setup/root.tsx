@@ -34,7 +34,11 @@ export function Root() {
       <Route
         path="/dashboard"
         element={
-          !isLoggedIn ? <Navigate to="/signup" replace /> : <Dashboard />
+          !isLoggedIn && process.env.NODE_ENV === 'production' ? (
+            <Navigate to="/signup" replace />
+          ) : (
+            <Dashboard />
+          )
         }
       />
     </Routes>

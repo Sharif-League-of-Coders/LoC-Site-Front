@@ -2,10 +2,13 @@ import { styled, Typography } from '@mui/material'
 
 interface StyledTypographyProps {
   matches: boolean
+  style?: {
+    fontSize: unknown
+  }
 }
 
 export const BoldStyledTypography = styled(Typography)<StyledTypographyProps>(
-  ({ matches }) => ({
+  ({ matches, style }) => ({
     fontFamily: 'IRANSansBold',
     background:
       'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
@@ -13,7 +16,7 @@ export const BoldStyledTypography = styled(Typography)<StyledTypographyProps>(
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     textFillColor: 'transparent',
-    fontSize: matches ? '1.25vw' : '3.2vw',
+    fontSize: style ? style.fontSize : matches ? '1.25vw' : '3.2vw',
   }),
 )
 
