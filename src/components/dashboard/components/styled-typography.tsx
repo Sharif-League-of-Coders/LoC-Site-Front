@@ -2,7 +2,9 @@ import { styled, Typography } from '@mui/material'
 
 interface StyledTypographyProps {
   matches: boolean
-  style?: any
+  style?: {
+    fontSize: unknown
+  }
 }
 
 export const BoldStyledTypography = styled(Typography)<StyledTypographyProps>(

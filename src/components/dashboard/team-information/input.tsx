@@ -28,10 +28,15 @@ export const InformationInput = ({
   label: string
   updateState: (event: unknown, name: string) => void
   name: string
-  value: any
+  value: {
+    year: number
+    month: number
+    day: number
+  }
   disabled?: boolean
 }) => {
   // const [open, setOpen] = useState(false)
+
   const renderCustomInput = ({ ref }) => (
     <MyInput
       id="outlined-name"
