@@ -28,50 +28,63 @@ export const InformationInput = ({
   label: string
   updateState: (event: unknown, name: string) => void
   name: string
-  value: {
-    year: number
-    month: number
-    day: number
-  }
+  value:
+    | {
+        year: number
+        month: number
+        day: number
+      }
+    | string
   disabled?: boolean
 }) => {
   // const [open, setOpen] = useState(false)
 
-  const renderCustomInput = ({ ref }) => (
-    <MyInput
-      id="outlined-name"
-      ref={ref} // necessary
-      value={value ? `${value.year}/${value.month}/${value.day}` : ''}
-      dir="rtl"
-      disableUnderline={true}
-      endAdornment={
-        <InputAdornment position="end">
-          <img
-            style={{
-              maxHeight: '1vw',
-            }}
-            src={`assets/icons/pencil.svg`}
-            alt="pencil"
-          />
-        </InputAdornment>
-      }
-    />
-  )
+  const renderCustomInput = ({ ref }) => {
+    if (typeof value !== 'string') {
+      return (
+        <MyInput
+          id="outlined-name"
+          ref={ref} // necessary
+          value={
+            value && value?.year
+              ? `${value.year}/${value.month}/${value.day}`
+              : ''
+          }
+          dir="rtl"
+          disableUnderline={true}
+          endAdornment={
+            <InputAdornment position="end">
+              <img
+                style={{
+                  maxHeight: '1vw',
+                }}
+                src={`assets/icons/pencil.svg`}
+                alt="pencil"
+              />
+            </InputAdornment>
+          }
+        />
+      )
+    }
+  }
+
   return (
     <Box sx={{ p: 0.5 }}>
       <Stack spacing={1}>
         <Typography>{label}</Typography>
         {name == 'birthDate' ? (
           <>
-            <DatePicker
-              value={value}
-              onChange={event => {
-                updateState(event, name)
-              }}
-              locale="fa" // add this
-              renderInput={renderCustomInput} // render a custom input
-              shouldHighlightWeekends
-            />
+            {typeof value !== 'string' && (
+              <DatePicker
+                value={value}
+                onChange={event => {
+                  updateState(event, name)
+                }}
+                locale="fa" // add this
+                renderInput={renderCustomInput} // render a custom input
+                shouldHighlightWeekends
+              />
+            )}
           </>
         ) : (
           <MyInput
