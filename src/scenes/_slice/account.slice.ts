@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import * as R from 'ramda'
 
-
 const accountSlice = createSlice({
   name: 'account',
   initialState: {
@@ -30,7 +29,15 @@ const accountSlice = createSlice({
     },
     setInvitations: (state, action) => {
       const { data } = action.payload
-      state.invitations = R.uniq([...state.invitations, ...data])
+      console.log(data)
+      state.invitations = data
+    },
+    addInvitations: (state, action) => {
+      const { data } = action.payload
+      console.log(data, state.invitations)
+      if (state.invitations)
+        state.invitations = R.uniq([...state.invitations, ...data])
+      else state.invitations = data
     },
   },
 })
@@ -42,6 +49,7 @@ export const {
   setUsername,
   setToken,
   setInvitations,
+  addInvitations,
 } = actions
 export default reducer
 
