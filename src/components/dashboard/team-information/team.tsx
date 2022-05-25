@@ -1,6 +1,11 @@
 import {
   Box,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   Stack,
   Typography,
@@ -87,6 +92,20 @@ export function TeamMaking() {
     })
   }, [])
 
+  const [open, setOpen] = useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = (confirmed: boolean) => {
+    setOpen(false)
+    if (confirmed) {
+      deleteTeam({ token })
+      setTeam(null)
+    }
+  }
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -107,6 +126,31 @@ export function TeamMaking() {
         bgcolor: 'white',
       }}
     >
+      <Dialog
+        open={open}
+        sx={{
+          direction: 'rtl',
+        }}
+        onClose={() => handleClose(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'آیا مایل به ترک تیم هستید؟'}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            برای بازگشت مجدد نیاز دارید که از جانب سازنده تیم و یا یکی از اعضای
+            آن دعوت‌نامه دریافت کنید. پس از تایید نیاز است که مجددا وارد شوید
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => handleClose(false)}>انصراف</Button>
+          <Button onClick={() => handleClose(true)} autoFocus>
+            تایید
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Stack
         sx={{
           alignItems: 'center',
@@ -220,8 +264,7 @@ export function TeamMaking() {
             )}
             <Button
               onClick={() => {
-                deleteTeam({ token })
-                setTeam(null)
+                handleClickOpen()
               }}
               sx={{
                 bgcolor: 'error.main',
