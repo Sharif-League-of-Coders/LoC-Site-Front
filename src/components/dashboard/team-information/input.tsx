@@ -29,7 +29,7 @@ export const InformationInput = ({
   updateState: (event: unknown, name: string) => void
   name: string
   value: any
-  disabled: boolean
+  disabled?: boolean
 }) => {
   // const [open, setOpen] = useState(false)
   const renderCustomInput = ({ ref }) => (
@@ -105,4 +105,8 @@ export const InformationInput = ({
       </Stack>
     </Box>
   )
+}
+
+InformationInput.defaultProps = {
+  disabled: false,
 }
