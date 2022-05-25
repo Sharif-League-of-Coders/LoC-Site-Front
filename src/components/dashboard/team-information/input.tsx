@@ -28,7 +28,7 @@ export const InformationInput = ({
   label: string
   updateState: (event: unknown, name: string) => void
   name: string
-  value: never
+  value: any
   disabled: boolean
 }) => {
   // const [open, setOpen] = useState(false)
