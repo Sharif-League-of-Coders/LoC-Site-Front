@@ -1,6 +1,12 @@
 import axios from 'axios'
 import { HTTP_BACKEND } from '.'
 import { toast } from 'react-toastify'
+import store from '../store/store'
+import {
+  setInvitations,
+  setIsLoggedIn,
+  setToken,
+} from '../../scenes/_slice/account.slice'
 
 const instance = axios.create({ baseURL: HTTP_BACKEND })
 
@@ -13,11 +19,23 @@ const responseHandler = response =>
           reject(apiError)
           return
         }
+        console.log(res)
         toast.success(res.message)
         resolve(res.data)
       })
       .catch(error => {
-        toast.error(error.response.data.detail)
+        switch (error.response.data.detail) {
+          case 'Invalid token.':
+            store.dispatch(setToken(''))
+            store.dispatch(setIsLoggedIn(''))
+            store.dispatch(setInvitations([]))
+            window.open('/login', '_self')
+            break
+          case 'you should be in a team to perform this action':
+            break
+          default:
+            toast.error(error.response.data.detail)
+        }
         console.log('snackbar::error:get', error)
         return error
       })
