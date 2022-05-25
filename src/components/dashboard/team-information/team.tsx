@@ -79,12 +79,13 @@ export function TeamMaking() {
   const username = useSelector(usernameView)
 
   useEffect(() => {
-    if(team) return
+    if (team) return
+    if (!token) return
     getTeam({ token }).then(res => {
       setTeam(res)
       console.log(res)
     })
-  })
+  }, [])
 
   const matches = useMediaQuery(
     json2mq({
@@ -140,14 +141,18 @@ export function TeamMaking() {
             setValue={setTeamName}
             placeholder="نام تیم"
             buttonText="ساخت تیم"
-            clickHandler={() =>
+            clickHandler={() => {
               createTeam({
                 name: teamName,
                 creator: username,
                 members: [],
                 token,
+              }).then(() => {
+                getTeam({ token }).then(res => {
+                  setTeam(res)
+                })
               })
-            }
+            }}
           />
 
           <Divider />
@@ -204,11 +209,14 @@ export function TeamMaking() {
 
             <Typography>{`سازنده: ${team.creator.email}`}</Typography>
 
+            {team.members && team.members[0] && (
+              <Typography>{`نفر اول: ${team.members[0].email}`}</Typography>
+            )}
             {team.members && team.members[1] && (
-              <Typography>{`نفر اول: ${team.members[1].email}`}</Typography>
+              <Typography>{`نفر دوم: ${team.members[1].email}`}</Typography>
             )}
             {team.members && team.members[2] && (
-              <Typography>{`نفر دوم: ${team.members[2].email}`}</Typography>
+              <Typography>{`نفر سوم: ${team.members[2].email}`}</Typography>
             )}
             <Button
               onClick={() => {
