@@ -1,5 +1,4 @@
-import { Button, IconButton, Stack, Typography } from '@mui/material'
-import { RemoveCircle } from '@mui/icons-material'
+import { Button, Divider, IconButton, Stack, Typography } from '@mui/material'
 import { acceptRequest, rejectRequest } from '../../../service/backend'
 
 interface Props {
@@ -14,7 +13,6 @@ interface Props {
       }
     }
     status: string
-
   }
   token: string
 }
@@ -27,52 +25,88 @@ export function MailItem({ invite, token }: Props) {
         return invite.user
           ? `در انتظار پاسخ از ${invite.user.email}`
           : `یک درخواست از طرف ${invite.team.creator.email} دارید آیا می‌پذیرید؟`
+      case 'rejected':
+        return `${invite.user.email} درخواست شما را رد کرد`
+      case 'accepted':
+        return `${invite.user.email} درخواست شما را پذیرفت`
     }
   }
 
   return (
-    <Stack direction="row" alignItems="center">
-      <Typography>{getTextWithStatus(status)}</Typography>
+    <>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{
+          height: '5vw',
+        }}
+      >
+        <Typography>{getTextWithStatus(status)}</Typography>
 
-      {invite.team && (
-        <>
-          <Button
-            onClick={() => acceptRequest({token, inviteId: invite.id})}
+        {invite.team && (
+          <Stack
+            direction="row"
+            justifyContent="space-between"
             sx={{
-              bgcolor: 'success.main',
-              color: 'white',
-              ':hover': {
+              width: 'fit-content',
+            }}
+          >
+            <Button
+              onClick={() => acceptRequest({ token, inviteId: invite.id })}
+              sx={{
                 bgcolor: 'success.main',
-              },
-            }}
-          >
-            <img src="/assets/icons/tick2.svg" />
-            قبول
-          </Button>
-          <Button
-            onClick={() => rejectRequest({token, inviteId: invite.id})}
-
-            sx={{
-              bgcolor: 'error.main',
-              color: 'white',
-              ':hover': {
+                color: 'white',
+                height: '1.75vw',
+                marginLeft: '1vw',
+                ':hover': {
+                  bgcolor: 'success.main',
+                },
+              }}
+            >
+              <img
+                src="/assets/icons/tick2.svg"
+                height="100%"
+                style={{ marginLeft: '.5vw' }}
+                alt="tick"
+              />
+              قبــــــول
+            </Button>
+            <Button
+              onClick={() => rejectRequest({ token, inviteId: invite.id })}
+              sx={{
                 bgcolor: 'error.main',
-              },
-            }}
-          >
-            <img src="/assets/icons/reject.svg" />
-            رد
-          </Button>
-          <IconButton
-            sx={{
-              borderWidth: '1px',
-              borderColor: 'error.main',
-            }}
-          >
-            <img src="/assets/icons/trash.svg" />
-          </IconButton>
-        </>
-      )}
-    </Stack>
+                color: 'white',
+                height: '1.75vw',
+                marginLeft: '1vw',
+
+                ':hover': {
+                  bgcolor: 'error.main',
+                },
+              }}
+            >
+              <img
+                src="/assets/icons/reject.svg"
+                height="100%"
+                style={{ marginLeft: '.5vw' }}
+                alt="reject"
+              />
+              خیــــــــر
+            </Button>
+            <IconButton
+              sx={{
+                borderWidth: '1px',
+                borderColor: 'error.main',
+                height: '1.75vw',
+                p: 0,
+              }}
+            >
+              <img src="/assets/icons/trash.svg" height="100%" alt="trash" />
+            </IconButton>
+          </Stack>
+        )}
+      </Stack>
+      <Divider />
+    </>
   )
 }

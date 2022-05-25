@@ -2,7 +2,7 @@ import { getRequest, postRequest, putRequest } from '../../setup/api'
 
 export const createTeam = ({ name, creator, members, token }) =>
   postRequest({
-    path: '/api/team',
+    path: '/api/team/',
     data: {
       name,
       members,
@@ -67,7 +67,7 @@ export const acceptRequest = ({ token, inviteId }) =>
       },
     },
     data: {
-      answer: 1,
+      answer: true,
     },
   })
 

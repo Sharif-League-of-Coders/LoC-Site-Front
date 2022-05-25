@@ -1,9 +1,6 @@
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material'
-import { Resources } from 'components/dashboard/resources'
-import { State } from 'components/dashboard/state'
+import { Stack, useMediaQuery } from '@mui/material'
 import { NavBar } from 'common/nav-bar'
 import json2mq from 'json2mq'
-import { Information } from 'components/dashboard/team-information/information'
 import { TeamMaking } from 'components/dashboard/team-information/team'
 import { MailBoxModal } from '../components/dashboard/mail-box-modal'
 import { useState } from 'react'
@@ -42,7 +39,7 @@ export function Dashboard() {
         }}
       >
 
-        <Information />
+        {/*<Information />*/}
         <TeamMaking />
         {/*<Resources></Resources>*/}
         {/*<State></State>*/}

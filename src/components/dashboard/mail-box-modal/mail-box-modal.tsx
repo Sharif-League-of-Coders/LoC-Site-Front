@@ -1,6 +1,5 @@
-import { Dialog, IconButton, Stack, styled, Typography, useMediaQuery } from '@mui/material'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import json2mq from 'json2mq'
+import { Dialog, Divider, IconButton, Stack, styled, Typography } from '@mui/material'
+import { Dispatch, SetStateAction } from 'react'
 import { MailItem, t } from '.'
 import { useSelector } from 'react-redux'
 import { invitationsView, tokenView } from '../../../scenes/_slice/account.slice'
@@ -22,12 +21,6 @@ export function MailBoxModal({ isOpen, setIsOpen }: Props) {
   const invitations = useSelector(invitationsView)
   const token = useSelector(tokenView)
 
-  const matches = useMediaQuery(
-    json2mq({
-      minWidth: 750,
-    }),
-  )
-
   return (
     <StyledDialog open={isOpen} sx={{ width: '100%', height: '100%' }}>
       <Stack
@@ -36,7 +29,7 @@ export function MailBoxModal({ isOpen, setIsOpen }: Props) {
           padding: '40px',
         }}
       >
-        <Stack alignItems="flex-end" sx={{ height: matches ? '1vw' : '2.4vw' }}>
+        <Stack alignItems="flex-end">
           <IconButton>
             <img
               src="/assets/icons/close.svg"
@@ -49,6 +42,7 @@ export function MailBoxModal({ isOpen, setIsOpen }: Props) {
         <Stack>
           <Typography>{t.title}</Typography>
         </Stack>
+        <Divider />
         <Stack>
           {invitations.map(invite => (
             <MailItem invite={invite} token={token}/>

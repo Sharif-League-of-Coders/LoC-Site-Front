@@ -1,12 +1,9 @@
 import {
   Box,
   InputAdornment,
-  Modal,
   Stack,
-  TextField,
   Typography,
 } from '@mui/material'
-import { useState } from 'react'
 import { styled } from '@mui/material/styles'
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css'
@@ -30,11 +27,16 @@ export const InformationInput = ({
   name,
   value,
   updateState,
+  ...props
 }: {
   label: string
-  updateState: (event: any, name: string) => void
+  updateState: (event: unknown, name: string) => void
   name: string
-  value: any
+  value: {
+    year: string
+    month: string
+    day: string
+  }
 }) => {
   // const [open, setOpen] = useState(false)
   const renderCustomInput = ({ ref }) => (
@@ -51,6 +53,7 @@ export const InformationInput = ({
               maxHeight: '1vw',
             }}
             src={`assets/icons/pencil.svg`}
+            alt="pencil"
           />
         </InputAdornment>
       }
@@ -74,6 +77,7 @@ export const InformationInput = ({
           </>
         ) : (
           <MyInput
+            {...props}
             value={value}
             onChange={event => updateState(event.target.value, name)}
             dir="rtl"
@@ -96,7 +100,8 @@ export const InformationInput = ({
                     style={{
                       maxHeight: '1vw',
                     }}
-                    src={`assets/icons/pencil.svg`}
+                    src="/assets/icons/pencil.svg"
+                    alt="pencil"
                   />
                 </InputAdornment>
               )
