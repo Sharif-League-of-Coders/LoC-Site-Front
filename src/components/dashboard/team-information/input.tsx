@@ -1,9 +1,4 @@
-import {
-  Box,
-  InputAdornment,
-  Stack,
-  Typography,
-} from '@mui/material'
+import { Box, InputAdornment, Stack, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css'
@@ -27,16 +22,14 @@ export const InformationInput = ({
   name,
   value,
   updateState,
+  disabled,
   ...props
 }: {
   label: string
   updateState: (event: unknown, name: string) => void
   name: string
-  value: {
-    year: string
-    month: string
-    day: string
-  }
+  value: never
+  disabled: boolean
 }) => {
   // const [open, setOpen] = useState(false)
   const renderCustomInput = ({ ref }) => (
@@ -78,6 +71,7 @@ export const InformationInput = ({
         ) : (
           <MyInput
             {...props}
+            disabled={disabled}
             value={value}
             onChange={event => updateState(event.target.value, name)}
             dir="rtl"
