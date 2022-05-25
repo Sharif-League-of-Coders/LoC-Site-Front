@@ -1,4 +1,9 @@
-import { getRequest, postRequest, putRequest } from '../../setup/api'
+import {
+  deleteRequest,
+  getRequest,
+  postRequest,
+  putRequest,
+} from '../../setup/api'
 
 export const createTeam = ({ name, creator, members, token }) =>
   postRequest({
@@ -81,5 +86,13 @@ export const rejectRequest = ({ token, inviteId }) =>
     },
     data: {
       reject: 1,
+    },
+  })
+
+export const deleteTeam = ({ token }) =>
+  deleteRequest({
+    path: '/api/team/',
+    headers: {
+      Authorization: `Token ${token}`,
     },
   })

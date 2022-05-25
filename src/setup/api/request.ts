@@ -13,6 +13,7 @@ const responseHandler = response =>
           reject(apiError)
           return
         }
+        toast.success('Successful')
         resolve(res.data)
       })
       .catch(error => {
@@ -30,3 +31,6 @@ export const postRequest = ({ path, data, config }) =>
 
 export const putRequest = ({ path, data, config }) =>
   responseHandler(instance.put(path, data, config))
+
+export const deleteRequest = ({ path, headers }) =>
+  responseHandler(instance.delete(path, { headers }))
