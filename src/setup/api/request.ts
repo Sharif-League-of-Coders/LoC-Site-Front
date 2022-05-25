@@ -13,7 +13,7 @@ const responseHandler = response =>
           reject(apiError)
           return
         }
-        toast.success('Successful')
+        toast.success(res.message)
         resolve(res.data)
       })
       .catch(error => {
