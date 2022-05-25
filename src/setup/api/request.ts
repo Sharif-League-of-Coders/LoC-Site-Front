@@ -20,7 +20,9 @@ const responseHandler = response =>
           return
         }
         console.log(res)
-        toast.success(res.message)
+        toast.success(
+          'با موفقیت انجام شد.'
+        )
         resolve(res.data)
       })
       .catch(error => {

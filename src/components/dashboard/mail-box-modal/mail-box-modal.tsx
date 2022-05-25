@@ -46,7 +46,7 @@ export function MailBoxModal({ isOpen, setIsOpen }: Props) {
         <Divider />
         <Stack>
           {invitations ? invitations.map(invite => (
-            <MailItem invite={invite} token={token}/>
+            <MailItem invite={invite} token={token} setIsOpen={setIsOpen}/>
           )) : <Typography>هیچ پیامی ندارید</Typography>}
         </Stack>
       </Stack>
