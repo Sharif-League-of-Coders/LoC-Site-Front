@@ -1,5 +1,6 @@
 import { Button, Divider, IconButton, Stack, Typography } from '@mui/material'
 import { acceptRequest, rejectRequest } from '../../../service/backend'
+import { Dispatch, SetStateAction } from 'react'
 
 interface Props {
   invite: {
@@ -15,6 +16,7 @@ interface Props {
     status: string
   }
   token: string
+  setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export function MailItem({ invite, token }: Props) {
@@ -53,7 +55,9 @@ export function MailItem({ invite, token }: Props) {
             }}
           >
             <Button
-              onClick={() => acceptRequest({ token, inviteId: invite.id })}
+              onClick={() => {
+                acceptRequest({ token, inviteId: invite.id })
+              }}
               sx={{
                 bgcolor: 'success.main',
                 color: 'white',
@@ -73,7 +77,9 @@ export function MailItem({ invite, token }: Props) {
               قبــــــول
             </Button>
             <Button
-              onClick={() => rejectRequest({ token, inviteId: invite.id })}
+              onClick={() => {
+                rejectRequest({ token, inviteId: invite.id })
+              }}
               sx={{
                 bgcolor: 'error.main',
                 color: 'white',
