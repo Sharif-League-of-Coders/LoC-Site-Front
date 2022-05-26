@@ -1,22 +1,32 @@
-import { Box, InputAdornment, Stack, Typography } from '@mui/material'
+import {
+  Box,
+  InputAdornment,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css'
 import DatePicker from '@hassanmojab/react-modern-calendar-datepicker'
 import Input from '@mui/material/Input'
+import json2mq from 'json2mq'
 
-export const MyInput = styled(Input)(({ name }: { name?: string }) => ({
+interface MyInputProps {
+  matches: boolean
+}
+
+export const MyInput = styled(Input)<MyInputProps>(({ matches }) => ({
   width: '100%',
   border: 1,
   minHeight: '3vw',
-  height: '3vw',
+  height: matches ? '3vw' : '7.2vw',
   borderColor: 'transparent',
   padding: '0.5vw 1vw ',
-  borderRadius:
-    name == 'code' ? ' 0.2vw 0vw 1.5vw 0.2vw' : ' 1.5vw 0vw 1.5vw 0vw',
+  borderRadius: matches ? '0.2vw 0vw 1.5vw 0.2vw' : ' 1.5vw 0vw 1.5vw 0vw',
   boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
   '::placeholder': { color: 'white' },
-  fontSize: '1vw'
+  fontSize: matches ? '1vw' : '2.4vw',
 }))
 
 export const InformationInput = ({
@@ -39,12 +49,17 @@ export const InformationInput = ({
     | string
   disabled?: boolean
 }) => {
-  // const [open, setOpen] = useState(false)
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    }),
+  )
 
   const renderCustomInput = ({ ref }) => {
     if (typeof value !== 'string') {
       return (
         <MyInput
+          matches={matches}
           id="outlined-name"
           ref={ref} // necessary
           value={
@@ -54,7 +69,6 @@ export const InformationInput = ({
           }
           dir="rtl"
           disableUnderline={true}
-
           endAdornment={
             <InputAdornment position="end">
               <img
@@ -92,6 +106,7 @@ export const InformationInput = ({
         ) : (
           <MyInput
             {...props}
+            matches={matches}
             disabled={disabled}
             value={value}
             onChange={event => updateState(event.target.value, name)}

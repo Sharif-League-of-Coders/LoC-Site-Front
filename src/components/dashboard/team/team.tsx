@@ -23,6 +23,11 @@ import { CreateTeam } from './create-team'
 import { SendInvitation } from './send-invitation'
 
 export function TeamMaking() {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    }),
+  )
   const [teamName, setTeamName] = useState('')
   const [teammate, setTeammate] = useState('')
   const [team, setTeam] = useState(null)
@@ -83,18 +88,13 @@ export function TeamMaking() {
     setTeammate('')
   }
 
-  const matches = useMediaQuery(
-    json2mq({
-      minWidth: 750,
-    }),
-  )
   return (
     <Stack
       sx={{
         boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
         marginLeft: matches ? '7.25vw' : 0,
         borderRadius: matches ? '3vw' : '7vw',
-        width: matches ? '42.5vw' : '102vw',
+        width: matches ? '42.5vw' : '100%',
         padding: matches ? '2vw' : '5vw',
         background: 'transparent',
         boxSizing: 'border-box',

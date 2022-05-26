@@ -1,6 +1,7 @@
-import { IconButton, Stack, Typography } from '@mui/material'
+import { IconButton, Stack, Typography, useMediaQuery } from '@mui/material'
 import { MyInput } from './input'
 import { Dispatch, SetStateAction } from 'react'
+import json2mq from 'json2mq'
 
 const EmailFieldWithConfirm = ({
   value,
@@ -8,9 +9,15 @@ const EmailFieldWithConfirm = ({
   placeholder,
   clickHandler,
 }) => {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    }),
+  )
   return (
     <Stack direction="row" alignItems="center" sx={{ margin: '1vw 0' }}>
       <MyInput
+        matches={matches}
         value={value}
         sx={{
           borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
@@ -25,13 +32,13 @@ const EmailFieldWithConfirm = ({
       <IconButton
         onClick={clickHandler}
         sx={{
-          height: '2.5vw',
-          width: '2.5vw',
+          height: matches ? '2.5vw' : '6vw',
+          width: matches ? '2.5vw' : '6vw',
           background:
             'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
           boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
           borderRadius: '5px',
-          padding: '.5vw',
+          padding: matches ? '.5vw' : '1vw',
           boxSizing: 'border-box',
         }}
       >
@@ -57,6 +64,11 @@ export function SendInvitation({
   setValue,
   clickHandler,
 }: SendInvitationProps) {
+  const matches = useMediaQuery(
+    json2mq({
+      minWidth: 750,
+    }),
+  )
   return (
     <Stack
       justifyContent="space-between"
@@ -65,7 +77,7 @@ export function SendInvitation({
         margin: '1vw',
       }}
     >
-      <Typography>عضوگیری</Typography>
+      <Typography fontSize={matches ? '1.5vw' : '3vw'}>عضوگیری</Typography>
       <EmailFieldWithConfirm
         placeholder="پست الکترونیک نفر اول"
         clickHandler={clickHandler}
