@@ -4,7 +4,7 @@ import json2mq from 'json2mq'
 import { TeamMaking } from 'components/dashboard/team/team'
 import { MailBoxModal } from '../components/dashboard/mail-box-modal'
 import { useState } from 'react'
-// import { Resources } from '../components/dashboard/resources'
+import { Resources } from '../components/dashboard/resources'
 // import { State } from '../components/dashboard/state'
 
 export function Dashboard() {
@@ -51,11 +51,12 @@ export function Dashboard() {
           flexDirection={matches ? 'row' : 'column'}
           justifyContent="center"
           alignItems="center"
+          flexWrap="wrap"
           sx={{ marginTop: matches ? '1.5vw' : '2.5vw' }}
         >
           {/*<Information />*/}
           <TeamMaking />
-          {/*<Resources></Resources>*/}
+          <Resources></Resources>
           {/*<State></State>*/}
         </Stack>
       </Box>

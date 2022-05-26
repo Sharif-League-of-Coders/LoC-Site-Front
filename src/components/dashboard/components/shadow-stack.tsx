@@ -18,4 +18,5 @@ export const ShadowStack = styled(Stack)<ShadowStackProps>(({ matches }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'row',
+  flexWrap: 'wrap'
 }))

@@ -21,6 +21,7 @@ import { DeleteTeamDialog } from './delete-team-dialog'
 import { RedirectToCompetitionDialog } from './redirect-to-competition-dialog'
 import { CreateTeam } from './create-team'
 import { SendInvitation } from './send-invitation'
+import { Container } from '../components/container'
 
 export function TeamMaking() {
   const matches = useMediaQuery(
@@ -89,19 +90,7 @@ export function TeamMaking() {
   }
 
   return (
-    <Stack
-      sx={{
-        boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
-        marginLeft: matches ? '7.25vw' : 0,
-        borderRadius: matches ? '3vw' : '7vw',
-        width: matches ? '42.5vw' : '100%',
-        padding: matches ? '2vw' : '5vw',
-        background: 'transparent',
-        boxSizing: 'border-box',
-        position: 'relative',
-        bgcolor: 'white',
-      }}
-    >
+    <Container matches={matches}>
       <DeleteTeamDialog open={open} handleClose={handleClose} />
       <RedirectToCompetitionDialog
         open={goToCompetition}
@@ -228,6 +217,6 @@ export function TeamMaking() {
           </Box>
         </>
       )}
-    </Stack>
+    </Container>
   )
 }

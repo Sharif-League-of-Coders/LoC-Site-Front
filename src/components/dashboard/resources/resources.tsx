@@ -1,26 +1,12 @@
 import { Stack, styled, useMediaQuery } from '@mui/material'
 import { BoldStyledTypography, ShadowStack } from '../components'
 import json2mq from 'json2mq'
-import { BlurLayer } from '../components/blur-layer'
 import { t } from '.'
+import { Container } from '../components/container'
 
 interface StyledStackProps {
   matches: boolean
 }
-
-const Container = styled(Stack)<StyledStackProps>(({ matches }) => ({
-  boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
-  marginLeft: matches ? '7.25vw' : 0,
-  borderRadius: matches ? '3vw' : '7vw',
-  width: matches ? '29.25vw' : '100%',
-  height: matches ? '30vw' : '70vw',
-  padding: matches ? '2vw' : '5vw',
-  background: 'transparent',
-  boxSizing: 'border-box',
-  position: 'relative',
-  justifyContent: 'space-between',
-
-}))
 
 const WrapperStack = styled(Stack)<StyledStackProps>(({ matches }) => ({
   width: '100%',
@@ -35,7 +21,6 @@ const WrapperStack = styled(Stack)<StyledStackProps>(({ matches }) => ({
   borderRadius: 'inherit',
 }))
 
-
 export function Resources() {
   const matches = useMediaQuery(
     json2mq({
@@ -43,33 +28,51 @@ export function Resources() {
     }),
   )
   return (
-    <Container matches={matches}>
-      <BlurLayer matches={matches} text={t.comingSoon} />
+    <Container
+      matches={matches}
+      sx={{
+        height: matches ? '30vw' : '70vw',
+      }}
+    >
       <ShadowStack matches={matches}>
-        <BoldStyledTypography matches={matches}>داشبورد</BoldStyledTypography>
+        <img
+          src="/assets/icons/scoreboard.svg"
+          style={{ marginLeft: matches ? '.5vw' : '2vw' }}
+          alt="scoreboard"
+        />
+        <BoldStyledTypography matches={matches}>
+          {t.scoreBoard}
+        </BoldStyledTypography>
       </ShadowStack>
-      <WrapperStack matches={matches}>
-        <ShadowStack matches={matches}>
-          <BoldStyledTypography matches={matches}>
-            {t.myTeamDetails}
-          </BoldStyledTypography>
-        </ShadowStack>
-        <ShadowStack matches={matches}>
-          <BoldStyledTypography matches={matches}>
-            {t.scoreBoard}
-          </BoldStyledTypography>
-        </ShadowStack>
-      </WrapperStack>
 
       <WrapperStack matches={matches}>
         <ShadowStack matches={matches}>
-          <BoldStyledTypography matches={matches}>{t.documentations}</BoldStyledTypography>
+          <img
+            src="/assets/icons/documents.svg"
+            style={{ marginLeft: matches ? '.5vw' : '2vw' }}
+            alt="document"
+          />
+          <BoldStyledTypography matches={matches}>
+            {t.documentations}
+          </BoldStyledTypography>
         </ShadowStack>
 
         <ShadowStack matches={matches}>
-          <BoldStyledTypography matches={matches}>{t.videos}</BoldStyledTypography>
+          <img
+            src="/assets/icons/video.svg"
+            style={{ marginLeft: matches ? '.5vw' : '2vw' }}
+            alt="videos"
+          />
+          <BoldStyledTypography matches={matches}>
+            {t.videos}
+          </BoldStyledTypography>
         </ShadowStack>
         <ShadowStack matches={matches}>
+          <img
+            src="/assets/icons/other-resources.svg"
+            style={{ marginLeft: matches ? '.5vw' : '2vw' }}
+            alt="other resources"
+          />
           <BoldStyledTypography matches={matches}>
             {t.otherResources}
           </BoldStyledTypography>
