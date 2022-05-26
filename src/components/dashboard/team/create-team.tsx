@@ -5,24 +5,15 @@ import { Dispatch, SetStateAction } from 'react'
 interface CreatTeamProps {
   value: string
   setValue: Dispatch<SetStateAction<string>>
-  placeholder: string
-  buttonText: string
   clickHandler: () => unknown
 }
 
-export function CreateTeam({
-  value,
-  setValue,
-  placeholder,
-  buttonText,
-  clickHandler,
-}: CreatTeamProps) {
+export function CreateTeam({ value, setValue, clickHandler }: CreatTeamProps) {
   return (
     <Stack
       sx={{
         width: '100%',
         margin: '1vw',
-
       }}
     >
       <Typography>ساخت تیم</Typography>
@@ -35,7 +26,7 @@ export function CreateTeam({
         onChange={event => setValue(event.target.value)}
         dir="rtl"
         disableUnderline={true}
-        placeholder={placeholder}
+        placeholder="نام تیم"
       />
 
       <Button
@@ -46,10 +37,10 @@ export function CreateTeam({
           color: 'white',
           minWidth: 'fit-content',
           height: '3vw',
-          margin: '1vw 0'
+          margin: '1vw 0',
         }}
       >
-        {buttonText}
+        ثبت تیم
       </Button>
     </Stack>
   )

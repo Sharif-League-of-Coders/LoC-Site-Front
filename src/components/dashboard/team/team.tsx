@@ -132,22 +132,18 @@ export function TeamMaking() {
         direction="row"
         justifyContent="space-between"
         sx={{
-          padding: '1vw 2vw',
+          padding: '1vw 0',
         }}
       >
         <CreateTeam
           value={teamName}
           setValue={setTeamName}
-          placeholder="نام تیم"
-          buttonText="ساخت تیم"
           clickHandler={createTeamHandler}
         />
 
         <SendInvitation
           value={teammate}
           setValue={setTeammate}
-          placeholder="پست الکترونیک هم‌تیمی"
-          buttonText="ارسال دعوت‌نامه"
           clickHandler={sendInvitationHandler}
         />
       </Stack>
