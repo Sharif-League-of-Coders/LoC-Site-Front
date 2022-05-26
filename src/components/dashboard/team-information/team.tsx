@@ -17,7 +17,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { MyInput } from './input'
 import {
   createTeam,
-  deleteTeam,
+  deleteTeamAndLogoutUser,
   getTeam,
   sendInvitation,
 } from '../../../service/backend'
@@ -93,26 +93,26 @@ export function TeamMaking() {
   }, [])
 
   const [open, setOpen] = useState(false)
-  const [goToCompetetion, setGoToCompetetion] = useState(false)
+  const [goToCompetition, setGoToCompetition] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true)
   }
 
-  const handleClose = (confirmed: boolean) => {
+  const handleClose = async (confirmed: boolean) => {
     setOpen(false)
     if (confirmed) {
-      deleteTeam({ token })
+      await deleteTeamAndLogoutUser()
       setTeam(null)
     }
   }
 
   const handleClickOpenCompetition = () => {
-    setGoToCompetetion(true)
+    setGoToCompetition(true)
   }
 
   const handleCloseCompetition = (confirmed: boolean) => {
-    setGoToCompetetion(false)
+    setGoToCompetition(false)
     if (confirmed) {
       window.open('https://quera.org/contest/add_to_contest/lmmoXeJyfN1b0BV/')
     }
@@ -164,7 +164,7 @@ export function TeamMaking() {
         </DialogActions>
       </Dialog>
       <Dialog
-        open={goToCompetetion}
+        open={goToCompetition}
         sx={{
           direction: 'rtl',
         }}

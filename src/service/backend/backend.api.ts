@@ -96,3 +96,20 @@ export const deleteTeam = ({ token }) =>
       Authorization: `Token ${token}`,
     },
   })
+
+export const logout = ({ token, username }) =>
+  postRequest(
+    {
+      path: 'https://locsharif.com/api/user/logout',
+      data: {
+        username,
+      },
+      config: {
+        headers: {
+          Authorization: 'Token ' + token,
+        }
+        ,
+      }
+      ,
+    },
+  )
