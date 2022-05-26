@@ -1,4 +1,10 @@
-import { Button, Stack, Typography, useMediaQuery } from '@mui/material'
+import {
+  Button,
+  Divider,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from '@mui/material'
 import { MyInput } from './input'
 import { Dispatch, SetStateAction } from 'react'
 import json2mq from 'json2mq'
@@ -23,6 +29,7 @@ export function CreateTeam({ value, setValue, clickHandler }: CreatTeamProps) {
       }}
     >
       <Typography fontSize={matches ? '1.5vw' : '3vw'}>ساخت تیم</Typography>
+      <Divider />
       <MyInput
         matches={matches}
         value={value}
@@ -46,8 +53,19 @@ export function CreateTeam({ value, setValue, clickHandler }: CreatTeamProps) {
           height: matches ? '3vw' : '7.2vw',
           margin: '1vw 0',
           fontSize: matches ? '1vw' : '2.4vw',
-          fontFamily: 'IRANSansBold'
+          fontFamily: 'IRANSansBold',
         }}
+        startIcon={
+          <img
+            src="/assets/icons/tick.svg"
+            style={{
+              width: matches ? '1.5vw' : '3.5vw',
+              height: matches ? '1.5vw' : '3.5vw',
+              marginLeft: matches ? '1vw' : '2vw',
+            }}
+            alt="tick"
+          />
+        }
       >
         ثبت تیم
       </Button>

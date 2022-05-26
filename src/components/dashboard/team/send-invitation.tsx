@@ -1,4 +1,4 @@
-import { IconButton, Stack, Typography, useMediaQuery } from '@mui/material'
+import { Divider, IconButton, Stack, Typography, useMediaQuery } from '@mui/material'
 import { MyInput } from './input'
 import { Dispatch, SetStateAction } from 'react'
 import json2mq from 'json2mq'
@@ -78,6 +78,7 @@ export function SendInvitation({
       }}
     >
       <Typography fontSize={matches ? '1.5vw' : '3vw'}>عضوگیری</Typography>
+      <Divider />
       <EmailFieldWithConfirm
         placeholder="پست الکترونیک نفر اول"
         clickHandler={clickHandler}
