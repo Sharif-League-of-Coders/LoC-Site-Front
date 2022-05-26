@@ -10,17 +10,10 @@ import {
   Link,
 } from '@mui/material'
 import json2mq from 'json2mq'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  isLoggedInVew, setInvitations,
-  setIsLoggedIn,
-  setToken,
-  tokenView,
-  usernameView,
-} from '../../scenes/_slice/account.slice'
-import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { isLoggedInVew, usernameView } from '../../scenes/_slice/account.slice'
 import { Dispatch, SetStateAction } from 'react'
-import { fetchInvitations } from '../../service/backend'
+import { fetchInvitations, logoutUser } from '../../service/backend'
 
 const StyledDivider = styled(Divider)(() => ({
   '&.MuiDivider-root': {
@@ -42,7 +35,6 @@ interface Props {
 export function NavBar({ setIsMailBoxModalOpen }: Props) {
   const isLoggedIn = useSelector(isLoggedInVew)
   const username = useSelector(usernameView)
-  const token = useSelector(tokenView)
   const sections = [
     { text: 'ارتباط با ما', href: '/#contact-us' },
     { text: 'سوالات متداول', href: '/#faq' },
@@ -55,28 +47,6 @@ export function NavBar({ setIsMailBoxModalOpen }: Props) {
     }),
   )
 
-  const dispatch = useDispatch()
-
-  const handleLogout = () => {
-    axios
-      .post(
-        'https://locsharif.com/api/user/logout',
-        {
-          username,
-        },
-        {
-          headers: {
-            Authorization: 'Token ' + token,
-          },
-        },
-      )
-      .then(() => {
-        dispatch(setToken(''))
-        dispatch(setIsLoggedIn(''))
-        dispatch(setInvitations([]))
-        window.open('/login', '_self')
-      })
-  }
   return (
     <StyledAppbar
       justifyContent="center"
@@ -126,7 +96,7 @@ export function NavBar({ setIsMailBoxModalOpen }: Props) {
 
           {matches &&
             sections.map(({ text, href }) => (
-              <Box key={text}>
+              <>
                 <Box
                   sx={{
                     minWidth: 'fit-content',
@@ -145,7 +115,7 @@ export function NavBar({ setIsMailBoxModalOpen }: Props) {
                   </Link>
                 </Box>
                 <StyledDivider orientation="vertical" flexItem color="black" />
-              </Box>
+              </>
             ))}
         </Stack>
         {isLoggedIn ? (
@@ -189,7 +159,7 @@ export function NavBar({ setIsMailBoxModalOpen }: Props) {
                 borderRadius: '10px',
                 marginRight: '1vw',
               }}
-              onClick={handleLogout}
+              onClick={() => logoutUser()}
             >
               خروج
             </Button>
