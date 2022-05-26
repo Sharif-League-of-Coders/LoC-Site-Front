@@ -69,7 +69,7 @@ export function MailItem({ invite, token }: Props) {
               }}
             >
               <img
-                src="/assets/icons/tick2.svg"
+                src="/assets/icons/tick.svg"
                 height="100%"
                 style={{ marginLeft: '.5vw' }}
                 alt="tick"

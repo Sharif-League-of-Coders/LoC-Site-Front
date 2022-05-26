@@ -1,11 +1,6 @@
 import {
   Box,
   Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Divider,
   Stack,
   Typography,
@@ -13,8 +8,7 @@ import {
 } from '@mui/material'
 import { BoldStyledTypography } from '../components'
 import json2mq from 'json2mq'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { MyInput } from './input'
+import { useEffect, useState } from 'react'
 import {
   createTeam,
   deleteTeamAndLogoutUser,
@@ -23,57 +17,10 @@ import {
 } from '../../../service/backend'
 import { useSelector } from 'react-redux'
 import { tokenView, usernameView } from '../../../scenes/_slice/account.slice'
-
-interface TeamCreatorProps {
-  value: string
-  setValue: Dispatch<SetStateAction<string>>
-  placeholder: string
-  buttonText: string
-  clickHandler: () => unknown
-}
-
-const TeamCreator = ({
-  value,
-  setValue,
-  placeholder,
-  buttonText,
-  clickHandler,
-}: TeamCreatorProps) => {
-  return (
-    <Stack
-      direction={'row'}
-      justifyContent="space-between"
-      sx={{
-        margin: '3vw 0',
-      }}
-    >
-      <MyInput
-        value={value}
-        sx={{
-          height: '5vh',
-          mx: 2,
-          borderRadius: ' 1.5vw 0.1vw 0.1vw 0.1vw',
-        }}
-        onChange={event => setValue(event.target.value)}
-        dir="rtl"
-        disableUnderline={true}
-        placeholder={placeholder}
-      />
-
-      <Button
-        onClick={clickHandler}
-        sx={{
-          background:
-            'linear-gradient(90deg, #002B99 0%, #8000FF 60.42%, #F300F8 100%)',
-          color: 'white',
-          minWidth: 'fit-content',
-        }}
-      >
-        {buttonText}
-      </Button>
-    </Stack>
-  )
-}
+import { DeleteTeamDialog } from './delete-team-dialog'
+import { RedirectToCompetitionDialog } from './redirect-to-competition-dialog'
+import { CreateTeam } from './create-team'
+import { SendInvitation } from './send-invitation'
 
 export function TeamMaking() {
   const [teamName, setTeamName] = useState('')
@@ -118,6 +65,24 @@ export function TeamMaking() {
     }
   }
 
+  const createTeamHandler = () => {
+    createTeam({
+      name: teamName,
+      creator: username,
+      members: [],
+      token,
+    }).then(() => {
+      getTeam({ token }).then(res => {
+        setTeam(res)
+      })
+    })
+  }
+
+  const sendInvitationHandler = () => {
+    sendInvitation({ user_email: teammate, token }).then(console.log)
+    setTeammate('')
+  }
+
   const matches = useMediaQuery(
     json2mq({
       minWidth: 750,
@@ -125,67 +90,23 @@ export function TeamMaking() {
   )
   return (
     <Stack
-      spacing={2}
       sx={{
         boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
         marginLeft: matches ? '7.25vw' : 0,
         borderRadius: matches ? '3vw' : '7vw',
-        width: matches ? '35.25vw' : '100%',
-        padding: matches ? '0vw 2vw 2vw 2vw' : '1vw 5vw 5vw 5vw',
+        width: matches ? '42.5vw' : '102vw',
+        padding: matches ? '2vw' : '5vw',
         background: 'transparent',
         boxSizing: 'border-box',
         position: 'relative',
         bgcolor: 'white',
       }}
     >
-      <Dialog
-        open={open}
-        sx={{
-          direction: 'rtl',
-        }}
-        onClose={() => handleClose(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {'آیا مایل به ترک تیم هستید؟'}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            برای بازگشت مجدد نیاز دارید که از جانب سازنده تیم و یا یکی از اعضای
-            آن دعوت‌نامه دریافت کنید. پس از تایید نیاز است که مجددا وارد شوید
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => handleClose(false)}>انصراف</Button>
-          <Button onClick={() => handleClose(true)} autoFocus>
-            تایید
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
+      <DeleteTeamDialog open={open} handleClose={handleClose} />
+      <RedirectToCompetitionDialog
         open={goToCompetition}
-        sx={{
-          direction: 'rtl',
-        }}
-        onClose={() => handleClose(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            پس از فشردن دکمه تایید به صفحه مسابقه هدایت می‌شوید. اگر این اولین
-            باری است که به صفحه مسابقه می‌روید، با وارد رمز Loc-1400-Sharif به
-            روش فردی به مسابقه اضافه شوید.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => handleCloseCompetition(false)}>انصراف</Button>
-          <Button onClick={() => handleCloseCompetition(true)} autoFocus>
-            تایید
-          </Button>
-        </DialogActions>
-      </Dialog>
+        handleClose={handleCloseCompetition}
+      />
       <Stack
         sx={{
           alignItems: 'center',
@@ -206,51 +127,34 @@ export function TeamMaking() {
           تیم
         </BoldStyledTypography>
       </Stack>
-      <Box
+
+      <Stack
+        direction="row"
+        justifyContent="space-between"
         sx={{
-          border: 3,
-          borderRadius: '0px 5vh 0px 0px',
-          borderColor: 'black',
           padding: '1vw 2vw',
         }}
       >
-        <Stack justifyContent="space-between">
-          <TeamCreator
-            value={teamName}
-            setValue={setTeamName}
-            placeholder="نام تیم"
-            buttonText="ساخت تیم"
-            clickHandler={() => {
-              createTeam({
-                name: teamName,
-                creator: username,
-                members: [],
-                token,
-              }).then(() => {
-                getTeam({ token }).then(res => {
-                  setTeam(res)
-                })
-              })
-            }}
-          />
+        <CreateTeam
+          value={teamName}
+          setValue={setTeamName}
+          placeholder="نام تیم"
+          buttonText="ساخت تیم"
+          clickHandler={createTeamHandler}
+        />
 
-          <Divider />
-          <TeamCreator
-            value={teammate}
-            setValue={setTeammate}
-            placeholder="پست الکترونیک هم‌تیمی"
-            buttonText="ارسال دعوت‌نامه"
-            clickHandler={() => {
-              sendInvitation({ user_email: teammate, token }).then(console.log)
-              setTeammate('')
-            }}
-          />
-        </Stack>
-      </Box>
+        <SendInvitation
+          value={teammate}
+          setValue={setTeammate}
+          placeholder="پست الکترونیک هم‌تیمی"
+          buttonText="ارسال دعوت‌نامه"
+          clickHandler={sendInvitationHandler}
+        />
+      </Stack>
       <Box sx={{ borderColor: 'black', border: 1, borderRadius: 1, p: 1 }}>
         <Stack>
           <Typography fontStyle={{ fontWeight: 'bold' }}>
-            {'نحوه انتخاب هم تیمی'}
+            {'نحوه انتخاب هم‌تیمی'}
           </Typography>
           <Stack direction={'row'}>
             <Divider

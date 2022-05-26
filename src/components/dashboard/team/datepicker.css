@@ -74,7 +74,7 @@
   
   /* Day wrapper styles */
   .calendarContainer .dayWrapper {
-    padding: 5;
+    padding: 5px;
     float: right;
     width: 14.28571429%;
   }

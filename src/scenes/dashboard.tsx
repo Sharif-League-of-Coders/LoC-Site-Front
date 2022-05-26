@@ -1,9 +1,11 @@
-import { Stack, useMediaQuery } from '@mui/material'
+import { Box, Stack, Typography, useMediaQuery } from '@mui/material'
 import { NavBar } from 'common/nav-bar'
 import json2mq from 'json2mq'
-import { TeamMaking } from 'components/dashboard/team-information/team'
+import { TeamMaking } from 'components/dashboard/team/team'
 import { MailBoxModal } from '../components/dashboard/mail-box-modal'
 import { useState } from 'react'
+// import { Resources } from '../components/dashboard/resources'
+// import { State } from '../components/dashboard/state'
 
 export function Dashboard() {
   const [isMailBoxModalOpen, setIsMailBoxModalOpen] = useState(false)
@@ -26,24 +28,37 @@ export function Dashboard() {
         backgroundSize: '100vw auto',
       }}
     >
-      <NavBar setIsMailBoxModalOpen={setIsMailBoxModalOpen}/>
-      <MailBoxModal isOpen={isMailBoxModalOpen} setIsOpen={setIsMailBoxModalOpen}/>
-
-      <Stack
-        flexDirection={matches ? 'row' : 'column'}
-        justifyContent="center"
-        alignItems="center"
+      <NavBar setIsMailBoxModalOpen={setIsMailBoxModalOpen} />
+      <MailBoxModal
+        isOpen={isMailBoxModalOpen}
+        setIsOpen={setIsMailBoxModalOpen}
+      />
+      <Box
         sx={{
+          margin: matches ? '1.5vw' : '2.5vw',
           padding: matches ? 0 : '3vw',
-          // zIndex:100,
         }}
       >
-
-        {/*<Information />*/}
-        <TeamMaking />
-        {/*<Resources></Resources>*/}
-        {/*<State></State>*/}
-      </Stack>
+        <Typography
+          sx={{
+            borderBottom: '1px solid black',
+            width: matches ? '10vw' : '24vw',
+          }}
+        >
+          داشبورد
+        </Typography>
+        <Stack
+          flexDirection={matches ? 'row' : 'column'}
+          justifyContent="center"
+          alignItems="center"
+          sx={{ marginTop: matches ? '1.5vw' : '2.5vw' }}
+        >
+          {/*<Information />*/}
+          <TeamMaking />
+          {/*<Resources></Resources>*/}
+          {/*<State></State>*/}
+        </Stack>
+      </Box>
     </Stack>
   )
 }

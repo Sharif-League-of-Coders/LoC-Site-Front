@@ -8,13 +8,15 @@ import Input from '@mui/material/Input'
 export const MyInput = styled(Input)(({ name }: { name?: string }) => ({
   width: '100%',
   border: 1,
-  minHeight: '1.75vw',
+  minHeight: '3vw',
+  height: '3vw',
   borderColor: 'transparent',
   padding: '0.5vw 1vw ',
   borderRadius:
     name == 'code' ? ' 0.2vw 0vw 1.5vw 0.2vw' : ' 1.5vw 0vw 1.5vw 0vw',
   boxShadow: '0px 4px 10px 1px rgba(0, 0, 0, 0.15)',
   '::placeholder': { color: 'white' },
+  fontSize: '1vw'
 }))
 
 export const InformationInput = ({
@@ -52,6 +54,7 @@ export const InformationInput = ({
           }
           dir="rtl"
           disableUnderline={true}
+
           endAdornment={
             <InputAdornment position="end">
               <img
