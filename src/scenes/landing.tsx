@@ -7,6 +7,7 @@ import { RegisterNow } from 'components/landing/register-now'
 import { Sponsor } from 'components/landing/sponsor/sponsor'
 import { useSelector } from 'react-redux'
 import { isLoggedInVew } from './_slice/account.slice'
+import { Staffs } from '../components/landing/staffs'
 
 export function Landing() {
   const isLoggedIn = useSelector(isLoggedInVew)
@@ -15,6 +16,7 @@ export function Landing() {
       <Header />
       <AboutEvent />
       <Sponsor />
+      <Staffs />
       {isLoggedIn && <RegisterNow />}
       <FrequentlyAskedQuestion />
       <ContactUs />
